@@ -17,6 +17,8 @@ group :development, :test do
 end
 gem 'pg'
 gem 'devise'
+gem 'twilio-ruby'
+gem 'clockwork'
 
 
 # Gems used only for assets and not required
