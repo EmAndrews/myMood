@@ -12,7 +12,7 @@ module NavigationHelpers
       '/admin'
       
     when /^the myMood home page$/ then '/'
-    when /^the sign up page$/ then '/signup'
+    when /^the sign up page$/ then '/users/sign_up'
     when /^the user index$/ then '/user/index'
     when /^the admin index$/ then '/admin/index'
 

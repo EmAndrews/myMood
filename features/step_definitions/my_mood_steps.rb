@@ -8,3 +8,4 @@ Then /^I should see a graph$/ do
 #puts page.html
     page.html.include?("1B").should == true
 end
+
