@@ -523,3 +523,4 @@ Served asset /bad_moods.png - 304 Not Modified (0ms)
 
 Started GET "/assets/average_moods.png" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
 Served asset /average_moods.png - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
