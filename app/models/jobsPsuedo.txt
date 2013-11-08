@@ -1,0 +1,19 @@
+MyMood Job Pseudocode
+----------------------
+
+
+# --------------------------------------------------------
+# This runs every minimum-time-between-messages (probably daily)
+# --------------------------------------------------------
+def messageSendJob(userGroupOrSomething)
+	# For every user |user|
+		# Are they willing to receive messages today?
+			# If not, do nothing.
+			# If so
+				# For every message in the user.messageQueue
+				#  where message.dateToSend < now |message|
+					# Get nextMessage from message.category.sequence
+					# Get interval message.category.interval
+					# Add that nextMessage to queue with nextMessage.dateToSend=now+interval
+					# Send the message
+end
