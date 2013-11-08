@@ -17,6 +17,8 @@ Mm::Application.configure do
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
+  config.assets.precompile += %w( bootstrap.min.css bootstrap-responsive.min.css index.css jquery-ui.css application.js bootstrap.min.js d3.v3.min.js index.js jquery-1.10.2.min.js jquery-ui.js )
+
   # Generate digests for assets URLs
   config.assets.digest = true
 
