@@ -3,6 +3,8 @@ Mm::Application.routes.draw do
 
   devise_for :models
 
+  match '/admin/index', :controller => 'admin', :action => 'index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
