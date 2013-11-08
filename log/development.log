@@ -433,3 +433,93 @@ Served asset /okay_moods.png - 304 Not Modified (0ms)
 
 Started GET "/assets/fake_user_small.png" for 127.0.0.1 at 2013-11-08 13:20:13 -0800
 Served asset /fake_user_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/admin/index" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Processing by AdminController#index as HTML
+  Rendered admin/index.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 13ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap-responsive.min.css?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /bootstrap-responsive.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/index.css?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /index.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /bootstrap.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/d3.v3.min.js?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /d3.v3.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/index.js?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /index.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-1.10.2.min.js?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /jquery-1.10.2.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fake_user_small.png" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /fake_user_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/fake_user_big.png" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /fake_user_big.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/okay_moods.png" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /okay_moods.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/perfect_moods.png" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /perfect_moods.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bad_moods.png" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /bad_moods.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/average_moods.png" for 127.0.0.1 at 2013-11-08 13:24:31 -0800
+Served asset /average_moods.png - 304 Not Modified (0ms)
