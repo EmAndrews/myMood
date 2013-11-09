@@ -1,5 +1,5 @@
 class SchedulePreference < ActiveRecord::Base
-  belongs_to User
+#belongs_to User
 
   # Ored number of weekdays to store preference
   @week = 0000000
