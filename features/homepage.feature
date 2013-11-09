@@ -6,5 +6,8 @@ Feature: Viewing homepage
  
 Scenario: Viewing hompage
         Given I am on the myMood home page
-        Then I should see "Phone Number"
+        Then I should see "Phone number"
         And I should see "Password"
+        And I should see "Remember me"
+        And I should see "Sign up"
+        And I should see "Forgot your password?"

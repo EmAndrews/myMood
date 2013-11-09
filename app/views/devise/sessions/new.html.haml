@@ -1,0 +1,36 @@
+%html
+
+  %head
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title My Mood
+
+    = stylesheet_link_tag 'bootstrap.min'
+    = stylesheet_link_tag 'bootstrap-responsive.min'
+    = stylesheet_link_tag 'index'
+    = stylesheet_link_tag 'jquery-ui'
+
+  %body
+    %div#homepage-content
+      %div.container-fluid
+        %div.row-fluid
+          %div.span4.offset2
+            %h1 Welcome to My Mood!
+            %p schpeal about how great this site is and why you should use it
+          %div.span3.offset1
+            %div.well
+              %h3 Login
+              = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+                %div
+                  = f.label :phone_number
+                  %br/
+                  = f.email_field :phone_number, :autofocus => true
+                %div
+                  = f.label :password
+                  %br/
+                  = f.password_field :password
+                - if devise_mapping.rememberable?
+                  %div
+                    = f.check_box :remember_me
+                    = f.label :remember_me
+                %div= f.submit 'Sign in'
+              = render 'devise/shared/links'

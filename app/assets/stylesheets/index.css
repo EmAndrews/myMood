@@ -71,3 +71,7 @@ html, body, .wrapper {
 #confirm-message-btn {
     width: 100%;
 }
+
+#homepage-content {
+    padding-top: 50px;
+}
