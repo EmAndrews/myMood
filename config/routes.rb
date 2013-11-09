@@ -3,6 +3,12 @@ Mm::Application.routes.draw do
 
   devise_for :models
 
+  devise_scope :user do
+    root :to => 'devise/sessions#new'
+  end
+
+  match '/admin/index', :controller => 'admin', :action => 'index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
