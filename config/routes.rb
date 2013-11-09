@@ -3,7 +3,11 @@ Mm::Application.routes.draw do
 
   devise_for :models
 
-  match '/admin/index', :controller => 'admin', :action => 'index'
+  devise_scope :user do
+    root :to => 'devise/sessions#new'
+  end
+
+  match '/user/index', :controller => 'user', :action => 'index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -46,9 +50,9 @@ Mm::Application.routes.draw do
   #   end
 
   # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
+  #   namespace :user do
+  #     # Directs /user/products/* to Admin::ProductsController
+  #     # (app/controllers/user/products_controller.rb)
   #     resources :products
   #   end
 

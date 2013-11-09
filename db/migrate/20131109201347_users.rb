@@ -1,9 +1,11 @@
-class DeviseCreateModels < ActiveRecord::Migration
-  def change
-    create_table(:models) do |t|
+class Users < ActiveRecord::Migration
+  def up
+    create_table(:users) do |t|
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
+      t.string :phone_number, :null => false, :default => ""
+      t.string :name
 
       ## Recoverable
       t.string   :reset_password_token
@@ -34,9 +36,12 @@ class DeviseCreateModels < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :models, :email,                :unique => true
-    add_index :models, :reset_password_token, :unique => true
-    # add_index :models, :confirmation_token,   :unique => true
-    # add_index :models, :unlock_token,         :unique => true
+    add_index :users, :email,                :unique => true
+    add_index :users, :reset_password_token, :unique => true
+    # add_index :users, :confirmation_token,   :unique => true
+    # add_index :users, :unlock_token,         :unique => true
+  end
+
+  def down
   end
 end

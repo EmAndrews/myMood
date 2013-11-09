@@ -2,7 +2,7 @@
     padding-top: 5px;
 }
 
-#content {
+.content {
     padding-top: 60px;
 }
 
@@ -70,4 +70,8 @@ html, body, .wrapper {
 
 #confirm-message-btn {
     width: 100%;
+}
+
+#homepage-padding {
+    height: 50px;
 }

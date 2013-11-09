@@ -6,8 +6,6 @@ Feature: Viewing sign up page
  
 Scenario: Viewing sign up page
         Given I am on the sign up page
-        Then I should see "Name"
-        And I should see "Phone Number"
-        And I should see "Email"
+        Then I should see "Phone number"
         And I should see "Password"
-        And I should see "Confirm Password"
+        And I should see "Password confirmation"
