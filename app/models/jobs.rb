@@ -1,5 +1,3 @@
-include 'logger'
-
 # Takes in Time.now and returns a weekday
 def nowToDay now
   return 1 << now.wday
@@ -40,7 +38,7 @@ def enqueue_next_message message, user
   user_state = user.user_states[message.category]
   message, next_seq_num =
           message.category.sequence.get_next_message_and_num (user_state[seq_num])
-  user_state[seq_num] => next_seq_num
+  user_state[seq_num] = next_seq_num
 
   user.message_queue.add message
 end
