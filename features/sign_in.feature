@@ -7,8 +7,8 @@ Feature: Signing in
 Background: users have been added to the database
 
   Given the following users exist:
-  | phone_number | name | password | email   | permission_level |
-  | 123-456-7890 | Bob  | pass     | a@a.com | 0		|
+  | phone_number | name | password | email   |
+  | 123-456-7890 | Bob  | pass     | a@a.com |
 
 	And I am on the myMood home page
 
