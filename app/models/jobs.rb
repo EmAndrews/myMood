@@ -19,12 +19,13 @@ def daily_cron
 end
 
 def prep_messages(user)
-  if user == nil raise 'Nil user in prep_messages' end
+  if user == nil 
+    raise 'Nil user in prep_messages'
+  end
   # Check user message queue and send/enqueue messages accordingly
 #valid_messages = user.message_queue.where("time_to_send <= :now", now: Time.now)  
-
   user.message_queue.each do |message|
-    if message.date_to_send <= Time.now do
+    if message.date_to_send <= Time.now
       enqueue_next_message message, user
       # Do async?
       send_message_to_user message, user
