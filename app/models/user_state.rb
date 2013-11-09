@@ -1,6 +1,6 @@
 class UserState < ActiveRecord::Base
 
-# belongs_to User
+ belongs_to :user
 
  @categories
 

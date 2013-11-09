@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-#belongs_to Category
+ belongs_to :category
 
   attr_accessor :number, :unit
 
