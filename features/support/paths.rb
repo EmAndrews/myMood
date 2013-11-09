@@ -9,12 +9,12 @@ module NavigationHelpers
     case page_name
 
     when /^the home\s?page$/
-      '/admin'
+      '/user'
       
     when /^the myMood home page$/ then '/'
     when /^the sign up page$/ then '/users/sign_up'
     when /^the user index$/ then '/user/index'
-    when /^the admin index$/ then '/admin/index'
+    when /^the user index$/ then '/user/index'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

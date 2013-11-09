@@ -1,0 +1,42 @@
+%html
+
+  %head
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title My Mood
+
+    = stylesheet_link_tag 'bootstrap.min'
+    = stylesheet_link_tag 'bootstrap-responsive.min'
+    = stylesheet_link_tag 'index'
+    = stylesheet_link_tag 'jquery-ui'
+
+  %body
+    %div.content
+      %div.container-fluid
+        %div.row-fluid
+          %div.span4.offset4.well
+
+            %h2 Sign up
+            = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+              = devise_error_messages!
+              %div
+                = f.label :name
+                %br/
+                = f.text_field :name, :autofocus => true
+              %div
+                = f.label :phone_number
+                %br/
+                = f.text_field :phone_number
+              %div
+                = f.label :email
+                %br/
+                = f.email_field :email
+              %div
+                = f.label :password
+                %br/
+                = f.password_field :password
+              %div
+                = f.label :password_confirmation
+                %br/
+                = f.password_field :password_confirmation
+              %div= f.submit 'Sign up'
+            = render 'devise/shared/links'

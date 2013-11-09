@@ -10,20 +10,20 @@
     = stylesheet_link_tag 'jquery-ui'
 
   %body
-    %div#homepage-content
+    %div.content
       %div.container-fluid
         %div.row-fluid
           %div.span4.offset2
             %h1 Welcome to My Mood!
             %p schpeal about how great this site is and why you should use it
-          %div.span3.offset1
+          %div.span4
             %div.well
               %h3 Login
               = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
                 %div
                   = f.label :phone_number
                   %br/
-                  = f.email_field :phone_number, :autofocus => true
+                  = f.text_field :phone_number, :autofocus => true
                 %div
                   = f.label :password
                   %br/
