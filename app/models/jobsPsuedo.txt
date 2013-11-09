@@ -17,3 +17,4 @@ def messageSendJob(userGroupOrSomething)
 					# Add that nextMessage to queue with nextMessage.dateToSend=now+interval
 					# Send the message
 end
+
