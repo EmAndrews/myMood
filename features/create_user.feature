@@ -8,8 +8,8 @@ Background: users are in the database
   
   Given the following users exist:
   | phone_number | name    | password  | email |
-  | 1234567890   | Alice   | hunter222 | a@a.a |
-  | 1111111111   | Bob B   | abcdefgh9 | b@b.b |
+  | 123-456-7890   | Alice   | hunter222 | a@a.a |
+  | 111-111-1111   | Bob B   | abcdefgh9 | b@b.b |
 
   And I am on the sign up page
   
@@ -68,7 +68,7 @@ Scenario: Missing Phone Number
 	
 	And I press "Sign up"
 
-	Then I should see "Phone Number can't be blank"
+	Then I should see "Phone number can't be blank"
 	
 
 Scenario: Missing Password
@@ -111,7 +111,7 @@ Scenario: Phone Number taken
 	
 	And I press "Sign up"
 
-	Then I should see "That phone number is already in our system."
+	Then I should see "Phone number has already been taken"
 	
 Scenario: Invalid Phone Number
 	When I fill in "user_name" with "Carol"
@@ -122,7 +122,7 @@ Scenario: Invalid Phone Number
 	
 	And I press "Sign up"
 
-	Then I should see "Invalid Phone Number."
+	Then I should see "Phone number 123 is not valid"
 	
 Scenario: Invalid Phone Number (non-number)
 	When I fill in "user_name" with "Carol"
@@ -133,4 +133,4 @@ Scenario: Invalid Phone Number (non-number)
 	
 	And I press "Sign up"
 
-	Then I should see "Invalid Phone Number."
+	Then I should see "Phone number not a number is not valid"

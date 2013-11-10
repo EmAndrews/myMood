@@ -9,5 +9,13 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
 
+  # Trying to mimic devise. 
+  validates :phone_number,
+  	:uniqueness => true,
+  	:presence => true,
+  	:phone_number => {:format => /\d{3}-\d{3}-\d{4}/}
+
+  validates_presence_of :name
+
 
 end
