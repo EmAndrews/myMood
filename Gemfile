@@ -19,7 +19,7 @@ gem 'pg'
 gem 'devise'
 gem 'twilio-ruby'
 gem 'clockwork'
-
+gem 'validates_phone_number'
 
 # Gems used only for assets and not required
 # in production environments by default.
