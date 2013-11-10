@@ -20,13 +20,15 @@
             %div.well
               %h3 Login
               = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+                - flash.each do |name, msg|
+                  = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
                 %div
                   = f.label :phone_number
-                  %br/
+                  -#%br/
                   = f.text_field :phone_number, :autofocus => true
                 %div
                   = f.label :password
-                  %br/
+                  -#%br/
                   = f.password_field :password
                 - if devise_mapping.rememberable?
                   %div
