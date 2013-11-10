@@ -5,9 +5,15 @@ Mm::Application.routes.draw do
 
   devise_scope :user do
     root :to => 'devise/sessions#new'
+    match 'profile/:phone_number' => 'user#index', :as => :profile
   end
 
-  match '/user/index', :controller => 'user', :action => 'index'
+  #match 'profile/:phone_number' => 'user#index', :as => :profile
+  #get '/profile/:phone_number', to: 'user#index', as: 'profile'
+
+  #devise_for :users, :controllers => { :registrations => "registrations" }
+
+  #match '/user/index', :controller => 'user', :action => 'index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
