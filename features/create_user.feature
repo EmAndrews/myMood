@@ -22,8 +22,7 @@ Scenario: Correct Information with an email
 	
 	And I press "Sign up"
 
-	Then "Carol" should be created with "2222222222", "password123", "carol@foo.com"
-	And I should see "Thank you for logging in"
+	Then "Carol" should be created with "222-222-2222", "password123", "carol@foo.com"
 	And I should be on the user index
 
 
