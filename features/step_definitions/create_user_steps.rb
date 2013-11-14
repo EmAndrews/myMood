@@ -4,12 +4,10 @@ Given /the following users exist/ do |user_table|   #populates a table?  this is
   end
 end
 
-#Then "Carol" should be created with "2222222222", "password123", ""
-Then /"(.*)" should be created with "(.*)", "(.*)", "(.*)"/ do |user, phone, pass, email|
-  user = User.find(phone)
-  
-  user.phone.should be phone
-  user.name.should be name
-  user.pass.should be pass
-  user.email.should be email
+# Then "Carol" should be created with "2222222222", "password123", ""
+# Taking out password check because password is encrypted and we can't see value.
+Then /"(.*)" should be created with "(.*)", "(.*)", "(.*)"/ do |name, phone, pass, email|
+  user = User.find_by_phone_number(phone)
+  user.name.should eq(name)
+  user.email.should eq(email)
 end
