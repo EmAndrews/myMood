@@ -3,7 +3,7 @@
 }
 
 .content {
-    padding-top: 60px;
+    padding-top: 100px;
 }
 
 html, body, .wrapper {
@@ -74,4 +74,18 @@ html, body, .wrapper {
 
 #homepage-padding {
     height: 50px;
+}
+
+#avg-mood {
+    font-size: 100px;
+    text-align: center;
+    /*background-color: red;*/
+}
+
+#myCarousel {
+    padding: 0 100px;
+}
+
+#widget {
+    height: 30em;
 }

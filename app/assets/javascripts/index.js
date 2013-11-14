@@ -283,6 +283,10 @@ var purple_group_dataset = [
 
 $(document).ready(function () {
 
+    $('.carousel').carousel({
+        interval:false
+    });
+
     $("#user-home-page").empty();
     draw_group_graph("user-home-page", user_dataset);
 
