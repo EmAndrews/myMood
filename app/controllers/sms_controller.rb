@@ -12,12 +12,15 @@ class SmsController < ApplicationController
 
 		data = regex.match(message)  #this part untested
 
-		send_message(from, data[:rating])  #echo!
+		#send_message(from, message)  #echo!
 
-		#unless data   #no match, can’t read it
-		#	send_message(from, "Sorry, we couldn’t read that. Please check your formatting and try again.")
-		#end
+		unless data   #no match, can’t read it
+			send_message(from, "No match")
+			return
+		end
 
+		send_message(from, data[:rating])
+		
 	  #category = data[:letter]
 		#mood = data[:rating]
 		#extra = data[:message]
