@@ -15,15 +15,15 @@ class SmsController < ApplicationController
 		#send_message(from, message)  #echo!
 
 		unless data   #no match, can’t read it
-			send_message(from, "No match")
+			send_message(from, "We couldn't read that.  Please try again in the form: m10")
 			return
 		end
 
-		send_message(from, data[:rating])
+	  category = data[:letter]
+		mood = data[:rating]
+		extra = data[:message]
 		
-	  #category = data[:letter]
-		#mood = data[:rating]
-		#extra = data[:message]
+		send_message(from, "Your mood is " + mood)
 
 	  #store stuff in our database
 	end
