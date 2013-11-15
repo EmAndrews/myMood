@@ -8,11 +8,11 @@ class SmsController < ApplicationController
 
 		#parse message… from start of message, expect to get:
 		#optional space, a letter, optional space, number, optional space, optional text
-		#regex = /^ *(?<letter>\p{L}) *(?<rating>\d+) *(?<message>.*)/
+		regex = /^\s*(?<letter>[a-zA-Z])\s*(?<rating>\d+)\s*(?<message>.*)/
 
-		#data = regex.match(message)  #this part untested
+		data = regex.match(message)  #this part untested
 
-		send_message(from, message)
+		send_message(from, data[:rating])  #echo!
 
 		#unless data   #no match, can’t read it
 		#	send_message(from, "Sorry, we couldn’t read that. Please check your formatting and try again.")
