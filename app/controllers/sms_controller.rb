@@ -5,7 +5,7 @@ class SmsController < ApplicationController
 		from = params[:From]		#phone number of user
 		datetime = params[:Date_created]
 		
-		send_message(from, datetime)
+		send_message(from, "time: " + datetime)
 		
 		#send_message(from, message)  #echo!
 
