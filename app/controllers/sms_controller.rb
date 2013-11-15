@@ -3,6 +3,9 @@ class SmsController < ApplicationController
 	def receive_sms
 		message = params[:Body]
 		from = params[:From]		#phone number of user
+		datetime = params[:Date_created]
+		
+		send_message(from, datetime)
 		
 		#send_message(from, message)  #echo!
 
@@ -26,7 +29,7 @@ class SmsController < ApplicationController
 		
 		#TODO: Validate category and mood
 		
-		send_message(from, "Your mood is " + mood)
+		#send_message(from, "Your mood is " + mood)
 
 	  #TODO: store stuff in our database
 	end
