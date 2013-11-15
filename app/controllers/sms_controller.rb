@@ -3,13 +3,13 @@ class SmsController < ApplicationController
 	def receive_sms
 		message = params[:Body]
 		from = params[:From]		#phone number of user
-		datetime = params[:Date_created]
+		#datetime = params[:Date_created]
 		
-		send_message(from, "time: " + datetime)
+		send_message(from, params)
 		
 		#send_message(from, message)  #echo!
 
-		#TODO: look up user w/ from
+		#TODO: look up user w/ from, make sure actually in db
 
 		#parse message… from start of message, expect to get:
 		#optional space, a letter, optional space, number, optional space, optional text
@@ -29,7 +29,7 @@ class SmsController < ApplicationController
 		
 		#TODO: Validate category and mood
 		
-		#send_message(from, "Your mood is " + mood)
+		send_message(from, "Your mood is " + mood)
 
 	  #TODO: store stuff in our database
 	end
