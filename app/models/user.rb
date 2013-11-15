@@ -17,5 +17,11 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
 
+  has_one :conversation
+  has_one :schedule_preference
+  
+  attr_accessor :message_queue
+
+
 
 end

@@ -1,0 +1,34 @@
+%html
+
+  %head
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title My Mood
+
+    = stylesheet_link_tag 'bootstrap.min'
+    = stylesheet_link_tag 'index'
+    = stylesheet_link_tag 'bootstrap-responsive.min'
+    = stylesheet_link_tag 'jquery-ui'
+
+  %body
+    %div.navbar.navbar-inverse.navbar-fixed-top
+      %div.navbar-inner
+        %div.container-fluid
+          %div.brand MyMood
+          %ul.nav
+            %li.divider-vertical
+            %li <a href="#">Home</a>
+            %li.divider-vertical
+            %li <a href="#">Settings</a>
+          %ul.nav.pull-right
+            %li#user_pic=image_tag 'fake_user_small.png'
+            %li <a href="#">User</a>
+            %li.divider-vertical
+            %li <a href="#">Logout</a>
+
+    %div.content
+      %h1 OMG HI ANDRE
+
+    = javascript_include_tag 'bootstrap.min.js'
+    = javascript_include_tag 'jquery-1.10.2.min.js'
+    = javascript_include_tag 'index.js'
+    = javascript_include_tag 'jquery-ui'
