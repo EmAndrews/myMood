@@ -6,6 +6,7 @@ Mm::Application.routes.draw do
   devise_scope :user do
     root :to => 'devise/sessions#new'
     match 'profile/:phone_number' => 'user#index', :as => :profile
+    match 'sms/receive_sms' => 'sms#receive_sms'  #kim's messing with stuff
   end
 
   #match 'profile/:phone_number' => 'user#index', :as => :profile
