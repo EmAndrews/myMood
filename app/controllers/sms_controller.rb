@@ -3,29 +3,32 @@ class SmsController < ApplicationController
 	def receive_sms
 		message = params[:Body]
 		from = params[:From]		#phone number of user
+		
+		#send_message(from, message)  #echo!
 
-		#look up user w/ from
+		#TODO: look up user w/ from
 
 		#parse message… from start of message, expect to get:
 		#optional space, a letter, optional space, number, optional space, optional text
 		regex = /^\s*(?<letter>[a-zA-Z])\s*(?<rating>\d+)\s*(?<message>.*)/
 
-		data = regex.match(message)  #this part untested
-
-		#send_message(from, message)  #echo!
+		data = regex.match(message)
 
 		unless data   #no match, can’t read it
-			send_message(from, "We couldn't read that.  Please try again in the form: m10")
+			send_message(from, "We couldn't read that.  Please try again in the form: m5")
 			return
 		end
 
+		#from the regex
 	  category = data[:letter]
 		mood = data[:rating]
 		extra = data[:message]
 		
+		#TODO: Validate category and mood
+		
 		send_message(from, "Your mood is " + mood)
 
-	  #store stuff in our database
+	  #TODO: store stuff in our database
 	end
 
 
