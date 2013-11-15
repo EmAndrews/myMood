@@ -12,7 +12,7 @@ class SmsController < ApplicationController
 
 		#data = regex.match(message)  #this part untested
 
-		send_message(from, "testing please ignore")
+		send_message(from, message)
 
 		#unless data   #no match, can’t read it
 		#	send_message(from, "Sorry, we couldn’t read that. Please check your formatting and try again.")
@@ -31,6 +31,6 @@ class SmsController < ApplicationController
 	  sid = 'ACb85e0121426b1e833e86822cc2800cb6'
 	  token =  'dc7e939dfe23d90dc37644173b7e7415'
 		client = Twilio::REST::Client.new sid, token
-		client.account.sms.messages.create(:from => '+15109964117', :to => '+14104023113', :body => message)
+		client.account.sms.messages.create(:from => '+15109964117', :to => to, :body => message)
 	end
 end
