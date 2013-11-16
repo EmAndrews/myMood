@@ -9,10 +9,6 @@ awful_moods.png: awful_moods-a2b6dc4bee11f4f4f930dc7aa38b6e3d.png
 awful_moods/index.png: awful_moods-a2b6dc4bee11f4f4f930dc7aa38b6e3d.png
 bad_moods.png: bad_moods-2d4ad61bee6f6c9a1d7999408eb64b6d.png
 bad_moods/index.png: bad_moods-2d4ad61bee6f6c9a1d7999408eb64b6d.png
-fake_user_big.png: fake_user_big-9043320324a24ea3324aa5fe9c226741.png
-fake_user_big/index.png: fake_user_big-9043320324a24ea3324aa5fe9c226741.png
-fake_user_small.png: fake_user_small-4861414d3168f1dea186f82ee39a68ba.png
-fake_user_small/index.png: fake_user_small-4861414d3168f1dea186f82ee39a68ba.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 glyphicons-halflings-white/index.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 glyphicons-halflings.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
@@ -26,9 +22,9 @@ perfect_moods/index.png: perfect_moods-84662b8cb1f9207ed92bd81a5559be12.png
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 LICENSE: LICENSE
-application.js: application-a239c209f1ffa5afb66af865538f60c1.js
-application/index.js: application-a239c209f1ffa5afb66af865538f60c1.js
-application.css: application-8bcbb286d4e88bc833907d7b30d8f30e.css
-application/index.css: application-8bcbb286d4e88bc833907d7b30d8f30e.css
+application.js: application-4abf9d901f2807a80caf3a5c7cbeb50b.js
+application/index.js: application-4abf9d901f2807a80caf3a5c7cbeb50b.js
+application.css: application-e6e78803eb8dac1fc131906148d4188f.css
+application/index.css: application-e6e78803eb8dac1fc131906148d4188f.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 jquery/index.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map

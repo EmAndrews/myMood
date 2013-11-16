@@ -82,10 +82,23 @@ html, body, .wrapper {
     /*background-color: red;*/
 }
 
-#myCarousel {
-    padding: 0 100px;
-}
+/*#myCarousel {*/
+    /*padding: 0 90px;*/
+/*}*/
 
 #widget {
     height: 30em;
+}
+
+#line-graph #pie-chart {
+    width: 100%;
+    height: 30em;
+}
+
+.settings {
+    height: 30em;
+}
+
+#settings-content {
+    display: none;
 }
