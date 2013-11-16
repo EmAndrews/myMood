@@ -57,14 +57,7 @@
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                 = devise_error_messages!
                 %div
-                  = f.label :phone_number
-                  %i format should be ###-###-####
-                  = f.text_field :phone_number, :autofocus => true
-                -#- if devise_mapping.confirmable? && resource.pending_reconfirmation?
-                -#  %div
-                -#    Currently waiting confirmation for: #{resource.unconfirmed_email}
-                %div
-                  = f.label :password
+                  = f.label 'New Password'
                   %i (leave blank if you don't want to change it)
                   %br
                   = f.password_field :password, :autocomplete => "off"
