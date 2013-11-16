@@ -5,6 +5,8 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'twilio-ruby'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'cucumber-rails', '1.0.6', :require => false
@@ -12,12 +14,12 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails', '~> 2.0'
   gem 'rspec-expectations'
+  gem 'sms-spec'
   gem 'capybara'
   gem 'factory_girl_rails'
 end
 gem 'pg'
 gem 'devise'
-gem 'twilio-ruby'
 gem 'clockwork'
 gem 'validates_phone_number'
 
