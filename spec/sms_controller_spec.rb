@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SmsController do
-  include SmsSpec::Helpers
+  #include SmsSpec::Helpers
   let(:twilio_phone_number) {"+15109964117"}
   # Kim's phone number
   let(:registered_phone_number) {"+14104023113"}
