@@ -1,23 +1,34 @@
 require 'spec_helper'
 
-describe SmsController do
-  #include SmsSpec::Helpers
+#http://www.mutuallyhuman.com/blog/2012/04/03/testing-sms-interactions-in-ruby-on-rails/
+
+# Twilio cheat sheet:
+#  open_last_text_message_for(phone_number)  <- we want to play with the last thing we sent TO phone_number
+#  current_text_message  <- the message we got from the command above
+#  current_text_message.should have_body "text we think we sent"  <- what did we try to send?
+
+
+describe SmsController, :type => :controller do
+  
+  #our twilio number
   let(:twilio_phone_number) {"+15109964117"}
   # Kim's phone number
+  let(:registered_phone_dashes) {"410-402-3113"}
   let(:registered_phone_number) {"+14104023113"}
   # Emily's phone number
-  let(:registered_phone_number2) {"+19724087780"}
+  #let(:registered_phone_number2) {"+19724087780"}
 
   before do
-    user = User.new(:name => "Kim", :phone_number => registered_phone_number, :password => "password123", :password_confirmation => "password123", :email => "email@email.com")
+    clear_messages  #no messages sent yet
+    user = User.new(:name => "Kim", :phone_number => registered_phone_dashes, :password => "password123", :password_confirmation => "password123", :email => "email@email.com")
     user.save!
   end
 
   describe 'mood message interactions' do
     before do
-      post :send_sms, {:To => registered_phone_number, :From => twilio_phone_number, :Body => 'Hello! How are you feeling today on a scale of 1-10?'}
+    	#send_message(:registered_phone_number, 'Hello! How are you feeling today on a scale of m1-10?')
     end
-    
+  
     describe 'recieve mood message from service' do
       it 'should be recorded in users conversation' do
         #user = Users.find_by_phone_number(registered_phone_number)
@@ -33,9 +44,11 @@ describe SmsController do
       end
 
       it 'should be added to the user conversation' do
+      	
       end
 
       it 'should be parsed and added to mood data' do
+      	
       end
     end
 
@@ -45,7 +58,8 @@ describe SmsController do
       end
 
       it 'should tell me if I texted in something wrong' do
-        #current_text_message.should have_body "Sorry, we can't read that message.   "
+        open_last_text_message_for(registered_phone_number)
+        current_text_message.should have_body "We couldn't read that.  Please try again in the form: m5"
         #TODO: match error messages
         # Check that its added to convo
       end
