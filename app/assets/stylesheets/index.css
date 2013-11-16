@@ -79,6 +79,7 @@ html, body, .wrapper {
 #avg-mood {
     font-size: 100px;
     text-align: center;
+    padding-top: 45px;
     /*background-color: red;*/
 }
 
@@ -101,4 +102,21 @@ html, body, .wrapper {
 
 #settings-content {
     display: none;
+}
+
+.carousel-control {
+    top: 100%;
+}
+
+.carousel-control .right {
+    right: 40%;
+}
+
+.carousel-control .left {
+    left: 40%;
+}
+
+#password-changed {
+    border-color: green;
+    background-color: #d2f9ac;
 }
