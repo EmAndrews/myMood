@@ -16,14 +16,14 @@
           %div.brand MyMood
           %ul.nav
             %li.divider-vertical
-            %li#home <a href="#">Home</a>
+            %li.home <a href="#">Home</a>
             %li.divider-vertical
             %li#settings <a href="#">Settings</a>
           %ul.nav.pull-right
-            %li#user_pic=image_tag 'fake_user_small.png'
-            %li <a href="#">User</a>
             %li.divider-vertical
-            %li <a href="#">Logout</a>
+            %li
+              = link_to('Logout', destroy_user_session_path, :method => :delete)
+              -#<a href=destroy_user_session_path>Logout</a>
 
     %div.container-fluid.content
       %div#homepage-content
@@ -52,19 +52,21 @@
       %div#settings-content
         %div.row-fluid
           %div.span5.offset1
-            %h4 User Settings
+            %h3 User Settings
             %div.well.settings
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                 = devise_error_messages!
                 %div
                   = f.label :phone_number
-                  = f.email_field :phone_number, :autofocus => true
+                  %i format should be ###-###-####
+                  = f.text_field :phone_number, :autofocus => true
                 -#- if devise_mapping.confirmable? && resource.pending_reconfirmation?
                 -#  %div
                 -#    Currently waiting confirmation for: #{resource.unconfirmed_email}
                 %div
                   = f.label :password
                   %i (leave blank if you don't want to change it)
+                  %br
                   = f.password_field :password, :autocomplete => "off"
                 %div
                   = f.label :password_confirmation
@@ -74,14 +76,13 @@
                   %i (we need your current password to confirm your changes)
                   = f.password_field :current_password
                 %div= f.submit "Update"
-              %h3 Cancel my account
               %p
-                Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
+                #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
               = link_to "Back", :back
-              |
-              = link_to "Change your password", edit_user_registration_path
+              -#|
+              -#= link_to "Change your password", edit_user_registration_path
           %div.span5
-            %h4 Message Settings
+            %h3 Message Settings
             %div.well.settings
 
 

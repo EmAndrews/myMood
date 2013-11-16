@@ -24,7 +24,8 @@
                   = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
                 %div
                   = f.label :phone_number
-                  -#%br/
+                  %i format should be ###-###-####
+                  %br/
                   = f.text_field :phone_number, :autofocus => true
                 %div
                   = f.label :password

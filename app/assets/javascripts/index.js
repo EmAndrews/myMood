@@ -105,7 +105,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#home').click( function() {
+    $('.home').click( function() {
         $('#settings-content').hide();
         $('#homepage-content').show();
         return false;

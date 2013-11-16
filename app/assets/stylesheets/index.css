@@ -98,3 +98,7 @@ html, body, .wrapper {
 .settings {
     height: 30em;
 }
+
+#settings-content {
+    display: none;
+}
