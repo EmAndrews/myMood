@@ -27,6 +27,15 @@
 
     %div.container-fluid.content
       %div#homepage-content
+        %div.row-fluid#confirmation-message
+          - flash.each do |name, msg|
+            - if msg.eql?('You are already signed in.')
+              %div.span10.offset1.well#password-changed
+                %h4 Your password has been successfully changed.
+            - else
+              = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+            %br
+            %br
         %div.row-fluid
           %div.span2.offset1
             %div#avg-mood 8.6
