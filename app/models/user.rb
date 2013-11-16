@@ -8,15 +8,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :phone_number, :name
   # attr_accessible :title, :body
 
-  before_validation(on: :create) do
-  	self.phone_number = "+1" + phone_number.gsub(/[^0-9]/, "") if attribute_present?("phone_number") 
-  end
-
   # Trying to mimic devise. 
   validates :phone_number,
   	:uniqueness => true,
   	:presence => true,
-		:phone_number => {:format => /^\+1\d{10}/}
+		:phone_number => {:format => /\d{3}-\d{3}-\d{4}/}
 
   validates_presence_of :name
 
