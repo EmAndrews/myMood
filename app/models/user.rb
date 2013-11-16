@@ -8,20 +8,16 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :phone_number, :name
   # attr_accessible :title, :body
 
+  before_save do
+  	phone_number = convert_phone (phone_number)
+  end
 
   # Trying to mimic devise. 
   validates :phone_number,
   	:uniqueness => true,
   	:presence => true,
-  	:phone_number => {:format => /\d{3}-\d{3}-\d{4}/}
+		:phone_number => {:format => /^\(*\d{3}\)*-*\s*\d{3}-*\s*\d{4}/}
 
   validates_presence_of :name
-
-  has_one :conversation
-  has_one :schedule_preference
-  
-  attr_accessor :message_queue
-
-
 
 end

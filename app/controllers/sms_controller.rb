@@ -4,9 +4,16 @@ class SmsController < ApplicationController
 		message = params[:Body]
 		from = params[:From]		#phone number of user
 		
-		#send_message(from, message)  #echo!
+		# Parameters:
+		#{"AccountSid"=>"ACb85e0121426b1e833e86822cc2800cb6", "MessageSid"=>"SMa5c0ef07038d1f2ce2fcf2c97f2d5227", 
+		#"Body"=>"M7", "ToZip"=>"94555", "ToCity"=>"FREMONT", "FromState"=>"MD", "ToState"=>"CA", 
+		#"SmsSid"=>"SMa5c0ef07038d1f2ce2fcf2c97f2d5227", "To"=>"+15109964117", "ToCountry"=>"US", "FromCountry"=>"US",
+		#"SmsMessageSid"=>"SMa5c0ef07038d1f2ce2fcf2c97f2d5227", "ApiVersion"=>"2010-04-01", "FromCity"=>"BALTIMORE", 
+		#"SmsStatus"=>"received", "NumMedia"=>"0", "From"=>"+14104023113", "FromZip"=>"21228"}
+		
+		#send_message(from, message)  #echo
 
-		#TODO: look up user w/ from
+		#TODO: look up user w/ from, make sure actually in db
 
 		#parse message… from start of message, expect to get:
 		#optional space, a letter, optional space, number, optional space, optional text

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131115205252) do
+ActiveRecord::Schema.define(:version => 20131116211731) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -19,15 +19,48 @@ ActiveRecord::Schema.define(:version => 20131115205252) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "conversations", :force => true do |t|
+  create_table "messages", :force => true do |t|
+    t.integer  "conversation_id"
+    t.integer  "sequence_id"
+    t.text     "text"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "schedule_preferences", :force => true do |t|
+    t.integer "user_id"
+    t.boolean "sunday"
+    t.boolean "monday"
+    t.boolean "tuesday"
+    t.boolean "wednesday"
+    t.boolean "thursday"
+    t.boolean "friday"
+    t.boolean "saturday"
+  end
+
+  create_table "schedules", :force => true do |t|
+    t.integer "category_id"
+    t.string  "unit"
+    t.integer "number_of"
+  end
+
+  create_table "sequences", :force => true do |t|
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "user_messages", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "messages", :force => true do |t|
-    t.text     "text"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "user_states", :force => true do |t|
+    t.integer "user_id"
+    t.integer "category_id"
+    t.integer "seq_num"
   end
 
   create_table "users", :force => true do |t|
