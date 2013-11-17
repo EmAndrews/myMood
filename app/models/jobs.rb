@@ -1,11 +1,11 @@
 # Takes in Time.now and returns a weekday
-def nowToDay now
+def now_to_day now
   return 1 << now.wday
 end
 
 # Daily job to queue messages for users
 def daily_cron
-  today = nowToDay(Time.now)
+  today = now_to_day(Time.now)
   today_users = User.where("schedule_preference.week & :today == 1", today: today)
   today_users.find_each do |user|
     begin
