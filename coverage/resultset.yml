@@ -1,4 +1,343 @@
 ---
 Cucumber Features:
   :original_result: {}
-  :created_at: 2013-11-16 14:07:14.989888165 -08:00
+  :created_at: 2013-11-17 12:39:57.520245168 -08:00
+! '/home/saasbook/.rvm/gems/ruby-1.9.3-p448/bin/rspec ':
+  :original_result:
+    /home/saasbook/newMyMood/myMood/app/models/user.rb:
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/model.rb:
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/controllers/application_controller.rb:
+    - 1
+    - 1
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 0
+    - 
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/lib/custom_failure.rb:
+    - 1
+    - 1
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/helpers/application_helper.rb:
+    - 1
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/controllers/andre_controller.rb:
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/lib/util.rb:
+    - 1
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/controllers/sms_controller.rb:
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/controllers/user_controller.rb:
+    - 1
+    - 1
+    - 
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/category.rb:
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/conversation.rb:
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/inbound_message.rb:
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/jobs.rb:
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/message.rb:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/message_queue.rb:
+    - 1
+    - 
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/outbound_message.rb:
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/response_type.rb:
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/schedule.rb:
+    - 1
+    - 1
+    - 
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/schedule_preference.rb:
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/sequence.rb:
+    - 1
+    - 
+    - 1
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/models/user_state.rb:
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 
+  :created_at: 2013-11-17 12:40:26.370246518 -08:00
