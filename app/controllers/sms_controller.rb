@@ -1,3 +1,5 @@
+include Util
+
 class SmsController < ApplicationController
 
 	def receive_sms
@@ -22,7 +24,8 @@ class SmsController < ApplicationController
 		data = regex.match(message)
 
 		unless data   #no match, can’t read it
-			send_message(from, "We couldn't read that.  Please try again in the form: m5")
+			Util.send_message(from, "We couldn't read that.  Please try again in the form: m5")
+			render nothing: true
 			return
 		end
 
@@ -33,17 +36,10 @@ class SmsController < ApplicationController
 		
 		#TODO: Validate category and mood
 		
-		send_message(from, "Your mood is " + mood)
+		Util.send_message(from, "Your mood is " + mood)
 
 	  #TODO: store stuff in our database
-	end
-
-
-
-	def send_message(to, message)
-	  sid = 'ACb85e0121426b1e833e86822cc2800cb6'
-	  token =  'dc7e939dfe23d90dc37644173b7e7415'
-		client = Twilio::REST::Client.new sid, token
-		client.account.sms.messages.create(:from => '+15109964117', :to => to, :body => message)
+	  
+	  render nothing: true
 	end
 end
