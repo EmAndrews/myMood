@@ -2,8 +2,13 @@ require 'spec_helper'
 
 describe Mailer do 
   
-  before do
+  before(:each) do
     @fake = double("Mailer")
+    @fake_user1 = User.new
+    @fake_user2 = User.new
+    @message1 = Message.new
+    @message2 = Message.new
+    @mailer = Mailer.new
     @nil_user = nil
   end
   it 'should start the mailer job' do
@@ -24,25 +29,26 @@ describe Mailer do
       User.should_receive(:where).and_return([@fake_user1, @fake_user2])
       @fake.should_receive(:prep_messages).with(@fake_user1)
       @fake.should_receive(:prep_messages).with(@fake_user2)
-      
+      @mailer.daily_cron
     end
     it 'should error on nil user' do
       User.should_receive(:where).and_return([@nil_user])
       @fake.should_receive(:prep_messages).with(@nil_user)
       logger.should_receive(:debug)
-      prep_messages(@nil_user)
+      @mailer.prep_messages(@nil_user)
     end
   end
 
   describe 'prep_messages' do
     it 'should process the messages queue' do
       @fake_user1.should_receive(:message_queue).and_return([@message1, @message2])
-      @fake_user1.message_queue.should_receive(:each)
+      @message1.should_receive(:date_to_send).and_return(0)
+      @message2.should_receive(:date_to_send).and_return(0)
       @fake.should_receive(:enqueue_next_message).with(@message1, @fake_user1)
       @fake.should_receive(:enqueue_next_message).with(@message2, @fake_user1)
       @fake.should_receive(:send_message_to_user).with(@message1, @fake_user1)
       @fake_user1.message_queue.should_receive(:delete).with(@message1)
-      prep_messages(@fake_user1)
+      @mailer.prep_messages(@fake_user1)
     end
   end
 
@@ -53,7 +59,7 @@ describe Mailer do
       @category1.should_receive(:get_next_message_and_num).with(3).and_return(@next_message, 4)
       @fake_user1.message_queue.should_receive(:add)
 
-      @fake.enqueue_next_message(@message1, @fake_user1)
+      @mailer.enqueue_next_message(@message1, @fake_user1)
     end
   end
 
