@@ -59,16 +59,49 @@ describe SmsController do
 		end
 		
 		it 'should not panic for unknown numbers' do
-			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 'cookies!'}
+			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 'm7'}
 			
 			open_last_text_message_for kim_phone
-			current_text_message.should have_body "We couldn't read that.  Please try again in the form: m5"
+			current_text_message.should have_body "We don't recognize your number. Please sign up at myMood to start tracking!"
+		end
+		
+		it "should tell the user if it can't find the category" do
+			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 'f7'}
 			
-			#TODO: find "We couldn't read that.  Please try again in the form: m5" from kim_phone in conversation
+			open_last_text_message_for kim_phone
+			current_text_message.should have_body "Prefix 'f' not recognized, please check your response and try again."
+			
+			#TODO: find in conversation
+		end
+		
+		it "should tell the user if they're not signed up for a category" do
+			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 's7'}
+			
+			open_last_text_message_for kim_phone
+			current_text_message.should have_body "You are not signed up for 'sleep' tracking, please sign up online if you would like to track your sleep."
+			
+			#TODO: find in conversation
+		end
+		
+		#tell user, or auto-adjust to be inbounds?
+		it "should tell the user if their mood is out of range (high)" do
+			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 'm77'}
+			
+			open_last_text_message_for kim_phone
+			current_text_message.should have_body "We can only accept ratings from 1-10.  Please try again."
+			
+			#TODO: find in conversation
+		end
+		
+		it "should tell the user if their mood is out of range (zero)" do
+			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 'm0'}
+			
+			open_last_text_message_for kim_phone
+			current_text_message.should have_body "We can only accept ratings from 1-10.  Please try again."
+			
+			#TODO: find in conversation
 		end
 	end
-	
-	
 end
 
 
