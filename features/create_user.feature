@@ -24,6 +24,7 @@ Scenario: Correct Information with an email
 
 	Then "Carol" should be created with "222-222-2222", "password123", "carol@foo.com"
 	And I should be on the user index
+  And I should see "Welcome! You have signed up successfully"
 
 
 Scenario: Missing Email
