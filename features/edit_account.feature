@@ -23,5 +23,5 @@ Scenario: User changes account password
   And I fill in "user_password_confirmation" with "newpass123"
   And I fill in "user_current_password" with "pass12345"
   And I press "Save"
-  Then I should see "You have successfully changed your password"
+  Then I should see "Your password has been successfully changed."
   And I should be on the user index

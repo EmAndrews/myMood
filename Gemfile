@@ -21,6 +21,7 @@ end
 gem 'pg'
 gem 'devise'
 gem 'clockwork'
+gem 'delayed_job'
 gem 'validates_phone_number'
 
 # Gems used only for assets and not required
