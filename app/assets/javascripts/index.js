@@ -83,7 +83,6 @@ $(function () {
 });
 
 $(document).ready(function () {
-    $('#settings-content').hide();
 //    $.fn.carousel.defaults = {
 //        interval: false, pause: 'hover'
 //    };
@@ -92,6 +91,18 @@ $(document).ready(function () {
 //    $(document).on('mouseleave', '.carousel', function() {
 //        $(this).carousel('pause');
 //    });
+
+    $('.status-button').click( function() {
+        $('#notice').remove();
+        $('#alert').remove();
+    });
+
+    $('#failed-change').click( function() {
+        $('#alert').remove();
+        $('#homepage-content').hide();
+        $('#settings-content').show();
+        return false;
+    });
 
     $('#settings').click( function() {
         $('#homepage-content').hide();

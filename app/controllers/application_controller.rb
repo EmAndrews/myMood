@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     profile_url(:phone_number => resource.phone_number)
   end
 
+  def after_update_path_for(resource)
+    profile_url(:phone_number => resource.phone_number)
+  end
+
 end

@@ -116,7 +116,21 @@ html, body, .wrapper {
     left: 40%;
 }
 
-#password-changed {
+#notice {
     border-color: green;
     background-color: #d2f9ac;
+}
+
+#alert {
+    border-color: red;
+    background-color: lightpink;
+}
+
+#failed-change #status-button {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.message {
+    float: left;
 }

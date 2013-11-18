@@ -5,8 +5,8 @@
     %title My Mood
 
     = stylesheet_link_tag 'bootstrap.min'
-    = stylesheet_link_tag 'index'
     = stylesheet_link_tag 'bootstrap-responsive.min'
+    = stylesheet_link_tag 'index'
     = stylesheet_link_tag 'jquery-ui'
 
   %body
@@ -27,15 +27,17 @@
 
     %div.container-fluid.content
       %div#homepage-content
-        %div.row-fluid#confirmation-message
+        %div.row-fluid
           - flash.each do |name, msg|
-            - if msg.eql?('You are already signed in.')
-              %div.span10.offset1.well#password-changed
-                %h4 Your password has been successfully changed.
-            - else
-              = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
-            %br
-            %br
+            - if name.eql?(:notice)
+              %div.span10.offset1.well#notice{:style => 'padding-top: 13px; padding-bottom: 13px'}
+                %h4.message= msg
+                %button.btn.status-button{:style => 'margin-top: 5px; margin-left: 10px'} Ok
+            - elsif !msg.eql?('You are already signed in.') && name.eql?(:alert)
+              %div.span10.offset1.well#alert{:style => 'padding-top: 13px; padding-bottom: 13px'}
+                %h4.message= msg
+                %button.btn.status-button{:style => 'margin-top: 5px; margin-left: 10px; float: left'} Ok
+                %button.btn#failed-change{:style => 'margin-top: 5px; margin-left: 10px'} Go Back to settings
         %div.row-fluid
           %div.span2.offset1
             %div#avg-mood 8.6
@@ -63,6 +65,7 @@
           %div.span5.offset1
             %h3 User Settings
             %div.well.settings
+              -#= form_for(resource, :as => resource_name, :url => edit_user_registration_path, :html => { :method => :put }) do |f|
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                 = devise_error_messages!
                 %div

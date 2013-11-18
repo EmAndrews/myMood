@@ -1,5 +1,5 @@
 Mm::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => :registrations }
 
   devise_for :models
 
@@ -9,7 +9,7 @@ Mm::Application.routes.draw do
     match 'sms/receive_sms' => 'sms#receive_sms'  #kim's messing with stuff
   end
 
-  match 'andre' => 'andre#index' 
+  match 'andre' => 'andre#index'
 
   #match 'profile/:phone_number' => 'user#index', :as => :profile
   #get '/profile/:phone_number', to: 'user#index', as: 'profile'
