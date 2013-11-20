@@ -1,0 +1,41 @@
+
+This file is a mock up of what our new database design should be.
+------------------------------------------------------------------
+
+Mock User Subscriptions:
+  "{{"category" => "mood", "next_message" => 1, "send_at" => "20131127 18:23:00"}, {"category" => "thoughts", "next_message" => 5, "send_at" => "20131129 08:41:00"}}"
+Mock User Schedules
+  '{'m' => 'true', 't' => 'false', 'w' => 'true', 'th' => 'true', 'f' => 'false', ...}'
+
+def up
+
+#add_column :users, :json, :string
+
+  create_table :categories do
+    t.string name
+    t.integer schedule_id
+  end
+
+  create_table :schedules do
+    t.integer num
+    t.string unit
+  end
+
+  create_table :messages do
+    t.integer category_id
+    t.string message
+  end
+
+  create_table :out_messages do
+    t.integer message_id
+    t.integer user_id
+  end
+
+  create_table :in_messages do
+    t.integer user_id
+    t.string text
+  end
+
+
+
+end
