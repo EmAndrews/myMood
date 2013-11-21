@@ -14,8 +14,8 @@ class AndreController < ApplicationController
     @messages = MessageTemplate.all
   end
 
-  def add_message
-    message_text = params[:message_text]
+  def new_message
+    message_text = params[:message][:text]
     MessageTemplate.create!(:text => message_text)
     flash[:notice] = 'Message added!'
     redirect_to andre_path
