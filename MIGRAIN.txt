@@ -7,35 +7,41 @@ Mock User Subscriptions:
 Mock User Schedules
   '{'m' => 'true', 't' => 'false', 'w' => 'true', 'th' => 'true', 'f' => 'false', ...}'
 
-def up
+def change
 
-#add_column :users, :json, :string
+  add_column :users, :subscription, :string
+  add_colemn :users, :availability, :string
 
   create_table :categories do
     t.string name
-    t.integer schedule_id
+    t.string prefix
+    t.belongs_to :processed_message
+    t.timestamps
+    # has_many message_templates
+    # has_one :message_sequence
   end
 
-  create_table :schedules do
-    t.integer num
-    t.string unit
+  create_table :message_templates do
+    t.belongs_to :category
+    t.string :text
+    t.timestamps
   end
 
-  create_table :messages do
-    t.integer category_id
-    t.string message
+  create_table :message_sequences do
+    t.belongs_to :category
+    t.string :sequence #serialized hash
+    t.timestamps
   end
 
-  create_table :out_messages do
-    t.integer message_id
-    t.integer user_id
-  end
-
-  create_table :in_messages do
-    t.integer user_id
+  create_table :processed_messages do
+    # has_one :category
+    t.belongs_to :user
     t.string text
+    t.string data
+    t.integer :from_my_mood
+    t.datetime :date_processed
+    t.timestamps
   end
-
 
 
 end
