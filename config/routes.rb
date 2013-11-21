@@ -12,6 +12,9 @@ Mm::Application.routes.draw do
   get 'andre' => 'andre#index'
   post 'andre' => 'andre#new_message'
 
+  get 'admin' => 'admin#index'
+  post 'admin' => 'admin#new_message'
+
   #match 'profile/:phone_number' => 'user#index', :as => :profile
   #get '/profile/:phone_number', to: 'user#index', as: 'profile'
 

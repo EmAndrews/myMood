@@ -1,0 +1,48 @@
+%html
+
+  %head
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title My Mood
+
+    = stylesheet_link_tag 'bootstrap.min'
+    = stylesheet_link_tag 'index'
+    = stylesheet_link_tag 'bootstrap-responsive.min'
+    = stylesheet_link_tag 'jquery-ui'
+
+  %body
+    %div.navbar.navbar-inverse.navbar-fixed-top
+      %div.navbar-inner
+        %div.container-fluid
+          %div.brand MyMood
+          %ul.nav
+            %li.divider-vertical
+            %li <a href="#">Home</a>
+            %li.divider-vertical
+            %li <a href="#">Settings</a>
+          %ul.nav.pull-right
+            %li <a href="#">User</a>
+            %li.divider-vertical
+            %li <a href="#">Logout</a>
+
+    %div.content
+      %h1 OMG HI ADMIN
+      - flash[:notice]
+      %h2 Current Messages
+      %table
+        %tbody
+          - @messages.each do |message|
+            %tr
+              %td= 'Message:'
+              %td= message.text
+        
+      %h3 Add New Message
+      = form_tag andre_path do
+        = label :message, :text, "Message Text"
+        = text_field :message, 'text'
+
+        = submit_tag 'Add Message'
+
+    = javascript_include_tag 'bootstrap.min.js'
+    = javascript_include_tag 'jquery-1.10.2.min.js'
+    = javascript_include_tag 'index.js'
+    = javascript_include_tag 'jquery-ui'
