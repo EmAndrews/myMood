@@ -26,10 +26,26 @@ Scenario: User changes account password
   Then I should see "You updated your account successfully"
   And I should be on the user index
 
-Scenario: User unsuccessfully tries to change password
+Scenario: User unsuccessfully tries to change password (new doesn't match)
   When I follow "Settings"
   And I fill in "user_password" with "newpass123"
   And I fill in "user_password_confirmation" with "newpass12"
+  And I fill in "user_current_password" with "pass12345"
+  And I press "Save"
+  Then I should see "Failed to update settings"
+  
+Scenario: User unsuccessfully tries to change password (bad current pass)
+  When I follow "Settings"
+  And I fill in "user_password" with "newpass123"
+  And I fill in "user_password_confirmation" with "newpass123"
+  And I fill in "user_current_password" with "pass1234"
+  And I press "Save"
+  Then I should see "Failed to update settings"
+  
+Scenario: User unsuccessfully tries to change password (too short)
+  When I follow "Settings"
+  And I fill in "user_password" with "newpass"
+  And I fill in "user_password_confirmation" with "newpass"
   And I fill in "user_current_password" with "pass12345"
   And I press "Save"
   Then I should see "Failed to update settings"

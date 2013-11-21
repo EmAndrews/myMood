@@ -60,9 +60,9 @@ describe SmsController do
 		end
 		
 		it 'should not panic for unknown numbers' do
-			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 'm7'}
+			post :receive_sms, {:From => unknown_phone, :To => twilio_number, :Body => 'm7'}
 			
-			open_last_text_message_for kim_phone
+			open_last_text_message_for unknown_phone
 			current_text_message.should have_body "We don't recognize your number. Please sign up at myMood to start tracking!"
 		end
 		
@@ -76,7 +76,7 @@ describe SmsController do
 		end
 		
 		it "should tell the user if they're not signed up for a category" do
-			post :receive_sms, {:From => unknown_phone, :To => twilio_number, :Body => 's7'}
+			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 's7'}
 			
 			open_last_text_message_for kim_phone
 			current_text_message.should have_body "You are not signed up for 'sleep' tracking, please sign up online if you would like to track your sleep."
