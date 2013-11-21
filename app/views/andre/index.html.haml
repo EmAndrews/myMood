@@ -27,6 +27,21 @@
 
     %div.content
       %h1 OMG HI ANDRE
+      - flash[:notice]
+      %h2 Current Messages
+      %table
+        %tbody
+          - @messages.each do |message|
+            %tr
+              %td= 'Hello'
+              %td= message.text
+        
+      %h3 Add New Message
+      = form_tag andre_path do
+        = label :message, :text, "Message Text"
+        = text_field :message, 'text'
+
+        = submit_tag 'Add Message'
 
     = javascript_include_tag 'bootstrap.min.js'
     = javascript_include_tag 'jquery-1.10.2.min.js'

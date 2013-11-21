@@ -9,8 +9,16 @@ class AndreController < ApplicationController
   def index
     Rails.logger.debug('Hi Andre')
     puts "Sending Message"
-    Util.send_message("+18586833304", "Hi Andre")
+#MessageTemplate.create!(:text => 'This is a message.')
+#Util.send_message("+18586833304", "Hi Andre")
+    @messages = MessageTemplate.all
+  end
 
+  def add_message
+    message_text = params[:message_text]
+    MessageTemplate.create!(:text => message_text)
+    flash[:notice] = 'Message added!'
+    redirect_to andre_path
   end
 
 end
