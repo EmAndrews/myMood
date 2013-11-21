@@ -10,6 +10,9 @@ describe SmsController do
 
 	before do
     clear_messages  #no messages sent yet
+    mood_cat = Category.new(:name => "mood", :prefix => 'm')
+    mood_cat.save!
+    
     user = User.new(:name => "Kim", :phone_number => kim_phone_dashes, :password => "password123", :password_confirmation => "password123", :email => "email@email.com")
     user.save!
   end
