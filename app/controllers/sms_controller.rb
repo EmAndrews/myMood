@@ -36,7 +36,7 @@ class SmsController < ApplicationController
 
 		#from the regex
 	  category = data[:letter]
-		mood = (data[:rating]).to_i  #store as int
+		mood = (data[:rating])
 		extra = data[:message]
 		
 		#TODO: Validate category and mood
@@ -52,7 +52,7 @@ class SmsController < ApplicationController
 		#"You are not signed up for '"+ category + "' tracking, please sign up online if you would like to subscribe."
 		
 		#make sure mood is in range
-		if ((mood > 10) or (mood < 1))
+		if ((mood.to_i() > 10) or (mood.to_i() < 1))
 			Util.send_message(from, "We can only accept ratings from 1-10.  Please try again.")
 			render nothing: true
 			return
@@ -66,7 +66,7 @@ class SmsController < ApplicationController
 	  	#mood
 	  	#user phone number
 	  	#full message, extra notes from message
-	  	#time = time.now()
+	  	#time = Time.now()
 	  
 	  render nothing: true
 	end
