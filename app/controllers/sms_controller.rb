@@ -15,7 +15,12 @@ class SmsController < ApplicationController
 		
 		#send_message(from, message)  #echo
 
-		#TODO: look up user w/ from, make sure actually in db
+		#Look up user w/ phone number, make sure actually in db
+		if User.where(:phone_number => Util.convert_to_database_phone(from)).blank?
+			Util.send_message(from, "We don't recognize your number. Please sign up at myMood to start tracking!")
+			render nothing: true
+			return
+		end
 
 		#parse message… from start of message, expect to get:
 		#optional space, a letter, optional space, number, optional space, optional text
@@ -31,14 +36,37 @@ class SmsController < ApplicationController
 
 		#from the regex
 	  category = data[:letter]
-		mood = data[:rating]
+		mood = (data[:rating]).to_i  #store as int
 		extra = data[:message]
 		
 		#TODO: Validate category and mood
+		#Make sure the category exists
+		cat_id = Category.where(:prefix => category)
+		if cat_id.blank?
+			Util.send_message(from, "Prefix '"+ category +"' not recognized, please check your response and try again.")
+			render nothing: true
+			return
+		end
 		
-		Util.send_message(from, "Your mood is " + mood)
+		#make sure user is subscribed to this category
+		#"You are not signed up for '"+ category + "' tracking, please sign up online if you would like to subscribe."
+		
+		#make sure mood is in range
+		if ((mood > 10) or (mood < 1))
+			Util.send_message(from, "We can only accept ratings from 1-10.  Please try again.")
+			render nothing: true
+			return
+		end
+		
+		Util.send_message(from, "Your mood is " + mood + ". Thank you!")
 
 	  #TODO: store stuff in our database
+	  #stuff we have:
+	  	#category prefix/id
+	  	#mood
+	  	#user phone number
+	  	#full message, extra notes from message
+	  
 	  
 	  render nothing: true
 	end
