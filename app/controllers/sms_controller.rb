@@ -66,7 +66,7 @@ class SmsController < ApplicationController
 	  	#mood
 	  	#user phone number
 	  	#full message, extra notes from message
-	  
+	  	#time = time.now()
 	  
 	  render nothing: true
 	end
