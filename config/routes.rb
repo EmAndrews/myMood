@@ -9,7 +9,12 @@ Mm::Application.routes.draw do
     match 'sms/receive_sms' => 'sms#receive_sms'  #kim's messing with stuff
   end
 
-  match 'andre' => 'andre#index'
+  get 'andre' => 'andre#index'
+  post 'andre' => 'andre#new_something'
+#post 'andre' => 'andre#new_category', as: :new_category
+
+  get 'admin' => 'admin#index'
+  post 'admin' => 'admin#new_message'
 
   #match 'profile/:phone_number' => 'user#index', :as => :profile
   #get '/profile/:phone_number', to: 'user#index', as: 'profile'

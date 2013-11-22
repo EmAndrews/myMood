@@ -23,6 +23,7 @@ Scenario: User changes account password
   # Cancel
   And I press "Cancel my account"
   Then I should be on the myMood home page
+  And I should see "Bye! Your account was successfully cancelled. We hope to see you again soon."
   # Try to log in again
   When I fill in "user_phone_number" with "222-222-2222"
   When I fill in "user_password" with "pass12345"

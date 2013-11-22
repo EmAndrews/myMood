@@ -1,0 +1,47 @@
+
+This file is a mock up of what our new database design should be.
+------------------------------------------------------------------
+
+Mock User Subscriptions:
+  "{1 => {"next_message" => 1, "send_at" => "20131127 18:23:00"}, 4 => {"next_message" => 5, "send_at" => "20131129 08:41:00"}}"
+Mock User Schedules
+  '{'m' => 'true', 't' => 'false', 'w' => 'true', 'th' => 'true', 'f' => 'false', ...}'
+
+def change
+
+  add_column :users, :subscription, :string
+  add_colemn :users, :availability, :string
+
+  create_table :categories do
+    t.string name
+    t.string prefix
+    t.belongs_to :processed_message
+    t.timestamps
+    # has_many message_templates
+    # has_one :message_sequence
+  end
+
+  create_table :message_templates do
+    t.belongs_to :category
+    t.string :text
+    t.timestamps
+  end
+
+  create_table :message_sequences do
+    t.belongs_to :category
+    t.string :sequence #serialized hash
+    t.timestamps
+  end
+
+  create_table :processed_messages do
+    # has_one :category
+    t.belongs_to :user
+    t.string text
+    t.string data
+    t.integer :from_my_mood
+    t.datetime :date_processed
+    t.timestamps
+  end
+
+
+end
