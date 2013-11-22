@@ -12,9 +12,9 @@ describe SmsController do
     clear_messages  #no messages sent yet
     mood_cat = Category.new(:name => "mood", :prefix => 'm')
     mood_cat.save!
-    mood_cat = Category.new(:name => "sleep", :prefix => 's')
-    mood_cat.save!
-    user = User.new(:name => "Kim", :subscription => {'a' => 1}, :phone_number => kim_phone_dashes, :password => "password123", :password_confirmation => "password123", :email => "email@email.com")
+    sleep_cat = Category.new(:name => "sleep", :prefix => 's')
+    sleep_cat.save!
+    user = User.new(:name => "Kim", :subscription => {mood_cat => {}}, :phone_number => kim_phone_dashes, :password => "password123", :password_confirmation => "password123", :email => "email@email.com")
     user.save!
   end
 	
@@ -40,18 +40,30 @@ describe SmsController do
 			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 'm7'}
 			
 		  open_last_text_message_for kim_phone
-			current_text_message.should have_body "Hello!  How are you feeling today, on a scale of m1-m10?" #don't send anything!
+			current_text_message.should have_body "You entered 7 for mood. Thank you!"
 			
-			#TODO: find "m7" from kim_phone in conversation
+			#check if messages are in db
+			query = ProcessedMessages.where(:from_my_mood => false, :text => 'm7')
+			query = query.where(:user_id => User.where(:phone_number => kim_phone_dashes)[0].id)
+			query = query.where(:data => "7")
+			query.blank?.should be false
+			query = ProcessedMessages.where(:from_my_mood => true, :text => "You entered 7 for mood. Thank you!")
+			query.blank?.should be false
 		end
 		
 		it 'should handle correct replies (flexible)' do
 			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 'M   7 happy'}
 			
 		  open_last_text_message_for kim_phone
-			current_text_message.should have_body "Hello!  How are you feeling today, on a scale of m1-m10?" #don't send anything!
+			current_text_message.should have_body "You entered 7 for mood. Thank you!"
 			
-			#TODO: find "M   7 happy" from kim_phone in conversation
+			#check if messages are in db
+			query = ProcessedMessages.where(:from_my_mood => false, :text => 'M   7 happy')
+			query = query.where(:user_id => User.where(:phone_number => kim_phone_dashes)[0].id)
+			query = query.where(:data => '7')
+			query.blank?.should be false
+			query = ProcessedMessages.where(:from_my_mood => true, :text => "You entered 7 for mood. Thank you!")
+			query.blank?.should be false
 		end
 		
 		it 'should handle incorrect replies' do
@@ -60,7 +72,11 @@ describe SmsController do
 			open_last_text_message_for kim_phone
 			current_text_message.should have_body "We couldn't read that.  Please try again in the form: m5"
 			
-			#TODO: find "We couldn't read that.  Please try again in the form: m5" from kim_phone in conversation
+			query = ProcessedMessages.where(:from_my_mood => false, :text => "cookies!")
+			query = query.where(:user_id => User.where(:phone_number => kim_phone_dashes)[0].id)
+			query.blank?.should be false
+			query = ProcessedMessages.where(:from_my_mood => true, :text => "We couldn't read that.  Please try again in the form: m5")
+			query.blank?.should be false
 		end
 		
 		it 'should not panic for unknown numbers' do
@@ -76,26 +92,38 @@ describe SmsController do
 			open_last_text_message_for kim_phone
 			current_text_message.should have_body "Prefix 'f' not recognized, please check your response and try again."
 			
-			#TODO: find in conversation
+			query = ProcessedMessages.where(:from_my_mood => false, :text => "f7")
+			query = query.where(:user_id => User.where(:phone_number => kim_phone_dashes)[0].id)
+			query.blank?.should be false
+			query = ProcessedMessages.where(:from_my_mood => true, :text => "Prefix 'f' not recognized, please check your response and try again.")
+			query.blank?.should be false
 		end
 		
 		it "should tell the user if they're not signed up for a category" do
 			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 's7'}
 			
 			open_last_text_message_for kim_phone
-			current_text_message.should have_body "You are not signed up for 'sleep' tracking, please sign up online if you would like to track your sleep."
+			current_text_message.should have_body "You are not signed up for category 's', please sign up online if you would like to subscribe."
 			
-			#TODO: find in conversation
+			query = ProcessedMessages.where(:from_my_mood => false, :text => "s7")
+			query = query.where(:user_id => User.where(:phone_number => kim_phone_dashes)[0].id)
+			query.blank?.should be false
+			query = ProcessedMessages.where(:from_my_mood => true, :text => "You are not signed up for category 's', please sign up online if you would like to subscribe.")
+			query.blank?.should be false
 		end
 		
-		#tell user, or auto-adjust to be inbounds?
+		#tell user, don't record mood
 		it "should tell the user if their mood is out of range (high)" do
 			post :receive_sms, {:From => kim_phone, :To => twilio_number, :Body => 'm77'}
 			
 			open_last_text_message_for kim_phone
 			current_text_message.should have_body "We can only accept ratings from 1-10.  Please try again."
 			
-			#TODO: find in conversation
+			query = ProcessedMessages.where(:from_my_mood => false, :text => "m77")
+			query = query.where(:user_id => User.where(:phone_number => kim_phone_dashes)[0].id)
+			query.blank?.should be false
+			query = ProcessedMessages.where(:from_my_mood => true, :text => "We can only accept ratings from 1-10.  Please try again.")
+			query.blank?.should be false
 		end
 		
 		it "should tell the user if their mood is out of range (zero)" do
@@ -104,7 +132,11 @@ describe SmsController do
 			open_last_text_message_for kim_phone
 			current_text_message.should have_body "We can only accept ratings from 1-10.  Please try again."
 			
-			#TODO: find in conversation
+			query = ProcessedMessages.where(:from_my_mood => false, :text => "m0")
+			query = query.where(:user_id => User.where(:phone_number => kim_phone_dashes)[0].id)
+			query.blank?.should be false
+			query = ProcessedMessages.where(:from_my_mood => true, :text => "We can only accept ratings from 1-10.  Please try again.")
+			query.blank?.should be false
 		end
 	end
 end

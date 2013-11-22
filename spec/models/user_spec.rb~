@@ -22,12 +22,12 @@ describe User do
  	
 	it { should validate_presence_of :name }
 
-	#it {should serialize(:subscription).as(Hash)}
-	#it {should serialize(:availability).as(Hash)}
+	it {should serialize(:subscription).as(Hash)}
+	it {should serialize(:availability).as(Hash)}
 
-	#it "deserializes the hash" do 
-		#User.reload.availability.should eq({'m' => 'true', 't' => 'false', 'w' => 'true', 'th' => 'true', 'f' => 'false', 's' => 'false', 'su' => 'true'})
-	#end
+	it "deserializes the hash" do 
+		User.reload.availability.should eq({'m' => 'true', 't' => 'false', 'w' => 'true', 'th' => 'true', 'f' => 'false', 's' => 'false', 'su' => 'true'})
+	end
 	
 	
 	it "should show the user's availability"
