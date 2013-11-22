@@ -10,7 +10,7 @@ class AndreController < ApplicationController
     Rails.logger.debug('Hi Andre')
     puts "Sending Message"
 #MessageTemplate.create!(:text => 'This is a message.')
-#Util.send_message("+18586833304", "Hi Andre")
+    Util.send_message("+18586921233", "Hi Andre")
     @messages = MessageTemplate.all
     @categories = Category.all
   end
@@ -24,15 +24,11 @@ class AndreController < ApplicationController
       new_category params[:category]
     else
       redirect_to andre_path
-      return
     end
-#render :nothing => true
   end
 
   def new_category category
     cat_name = category[:name]
-    cat_unit = category[:unit]
-    cat_numb = category[:number]
     Category.create!(:name => cat_name)
     flash[:notice] = "Category '#{cat_name}' created!"
     redirect_to andre_path
@@ -40,8 +36,8 @@ class AndreController < ApplicationController
 
   def new_message message
     message_text = message[:text]
-    MessageTemplate.create!(message)
-    flash[:notice] = "Message '#{message_text}' added!"
+    MessageTemplate.create!(:text => message[:text], :category => Category.find_by_name(message[:category]))
+    flash[:notice] = "Message '#{message_text}' added with category '#{message[:category]}'!"
     redirect_to andre_path
   end
 

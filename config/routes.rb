@@ -14,7 +14,7 @@ Mm::Application.routes.draw do
 #post 'andre' => 'andre#new_category', as: :new_category
 
   get 'admin' => 'admin#index'
-  post 'admin' => 'admin#new_message'
+  post 'admin' => 'admin#new_something'
 
   #match 'profile/:phone_number' => 'user#index', :as => :profile
   #get '/profile/:phone_number', to: 'user#index', as: 'profile'
