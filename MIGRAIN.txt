@@ -3,7 +3,7 @@ This file is a mock up of what our new database design should be.
 ------------------------------------------------------------------
 
 Mock User Subscriptions:
-  "{{"category" => "mood", "next_message" => 1, "send_at" => "20131127 18:23:00"}, {"category" => "thoughts", "next_message" => 5, "send_at" => "20131129 08:41:00"}}"
+  "{1 => {"next_message" => 1, "send_at" => "20131127 18:23:00"}, 4 => {"next_message" => 5, "send_at" => "20131129 08:41:00"}}"
 Mock User Schedules
   '{'m' => 'true', 't' => 'false', 'w' => 'true', 'th' => 'true', 'f' => 'false', ...}'
 

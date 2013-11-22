@@ -23,6 +23,12 @@ module Util
     #puts ">>Util>> Sending message #{message} to #{to}"
 	  sid = 'ACb85e0121426b1e833e86822cc2800cb6'
 	  token =  'dc7e939dfe23d90dc37644173b7e7415'
+	  
+	  m = ProcessedMessages.new(:text => message)
+		m.from_my_mood = true
+		m.date_processed = Time.now
+		m.save!
+	  
 		client = Twilio::REST::Client.new sid, token
 		client.account.sms.messages.create(:from => '+15109964117', :to => to, :body => message)
 	end
