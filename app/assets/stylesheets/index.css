@@ -77,9 +77,10 @@ html, body, .wrapper {
 }
 
 #avg-mood {
+    color: ghostwhite;
     font-size: 100px;
     text-align: center;
-    padding-top: 45px;
+    padding-top: 43px;
     /*background-color: red;*/
 }
 
@@ -88,7 +89,7 @@ html, body, .wrapper {
 /*}*/
 
 #widget {
-    height: 30em;
+    height: 26em;
 }
 
 #line-graph #pie-chart {
@@ -133,4 +134,17 @@ html, body, .wrapper {
 
 .message {
     float: left;
+}
+
+body {
+    background-image: url("background.jpg");
+    background-size: cover;
+}
+
+.opaque {
+    opacity: 0.8;
+}
+
+.title-against-dark-bg {
+    color: ghostwhite;
 }
