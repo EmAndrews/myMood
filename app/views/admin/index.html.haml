@@ -27,6 +27,9 @@
     %div.content
       %h1 OMG HI ADMIN
       - flash[:notice]
+      %div.row-fluid
+        %div.span5
+      
       %h2 Current Messages
       %table
         %tbody
@@ -39,6 +42,9 @@
       = form_tag andre_path do
         = label :message, :text, "Message Text"
         = text_field :message, 'text'
+
+        %select{:name => "Category"}
+          %option{:value => 1}= "New Category"
 
         = submit_tag 'Add Message'
 
