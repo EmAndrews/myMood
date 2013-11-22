@@ -10,7 +10,8 @@ Mm::Application.routes.draw do
   end
 
   get 'andre' => 'andre#index'
-  post 'andre' => 'andre#new_message'
+  post 'andre' => 'andre#new_something'
+#post 'andre' => 'andre#new_category', as: :new_category
 
   get 'admin' => 'admin#index'
   post 'admin' => 'admin#new_message'
