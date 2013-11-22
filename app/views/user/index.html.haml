@@ -43,6 +43,7 @@
             %div#avg-mood 8.6
           %div.span8
             %h3 It's great that you're doing well! Try thinking of what influenced your mood and reflect on it when you don't feel well.
+            =params.inspect
         %br
         %br
         %div.row-fluid
@@ -64,6 +65,7 @@
         %div.row-fluid
           %div.span5.offset1
             %h3 User Settings
+            =params.inspect
             %div.well.settings
               -#= form_for(resource, :as => resource_name, :url => edit_user_registration_path, :html => { :method => :put }) do |f|
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
@@ -89,6 +91,21 @@
           %div.span5
             %h3 Message Settings
             %div.well.settings
+              -#= form_for(.....)
+              %div
+                =label :category, 'Categories'
+                - @categories.each do |cat|
+                  = check_box_tag "subscribed_categories[#{cat}]", 1, :id => "subscribed_categories_#{cat}"
+                  = cat.name
+                  %br
+                %br
+                = submit_tag 'Save', :id => 'subscription_save'
+              -#This is where drop down of all categories should go
+            %div
+              -#=e.label 'Availability'
+              %br
+              -#This is where the check boxes should go
+            -#%div= e.submit 'Save'
 
 
     = javascript_include_tag 'bootstrap.min.js'
