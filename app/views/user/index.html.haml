@@ -42,12 +42,8 @@
           %div.span2.offset1
             %div#avg-mood 8.6
           %div.span8
-<<<<<<< HEAD
             %h3.title-against-dark-bg It's great that you're doing well! Try thinking of what influenced your mood and reflect on it when you don't feel well.
-=======
-            %h3 It's great that you're doing well! Try thinking of what influenced your mood and reflect on it when you don't feel well.
             =params.inspect
->>>>>>> 1bcb94131ec6fb18d30d1766ec9a08382cf108e0
         %br
         %br
         %div.row-fluid.opaque
@@ -68,12 +64,8 @@
       %div#settings-content
         %div.row-fluid.opaque
           %div.span5.offset1
-<<<<<<< HEAD
             %h3.title-against-dark-bg User Settings
-=======
-            %h3 User Settings
             =params.inspect
->>>>>>> 1bcb94131ec6fb18d30d1766ec9a08382cf108e0
             %div.well.settings
               -#= form_for(resource, :as => resource_name, :url => edit_user_registration_path, :html => { :method => :put }) do |f|
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
