@@ -42,6 +42,13 @@ class AdminController < ApplicationController
 
   def new_message message
     message_text = message[:text]
+    
+    if message_text == ""
+      flash[:notice] = "Message cannot be blank."
+      redirect_to admin_path
+      return
+    end
+    
     MessageTemplate.create!(:text => message_text, :category => Category.find_by_name(message[:category]))
     flash[:notice] = "Message '#{message_text}' added in category '#{message[:category]}'"
     redirect_to admin_path
