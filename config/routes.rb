@@ -1,13 +1,15 @@
 Mm::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => :registrations }
-
   devise_for :models
 
   devise_scope :user do
     root :to => 'devise/sessions#new'
     match 'profile/:phone_number' => 'user#index', :as => :profile
+    match 'profile/:phone_number/update_preferences' => 'user#update_preferences', via: [:put, :get], :as => "update_pref"
     match 'sms/receive_sms' => 'sms#receive_sms'  #kim's messing with stuff
   end
+  
+#resources :emily, :collection => { :subscribe_to => :put }
 
   get 'andre' => 'andre#index'
   post 'andre' => 'andre#new_something'
@@ -15,6 +17,7 @@ Mm::Application.routes.draw do
 
   get 'admin' => 'admin#index'
   post 'admin' => 'admin#new_something'
+
 
   #match 'profile/:phone_number' => 'user#index', :as => :profile
   #get '/profile/:phone_number', to: 'user#index', as: 'profile'
