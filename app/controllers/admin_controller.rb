@@ -25,8 +25,9 @@ class AdminController < ApplicationController
 
   def new_category category
     cat_name = category[:name]
-    Category.create!(:name => cat_name)
-    flash[:notice] = "Category '#{cat_name}' crated!"
+    p category
+    Category.create!(category)
+    flash[:notice] = "Category '#{cat_name}' created!"
     redirect_to admin_path
   end
 

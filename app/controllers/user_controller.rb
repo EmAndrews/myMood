@@ -42,7 +42,7 @@ class UserController < ApplicationController
     end
     
     unsubscribe.each do |cat|
-      @user.subscription.delete(cat.to_i)
+      @user.subscription.delete(cat)
     end
     
     @user.save!
