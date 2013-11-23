@@ -16,6 +16,8 @@ module NavigationHelpers
     #This is a super gross hack to make test pass. FIX ME.
     when /^the user index$/ then '/profile/222-222-2222'
     when /^the user index$/ then '/user/index'
+    
+    when /^the admin category page$/ then '/admin'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
