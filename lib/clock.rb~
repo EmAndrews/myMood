@@ -1,6 +1,6 @@
 require 'clockwork'
 require_relative '../app/Util.rb'
-#require_relative '../app/controllers/sms_controller.rb'n
+#require_relative '../app/controllers/sms_controller.rb'
 include Clockwork
 include Twilio
 
