@@ -91,16 +91,6 @@
           %div.span5
             %h3 Message Settings
             %div.well.settings
-              -#= form_for(.....)
-              %div
-                =label :category, 'Categories'
-                - @categories.each do |cat|
-                  = check_box_tag "subscribed_categories[#{cat}]", 1, :id => "subscribed_categories_#{cat}"
-                  = cat.name
-                  %br
-                %br
-                = submit_tag 'Save', :id => 'subscription_save'
-              -#This is where drop down of all categories should go
             %div
               -#=e.label 'Availability'
               %br
