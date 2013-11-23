@@ -54,4 +54,34 @@ class AdminController < ApplicationController
     redirect_to admin_path
   end
 
+
+
+  def delete_something
+    if params[:message_id]
+      id = params[:message_id].keys[0]
+      message = MessageTemplate.find_by_id(id)
+      delete_message message
+    elsif params[:category_id]
+      id = params[:category_id].keys[0]
+      category = Category.find_by_id(id)
+      delete_category category
+    end
+    redirect_to admin_path
+  end
+
+  def delete_category category
+    flash[:notice] = "Category '#{category.name}' and messages deleted."
+    Category.destroy(category.id)
+  end
+
+  def delete_message message
+    MessageTemplate.destroy(message.id)
+    flash[:notice] = "Message '#{message.text}' deleted."
+  end
+
+
+
+
+
+
 end
