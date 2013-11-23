@@ -2,20 +2,6 @@ class UserController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    flash.each do |name, msg|
-      @name = name
-      @msg = msg
-      if msg.eql?("Current password can't be blank")
-        redirect_to profile_url(:phone_number => resource.phone_number)
-      elsif msg.eql?('Password is too short (minimum is 8 characters)')
-        redirect_to profile_url(:phone_number => resource.phone_number)
-      elsif msg.eql?('Current password is invalid')
-        redirect_to profile_url(:phone_number => resource.phone_number)
-      end
-    end
-  end
-  
-  def update_preferences
     @categories = Category.all
     @days = %w(M Tu W Th F Sa Su)
     @user = User.find_by_phone_number(params[:phone_number])
@@ -49,7 +35,7 @@ class UserController < ApplicationController
     
     @user.save!
     flash[:notice] = 'You have successfully subscribed to new categories!'
-    redirect_to update_pref_path
+    redirect_to profile_path
   end
 
   def change_availability
@@ -62,6 +48,6 @@ class UserController < ApplicationController
     @user.availability = for_db
     @user.save!
     flash[:notice] = 'Your availability has been changed'
-    redirect_to update_pref_path
+    redirect_to profile_path
   end
 end

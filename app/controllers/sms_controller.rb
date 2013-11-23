@@ -5,15 +5,6 @@ class SmsController < ApplicationController
 	def receive_sms
 		message = params[:Body]
 		from = params[:From]		#phone number of user
-		
-		# Parameters:
-		#{"AccountSid"=>"ACb85e0121426b1e833e86822cc2800cb6", "MessageSid"=>"SMa5c0ef07038d1f2ce2fcf2c97f2d5227", 
-		#"Body"=>"M7", "ToZip"=>"94555", "ToCity"=>"FREMONT", "FromState"=>"MD", "ToState"=>"CA", 
-		#"SmsSid"=>"SMa5c0ef07038d1f2ce2fcf2c97f2d5227", "To"=>"+15109964117", "ToCountry"=>"US", "FromCountry"=>"US",
-		#"SmsMessageSid"=>"SMa5c0ef07038d1f2ce2fcf2c97f2d5227", "ApiVersion"=>"2010-04-01", "FromCity"=>"BALTIMORE", 
-		#"SmsStatus"=>"received", "NumMedia"=>"0", "From"=>"+14104023113", "FromZip"=>"21228"}
-		
-		#send_message(from, message)  #echo
 
 		#Look up user w/ phone number, make sure actually in db
 		users = User.where(:phone_number => Util.convert_to_database_phone(from))
@@ -37,10 +28,15 @@ class SmsController < ApplicationController
 			save_nonparseable_message(user, message)
 			return
 		end
+		
+		#check message contents, respond to different cases and store data
+		handle_readable_sms_from_valid_user(user, from, message, data)
+	end
 
+	def handle_readable_sms_from_valid_user(user, from, message, data)
 		#from the regex
 	  category = data[:letter].downcase
-		mood = (data[:rating])
+		mood = data[:rating]
 		extra = data[:message]
 		
 		#Make sure the category exists
@@ -65,29 +61,23 @@ class SmsController < ApplicationController
 			return
 		end
 		
-		#save message w/ data
-		m = ProcessedMessages.new(:text => message)
-		m.user_id = user.id
-		m.from_my_mood = false
-		m.date_processed = Time.now
-		m.data = mood #storing mood as a string?
-		
-		m.save!
-		
 		Util.send_message(from, "You entered " + mood + " for " + cat_id[0].name + ". Thank you!")
-		
-	  render nothing: true
+		save_message(user, message, mood)
 	end
 	
 	def save_nonparseable_message(user, message)
+			save_message(user, message, nil)
+		return
+	end
+	
+	def save_message(user, message, data)
 		m = ProcessedMessages.new(:text => message)
 		m.user_id = user.id
 		m.from_my_mood = false
 		m.date_processed = Time.now
-		#data = Nil
+		m.data = data
 		m.save!
 		render nothing: true
-		return
 	end
 	
 end
