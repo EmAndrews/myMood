@@ -24,10 +24,14 @@ module Util
 	  sid = 'ACb85e0121426b1e833e86822cc2800cb6'
 	  token =  'dc7e939dfe23d90dc37644173b7e7415'
 	  
-	  m = ProcessedMessages.new(:text => message)
-		m.from_my_mood = true
-		m.date_processed = Time.now
-		m.save!
+	  user = User.where(:phone_number => self.convert_to_database_phone(to))
+	  unless user.blank?
+			m = ProcessedMessages.new(:text => message)
+	  	m.user_id = user[0].id
+			m.from_my_mood = true
+			m.date_processed = Time.now
+			m.save!
+		end
 	  
 		client = Twilio::REST::Client.new sid, token
 		client.account.sms.messages.create(:from => '+15109964117', :to => to, :body => message)

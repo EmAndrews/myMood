@@ -14,9 +14,9 @@ class AdminController < ApplicationController
 
   def new_something
     commit = params[:commit]
-    if commit == "Add Message"
+    if commit == 'Add Message'
       new_message params[:message]
-    elsif commit == "Add Category"
+    elsif commit == 'Add Category'
       new_category params[:category]
     else
       redirect_to admin_path
@@ -24,13 +24,13 @@ class AdminController < ApplicationController
   end
 
   def new_category category
-    if category[:name] == "" || category[:prefix] == ""
-      flash[:notice] = "Please include a category name and prefix."
+    if category[:name] == '' || category[:prefix] == ''
+      flash[:notice] = 'Please include a category name and prefix.'
       redirect_to admin_path
       return
     end
-    if !category[:prefix].match(/^[a-zA-Z]+$/)
-      flash[:notice] = "Only letters are allowed in the prefix."
+    unless category[:prefix].match(/^[a-zA-Z]+$/)
+      flash[:notice] = 'Only letters are allowed in the prefix.'
       redirect_to admin_path
       return
     end
@@ -42,6 +42,13 @@ class AdminController < ApplicationController
 
   def new_message message
     message_text = message[:text]
+    
+    if message_text == ""
+      flash[:notice] = "Message cannot be blank."
+      redirect_to admin_path
+      return
+    end
+    
     MessageTemplate.create!(:text => message_text, :category => Category.find_by_name(message[:category]))
     flash[:notice] = "Message '#{message_text}' added in category '#{message[:category]}'"
     redirect_to admin_path

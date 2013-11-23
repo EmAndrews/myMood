@@ -29,6 +29,11 @@
       %div#homepage-content
         %div.row-fluid.opaque
           - flash.each do |name, msg|
+            -#- if msg.eql?('You have successfully subscribed to new categories!')
+            -#  %script
+            -#    $('#homepage-content').hide();
+            -#    $('#settings-content').attr('display', 'block');
+            -#- elsif name.eql?(:notice) && !msg.eql?('Signed in successfully.')
             - if name.eql?(:notice) && !msg.eql?('Signed in successfully.')
               %div.span10.offset1.well#notice{:style => 'padding-top: 13px; padding-bottom: 13px'}
                 %h4.message= msg
@@ -43,7 +48,6 @@
             %div#avg-mood 8.6
           %div.span8
             %h3.title-against-dark-bg It's great that you're doing well! Try thinking of what influenced your mood and reflect on it when you don't feel well.
-            =params.inspect
         %br
         %br
         %div.row-fluid.opaque
@@ -65,9 +69,7 @@
         %div.row-fluid.opaque
           %div.span5.offset1
             %h3.title-against-dark-bg User Settings
-            =params.inspect
             %div.well.settings
-              -#= form_for(resource, :as => resource_name, :url => edit_user_registration_path, :html => { :method => :put }) do |f|
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                 = devise_error_messages!
                 %div
@@ -86,23 +88,30 @@
               %p
                 #{button_to 'Cancel my account', registration_path(resource_name), :data => { :confirm => 'Are you sure?' }, :method => :delete}
               = link_to 'Back', :back
-              -#|
-              -#= link_to "Change your password", edit_user_registration_path
           %div.span5
             %h3.title-against-dark-bg Message Settings
             %div.well.settings
-            %div
-              -#=e.label 'Availability'
-              %br
-              -#This is where the check boxes should go
-            -#%div= e.submit 'Save'
+              = flash[:notice]
+              %h4 Categories:
+              = form_tag profile_path, :method => :put do
+                - @categories.each do |cat|
+                  = check_box_tag 'category_id[]',cat.id, @subscribed_categories.include?(cat.id.to_s)
+                  = cat.name
+                  %br
+                = submit_tag 'Subscribe', :id => 'subscribe'
+              %h4 Schedule Preferences
+              = form_tag profile_path, :method => :put do
+                - @days.each do |day|
+                  = day
+                  = check_box_tag 'days[]', "#{day}", @subscribed_days.include?(day)
+                = submit_tag 'Update', :id => 'availability'
 
 
-    = javascript_include_tag 'bootstrap.min.js'
+    = javascript_include_tag 'bootstrap.min'
     -#= javascript_include_tag 'jquery-1.10.2.min.js'
     -#= javascript_include_tag 'highcharts'
     %script{src: 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'}
     = javascript_include_tag 'jquery-ui'
     %script{src: 'http://code.highcharts.com/highcharts.js'}
-    = javascript_include_tag 'index.js'
+    = javascript_include_tag 'index'
 

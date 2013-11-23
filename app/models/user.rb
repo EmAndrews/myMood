@@ -19,6 +19,15 @@ class User < ActiveRecord::Base
 		:phone_number => {:format => /\d{3}-\d{3}-\d{4}/}
 
   validates_presence_of :name
+  
+  before_create :initial_sign_up
+  
   serialize :subscription, Hash
   serialize :availability, Hash
+
+  private
+    def initial_sign_up
+      self.availability = {"M" => [], "Tu" => [], "W" => [], "Th" => [], "F" => [], "Sa" => [], "Su" => [] }
+      self.subscription = {"1" => {}}
+    end
 end
