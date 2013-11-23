@@ -41,9 +41,9 @@
       %h3 Add New Category
       = form_for andre_path do
         = label :category, :name, "Category Name"
-        = text_field :category, 'name', :required => 'true'
+        = text_field :category, 'name'#, :required => 'true'
         = label :category, :prefix, "Category Prefix"
-        = text_field :category, 'prefix', :required => 'true'
+        = text_field :category, 'prefix'#, :required => 'true'
         = submit_tag 'Add Category'
       
 

@@ -24,7 +24,7 @@ class AdminController < ApplicationController
   end
 
   def new_category category
-    if !category[:name] || !category[:prefix]
+    if category[:name] == "" || category[:prefix] == ""
       flash[:notice] = "Please include a category name and prefix."
       redirect_to admin_path
       return
@@ -35,7 +35,6 @@ class AdminController < ApplicationController
       return
     end
     cat_name = category[:name]
-    p category
     Category.create!(category)
     flash[:notice] = "Category '#{cat_name}' created!"
     redirect_to admin_path
