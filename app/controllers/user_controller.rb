@@ -17,10 +17,15 @@ class UserController < ApplicationController
   
   def update_preferences
     @categories = Category.all
+    @days = ["M", "Tu", "W", "Th", "F", "Sa", "Su"]
     @user = User.find_by_phone_number(params[:phone_number])
     @subscribed_categories = @user.subscription.keys
-    if params[:commit]
+
+    @subscribed_days = @user.availability.keys
+    if params[:commit] == 'Subscribe'
       subscribe_to
+    elsif params[:commit] == 'Update'
+      change_availability
     else
       return
     end
@@ -31,8 +36,6 @@ class UserController < ApplicationController
     c_ids = []
     @categories.each { |c| c_ids << c.id.to_s }
     unsubscribe = c_ids -  @new_subscribed_categories
-    p "BITCHES AND HOES"
-    p unsubscribe
     @user = User.find_by_phone_number(params[:phone_number])
     
     @new_subscribed_categories.each do |cat|
@@ -51,11 +54,15 @@ class UserController < ApplicationController
   end
 
   def change_availability
-    @avail = params[:availabilities] || {}
+    @avail = params["days"]
     @user = User.find_by_phone_number(params[:phone_number])
-    @user.availability = @avial
+    for_db = {}
+    @avail.each do |a|
+      for_db[a] = []
+    end
+    @user.availability = for_db
     @user.save!
-    flash[:ntice] = "Your availability has been changed"
-    redirect_to profile_url(:phone_number => resource.phone_number)
+    flash[:notice] = "Your availability has been changed"
+    redirect_to update_pref_path
   end
 end

@@ -26,10 +26,6 @@
             %li <a href="#">Logout</a>
 
     %div.content
-      = params.inspect
-      = session.inspect
-      = @subscribed_categories
-      %h1 OMG HI EMILY
       = flash[:notice]
       %h2 Categories:
       = form_tag update_pref_path, :method => :put do
@@ -37,8 +33,16 @@
           = check_box_tag "category_id[]",cat.id, @subscribed_categories.include?(cat.id.to_s)
           = cat.name
           %br
-        = submit_tag 'Save', :id => 'subscribe'
-      
+        = submit_tag 'Subscribe', :id => 'subscribe'
+    
+    %div.content
+      %h3 Schedule Preferences
+      = form_tag update_pref_path, :method => :put do
+        - @days.each do |day|
+          = day
+          = check_box_tag "days[]", "#{day}", @subscribed_days.include?(day)
+        = submit_tag 'Update', :id => 'availability' 
+
     = javascript_include_tag 'bootstrap.min.js'
     = javascript_include_tag 'jquery-1.10.2.min.js'
     = javascript_include_tag 'index.js'
