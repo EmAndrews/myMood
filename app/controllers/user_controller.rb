@@ -2,7 +2,6 @@ class UserController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @categories = Category.all
     flash.each do |name, msg|
       @name = name
       @msg = msg
@@ -15,19 +14,40 @@ class UserController < ApplicationController
       end
     end
   end
-
-  def new_subscription
-    @subscribed_categories = params[:categories] || {}
-    @subscribed_categories.each do |cat|
-      cat_id = Category.find_by_name(cat).id
-      current_user = User.find_by_phone_number(params[:phone_number])
-      if current_user.subscription[cat_id] == nil
-        current_user.subscription[cat_id] = {"place_in_queue" => 0}
-      end
-      current_user.save!
+  
+  def update_preferences
+    @categories = Category.all
+    @user = User.find_by_phone_number(params[:phone_number])
+    @subscribed_categories = @user.subscription.keys
+    if params[:commit]
+      subscribe_to
+    else
+      return
     end
+  end
+
+  def subscribe_to
+    @new_subscribed_categories = params[:category_id] || {}
+    c_ids = []
+    @categories.each { |c| c_ids << c.id.to_s }
+    unsubscribe = c_ids -  @new_subscribed_categories
+    p "BITCHES AND HOES"
+    p unsubscribe
+    @user = User.find_by_phone_number(params[:phone_number])
+    
+    @new_subscribed_categories.each do |cat|
+      if @user.subscription[cat] == nil
+        @user.subscription[cat] = {"place_in_queue" => 0}
+      end
+    end
+    
+    unsubscribe.each do |cat|
+      @user.subscription.delete(cat.to_i)
+    end
+    
+    @user.save!
     flash[:notice] = "You have successfully subscribed to new categories!"
-    redirect_to profile_url(:phone_number => resource.phone_number)
+    redirect_to update_pref_path
   end
 
   def change_availability
