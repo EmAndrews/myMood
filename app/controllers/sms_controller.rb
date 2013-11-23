@@ -48,11 +48,11 @@ class SmsController < ApplicationController
 		end
 		
 		#make sure user is subscribed to this category
-			unless user.subscription[cat_id[0].id]
-				Util.send_message(from, "You are not signed up for category '" + category + "', please sign up online if you would like to subscribe.")
-				save_nonparseable_message(user, message)
-				return
-			end
+		unless user.subscription[cat_id[0].id.to_s]
+			Util.send_message(from, "You are not signed up for category '" + category + "', please sign up online if you would like to subscribe.")
+			save_nonparseable_message(user, message)
+			return
+		end
 		
 		#make sure mood is in range
 		if ((mood.to_i() > 10) or (mood.to_i() < 1))
