@@ -20,13 +20,14 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
   
-  before_create :avail_all
+  before_create :initial_sign_up
   
   serialize :subscription, Hash
   serialize :availability, Hash
 
   private
-    def avail_all
+    def initial_sign_up
       self.availability = {"M" => [], "Tu" => [], "W" => [], "Th" => [], "F" => [], "Sa" => [], "Su" => [] }
+      self.subscription = {"1" => {}}
     end
 end
