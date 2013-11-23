@@ -14,7 +14,7 @@ describe SmsController do
     mood_cat.save!
     sleep_cat = Category.new(:name => "sleep", :prefix => 's')
     sleep_cat.save!
-    user = User.new(:name => "Kim", :subscription => {mood_cat => {}}, :phone_number => kim_phone_dashes, :password => "password123", :password_confirmation => "password123", :email => "email@email.com")
+    user = User.new(:name => "Kim", :subscription => {mood_cat.id => {}}, :phone_number => kim_phone_dashes, :password => "password123", :password_confirmation => "password123", :email => "email@email.com")
     user.save!
   end
 	
