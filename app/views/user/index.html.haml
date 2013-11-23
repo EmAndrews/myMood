@@ -27,9 +27,9 @@
 
     %div.container-fluid.content
       %div#homepage-content
-        %div.row-fluid
+        %div.row-fluid.opaque
           - flash.each do |name, msg|
-            - if name.eql?(:notice)
+            - if name.eql?(:notice) && !msg.eql?('Signed in successfully.')
               %div.span10.offset1.well#notice{:style => 'padding-top: 13px; padding-bottom: 13px'}
                 %h4.message= msg
                 %button.btn.status-button{:style => 'margin-top: 5px; margin-left: 10px'} Ok
@@ -42,11 +42,11 @@
           %div.span2.offset1
             %div#avg-mood 8.6
           %div.span8
-            %h3 It's great that you're doing well! Try thinking of what influenced your mood and reflect on it when you don't feel well.
+            %h3.title-against-dark-bg It's great that you're doing well! Try thinking of what influenced your mood and reflect on it when you don't feel well.
             =params.inspect
         %br
         %br
-        %div.row-fluid
+        %div.row-fluid.opaque
           %div.span5.offset1
             #myCarousel.carousel.slide
               %div.carousel-inner
@@ -62,9 +62,9 @@
               %br
               MyMood: I see you're not feeling well, what's wrong?
       %div#settings-content
-        %div.row-fluid
+        %div.row-fluid.opaque
           %div.span5.offset1
-            %h3 User Settings
+            %h3.title-against-dark-bg User Settings
             =params.inspect
             %div.well.settings
               -#= form_for(resource, :as => resource_name, :url => edit_user_registration_path, :html => { :method => :put }) do |f|
@@ -89,7 +89,7 @@
               -#|
               -#= link_to "Change your password", edit_user_registration_path
           %div.span5
-            %h3 Message Settings
+            %h3.title-against-dark-bg Message Settings
             %div.well.settings
             %div
               -#=e.label 'Availability'

@@ -12,10 +12,10 @@
   %body
     %div.content
       %div.container-fluid
-        %div.row-fluid
+        %div.row-fluid.opaque
           %div.span4.offset4.well
 
-            %h2 Sign up
+            %h2.title-against-dark-bg Sign up
             = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
               = devise_error_messages!
               %div
