@@ -28,7 +28,7 @@ class SmsController < ApplicationController
 
 		#parse message… from start of message, expect to get:
 		#optional space, a letter, optional space, number, optional space, optional text
-		regex = /^\s*(?<letter>[a-zA-Z])\s*(?<rating>\d+)\s*(?<message>.*)/
+		regex = /^\s*(?<letter>[a-zA-Z]+)\s*(?<rating>\d+)\s*(?<message>.*)/
 
 		data = regex.match(message)
 
