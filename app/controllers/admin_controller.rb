@@ -14,9 +14,9 @@ class AdminController < ApplicationController
 
   def new_something
     commit = params[:commit]
-    if commit == "Add Message"
+    if commit == 'Add Message'
       new_message params[:message]
-    elsif commit == "Add Category"
+    elsif commit == 'Add Category'
       new_category params[:category]
     else
       redirect_to admin_path
