@@ -12,10 +12,12 @@ Mm::Application.routes.draw do
 
   get 'andre' => 'andre#index'
   post 'andre' => 'andre#new_something'
+  delete 'andre' => 'andre#delete_something'
 #post 'andre' => 'andre#new_category', as: :new_category
 
   get 'admin' => 'admin#index'
   post 'admin' => 'admin#new_something'
+  delete 'admin' => 'admin#delete_something'
 
 
   #match 'profile/:phone_number' => 'user#index', :as => :profile

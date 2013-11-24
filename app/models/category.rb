@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
   attr_accessible :name, :prefix
-  has_many :message_templates
+  # set messages is this category to be deleted when the category is
+  has_many :message_templates, :dependent => :destroy
   has_one :message_sequence
 
   #has_one :schedule
