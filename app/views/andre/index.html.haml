@@ -4,11 +4,6 @@
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
     %title My Mood
 
-    = stylesheet_link_tag 'bootstrap.min'
-    = stylesheet_link_tag 'index'
-    = stylesheet_link_tag 'bootstrap-responsive.min'
-    = stylesheet_link_tag 'jquery-ui'
-
   %body
     %div.navbar.navbar-inverse.navbar-fixed-top
       %div.navbar-inner
@@ -74,8 +69,3 @@
             = label :message, :category, "Message Category"
             = select :message, :category, @categories.map{|c| [c.name, c.name]}
             = submit_tag 'Add Message'
-
-    = javascript_include_tag 'bootstrap.min.js'
-    = javascript_include_tag 'jquery-1.10.2.min.js'
-    = javascript_include_tag 'index.js'
-    = javascript_include_tag 'jquery-ui'

@@ -3,7 +3,7 @@
 }
 
 .content {
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 html, body, .wrapper {
@@ -147,4 +147,14 @@ body {
 
 .title-against-dark-bg {
     color: ghostwhite;
+}
+
+.modal {
+    width: 250px;
+    margin-left: -125px;
+}
+
+#categories {
+    height: 400px;
+    margin-left: 0;
 }

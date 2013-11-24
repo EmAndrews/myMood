@@ -12,9 +12,9 @@ happyball/index.jpg: happyball-b702e82ce2b94aedd22e3b499385e280.jpg
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 LICENSE: LICENSE
-application.js: application-8bfd98e81dba3f52b50085d346994275.js
-application/index.js: application-8bfd98e81dba3f52b50085d346994275.js
-application.css: application-5e10681ff17d1f2e5ed28eb96fd5b405.css
-application/index.css: application-5e10681ff17d1f2e5ed28eb96fd5b405.css
+application.js: application-7053d46b2c3f9f7b8d7f11f881752107.js
+application/index.js: application-7053d46b2c3f9f7b8d7f11f881752107.js
+application.css: application-807edb4443ee69c60098c8a4da20393c.css
+application/index.css: application-807edb4443ee69c60098c8a4da20393c.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 jquery/index.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map

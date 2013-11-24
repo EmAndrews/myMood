@@ -24,49 +24,6 @@
             %li
               = link_to('Logout', destroy_user_session_path, :method => :delete)
 
-    -#%div.content
-    -#  %h1 OMG HI ADMIN
-    -#  = flash[:notice]
-    -#  %h2 Current Categories
-    -#  %div.well
-    -#    %table
-    -#      %tbody
-    -#        - @categories.each do |cat|
-    -#          %tr
-    -#            %td= cat.name
-    -#            - if cat.prefix
-    -#              %td= cat.prefix
-    -#            - else
-    -#              %td No Prefix
-    -#  %h3 Add New Category
-    -#  = form_for andre_path do
-    -#    = label :category, :name, 'Category Name'
-    -#    = text_field :category, 'name'
-    -#    = label :category, :prefix, 'Category Prefix'
-    -#    = text_field :category, 'prefix'
-    -#    = submit_tag 'Add Category'
-    -#
-    -#
-    -#  %h2 Current Messages
-    -#  %div.well.pre-scrollable
-    -#    %table
-    -#      %tbody
-    -#        - @messages.each do |message|
-    -#          %tr
-    -#            %td= message.text
-    -#            - if message.category
-    -#              %td= message.category.name
-    -#            - else
-    -#              %td No Category
-    -#
-    -#  %h3 Add New Message
-    -#  = form_tag admin_path do
-    -#    = label :message, :text, 'Message Text'
-    -#    = text_field :message, 'text', :required => 'true'
-    -#    = label :message, :category, 'Message Category'
-    -#    = select :message, :category, @categories.map{|c| [c.name, c.name]}, :required => 'true'
-    -#    = submit_tag 'Add Message'
-
     %div.container-fluid.content
       %div#homepage-content
         %div.row-fluid.opaque
@@ -97,72 +54,38 @@
           %div.span5
             %div.row-fluid
               %h3 Categories
-              %div.span12.well
-                %table
-                  %tbody
-                    - @categories.each do |category|
-                      %tr
-                        %td= category.name
-                        - if category.prefix
-                          %td= category.prefix
-                        - else
-                          %td No Prefix
-                          
-                %a.btn{'data-toggle' => 'modal', href: '#myModal', role: 'button'} Add new category
-                #myModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'myModalLabel', role: 'dialog', tabindex: '-1'}
-                  .modal-header
-                    %button.close{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'} ×
-                    %h3#myModalLabel Add New Category
-                  .modal-body
-                    = form_for admin_path do
-                      = label :category, :name, 'Category Name'
-                      = text_field :category, 'name'
-                      = label :category, :prefix, 'Category Prefix'
-                      = text_field :category, 'prefix'
-                      = submit_tag 'Add Category'
-                  .modal-footer
-                    %button.btn{'aria-hidden' => 'true', 'data-dismiss' => 'modal'} Close
-                    %button.btn.btn-primary Save changes
-                          
-                -#%a.btn{'data-toggle' => 'modal', href: '#myModal', role: 'button'} Add New Category
-                -#%div#myModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'myModalLabel', role: 'dialog', tabindex: '-1'}
-                -#  %div.modal-header
-                -#    %button.close{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'} ×
-                -#    %h3#myModalLabel Add New Category
-                -#  %div.modal-body
-                -#    = form_for admin_path do
-                -#      = label :category, :name, 'Category Name'
-                -#      = text_field :category, 'name'
-                -#      = label :category, :prefix, 'Category Prefix'
-                -#      = text_field :category, 'prefix'
-                -#      = submit_tag 'Add Category'
-                -#  %div.modal-footer
-                -#    %button.btn{'aria-hidden' => 'true', 'data-dismiss' => 'modal'} Close
-                -#    %button.btn.btn-primary Save changes
+              %div#categories.span12.well
+                %table.table.table-striped.table-hover
+                  %tr
+                    %th Name
+                    %th Prefix
+                  - @categories.each do |category|
+                    %tr
+                      %td= category.name
+                      - if category.prefix
+                        %td= category.prefix
+                      - else
+                        %td No Prefix
+                %a.btn{'data-toggle' => 'modal', href: '#addCategoryModal', role: 'button'} Add new category
+        %div.row-fluid
+          %div.span10.offset1
+            %h3 Messages
+            %div.well
+              %table.table.table-striped.table-hover
+                %tr
+                  %th Message
+                  %th Category
+                - @messages.each do |message|
+                  %tr
+                    %td= message.text
+                    - if message.category
+                      %td= message.category.name
+                    - else
+                      %td No Category
+              %a.btn{'data-toggle' => 'modal', href: '#addMessageModal', role: 'button'} Add new message
 
 
 
-            %div.row-fluid
-              %h3 Messages
-              %div.span12.well
-                %div
-                  %table
-                    %tbody
-                      - @messages.each do |message|
-                        %tr
-                          %td= message.text
-                          - if message.category
-                            %td= message.category.name
-                          - else
-                            %td No Category
-
-                %h3 Add New Message
-                = form_tag admin_path do
-                  = label :message, :text, 'Message Text'
-                  = text_field :message, 'text', :required => 'true'
-                  = label :message, :category, 'Message Category'
-                  = select :message, :category, @categories.map{|c| [c.name, c.name]}, :required => 'true'
-                  = submit_tag 'Add Message'
       %div#settings-content
         %div.row-fluid.opaque
           %div.span5.offset1
@@ -205,8 +128,31 @@
               -#  = submit_tag 'Update', :id => 'availability'
 
 
-    -#= javascript_include_tag 'bootstrap.min.js'
-    -#= javascript_include_tag 'jquery-1.10.2.min.js'
-    -#= javascript_include_tag 'index.js'
-    -#= javascript_include_tag 'jquery-ui'
-    -#= javascript_include_tag 'bootbox'
+    #addCategoryModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'addCategoryModalLabel', role: 'dialog', tabindex: '-1'}
+      .modal-header
+        %button.close{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'} ×
+        %h3#addCategoryModalLabel Add Category
+      .modal-body
+        = form_for admin_path do
+          = label :category, :name, 'Category Name'
+          = text_field :category, 'name'
+          = label :category, :prefix, 'Category Prefix'
+          = text_field :category, 'prefix'
+      .modal-footer
+        %button.btn{'aria-hidden' => 'true', 'data-dismiss' => 'modal'} Cancel
+        = submit_tag 'Save'
+        
+        
+    #addMessageModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'addMessageModalLabel', role: 'dialog', tabindex: '-1'}
+      .modal-header
+        %button.close{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'} ×
+        %h3#addMessageModalLabel Add Category
+      .modal-body
+        = form_tag admin_path do
+          = label :message, :text, 'Message Text'
+          = text_field :message, 'text', :required => 'true'
+          = label :message, :category, 'Message Category'
+          = select :message, :category, @categories.map{|c| [c.name, c.name]}, :required => 'true'
+      .modal-footer
+        %button.btn{'aria-hidden' => 'true', 'data-dismiss' => 'modal'} Cancel
+        = submit_tag 'Save'
