@@ -15,32 +15,32 @@ Background: I am an admin
 Scenario: Create a category (correct parameters)
   When I fill in "category_name" with "Mood"
 	And I fill in "category_prefix" with "m"
-	And I press "Add Category"
+	And I press "add-new-category"
 	
 	Then I should see "Category 'Mood' created!"
 	
 Scenario: Create a category (no prefix)
   When I fill in "category_name" with "Mood"
-	And I press "Add Category"
+	And I press "add-new-category"
 	
 	Then I should see "Please include a category name and prefix."
 	
 Scenario: Create a category (no name)
 	And I fill in "category_prefix" with "m"
-	And I press "Add Category"
+	And I press "add-new-category"
 	
 	Then I should see "Please include a category name and prefix."
 	
 Scenario: Create a category (bad prefix - parser problem)
   When I fill in "category_name" with "Mood"
 	And I fill in "category_prefix" with "m10"
-	And I press "Add Category"
+	And I press "add-new-category"
 	
 	Then I should see "Only letters are allowed in the prefix."
 	
 Scenario: Create a category (bad prefix - parser problem)
   When I fill in "category_name" with "Mood"
 	And I fill in "category_prefix" with "my mood"
-	And I press "Add Category"
+	And I press "add-new-category"
 	
 	Then I should see "Only letters are allowed in the prefix."

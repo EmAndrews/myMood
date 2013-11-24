@@ -11,3 +11,9 @@ Then /"(.*)" should be created with "(.*)", "(.*)", "(.*)"/ do |name, phone, pas
   user.name.should eq(name)
   user.email.should eq(email)
 end
+
+Given /the following categories exist/ do |cat_table|   #populates a table?  this is based on hw3
+  cat_table.hashes.each do |cat|
+    Category.create!(cat)
+  end
+end
