@@ -77,7 +77,6 @@ html, body, .wrapper {
 }
 
 #avg-mood {
-    color: ghostwhite;
     font-size: 100px;
     text-align: center;
     padding-top: 43px;
@@ -143,10 +142,6 @@ body {
 
 .opaque {
     opacity: 0.9;
-}
-
-.title-against-dark-bg {
-    color: ghostwhite;
 }
 
 .modal {

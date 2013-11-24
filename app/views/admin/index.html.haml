@@ -63,10 +63,10 @@
                   - @categories.each do |category|
                     %tr
                       %td= category.name
-                      - if category.prefix
-                        %td= category.prefix
-                      - else
-                        %td No Prefix
+                      -#- if category.prefix
+                      %td= category.prefix
+                      -#- else
+                      -#  %td No Prefix
                       %td
                         = form_tag admin_path, :method => :delete do
                           -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
