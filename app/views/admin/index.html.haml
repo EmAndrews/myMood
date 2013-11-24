@@ -55,23 +55,24 @@
             %div.row-fluid
               %h3 Categories
               %div#categories.span12.well
-                %table.table.table-striped.table-hover
-                  %tr
-                    %th Name
-                    %th Prefix
-                    %th Delete
-                  - @categories.each do |category|
+                %div#category-table
+                  %table.table.table-striped.table-hover
                     %tr
-                      %td= category.name
-                      -#- if category.prefix
-                      %td= category.prefix
-                      -#- else
-                      -#  %td No Prefix
-                      %td
-                        = form_tag admin_path, :method => :delete do
-                          -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
-                          = hidden_field :category_id, category.id
-                          = submit_tag '×', :class => 'delete-btn'
+                      %th Name
+                      %th Prefix
+                      %th Delete
+                    - @categories.each do |category|
+                      %tr
+                        %td= category.name
+                        -#- if category.prefix
+                        %td= category.prefix
+                        -#- else
+                        -#  %td No Prefix
+                        %td
+                          = form_tag admin_path, :method => :delete do
+                            -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
+                            = hidden_field :category_id, category.id
+                            = submit_tag '×', :class => 'delete-btn'
                 %a.btn{'data-toggle' => 'modal', href: '#addCategoryModal', role: 'button'} Add new category
         %div.row-fluid
           %div.span10.offset1

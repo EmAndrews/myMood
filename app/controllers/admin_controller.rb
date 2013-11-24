@@ -54,20 +54,20 @@ class AdminController < ApplicationController
     redirect_to admin_path
   end
 
-=begin
-  def new_category category
-    cat_name = category[:name]
-    Category.create!(:name => cat_name)
-    flash[:notice] = "Category '#{cat_name}' created!"
-    redirect_to admin_path
-  end
-
-  def new_message message
-    message_text = message[:text]
-    MessageTemplate.create!(:text => message[:text], :category => Category.find_by_name(message[:category]))
-    flash[:notice] = "Message '#{message_text}' added with category '#{message[:category]}'!"
-    redirect_to admin_path
-  end
+#begin
+#  def new_category category
+#    cat_name = category[:name]
+#    Category.create!(:name => cat_name)
+#    flash[:notice] = "Category '#{cat_name}' created!"
+#    redirect_to admin_path
+#  end
+#
+#  def new_message message
+#    message_text = message[:text]
+#    MessageTemplate.create!(:text => message[:text], :category => Category.find_by_name(message[:category]))
+#    flash[:notice] = "Message '#{message_text}' added with category '#{message[:category]}'!"
+#    redirect_to admin_path
+#  end
 
   def delete_something
     if params[:message_id]
@@ -81,7 +81,7 @@ class AdminController < ApplicationController
     end
     redirect_to admin_path
   end
-=end
+
   def delete_category category
     flash[:notice] = "Category '#{category.name}' and messages deleted."
     Category.destroy(category.id)

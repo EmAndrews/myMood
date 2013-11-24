@@ -159,6 +159,7 @@ body {
     padding: 0;
 }
 
-#messages #categories {
+#category-table {
+    max-height: 24em;
     overflow-y: auto
 }
