@@ -23,38 +23,50 @@ class AdminController < ApplicationController
     end
   end
 
+  #def new_category category
+  #  if category[:name] == '' || category[:prefix] == ''
+  #    flash[:notice] = 'Please include a category name and prefix.'
+  #    redirect_to admin_path
+  #    return
+  #  end
+  #  unless category[:prefix].match(/^[a-zA-Z]+$/)
+  #    flash[:notice] = 'Only letters are allowed in the prefix.'
+  #    redirect_to admin_path
+  #    return
+  #  end
+  #  cat_name = category[:name]
+  #  Category.create!(category)
+  #  flash[:notice] = "Category '#{cat_name}' created!"
+  #  redirect_to admin_path
+  #end
+  #
+  #def new_message message
+  #  message_text = message[:text]
+  #
+  #  if message_text == ""
+  #    flash[:notice] = "Message cannot be blank."
+  #    redirect_to admin_path
+  #    return
+  #  end
+  #
+  #  MessageTemplate.create!(:text => message_text, :category => Category.find_by_name(message[:category]))
+  #  flash[:notice] = "Message '#{message_text}' added in category '#{message[:category]}'"
+  #  redirect_to admin_path
+  #end
+
   def new_category category
-    if category[:name] == '' || category[:prefix] == ''
-      flash[:notice] = 'Please include a category name and prefix.'
-      redirect_to admin_path
-      return
-    end
-    unless category[:prefix].match(/^[a-zA-Z]+$/)
-      flash[:notice] = 'Only letters are allowed in the prefix.'
-      redirect_to admin_path
-      return
-    end
     cat_name = category[:name]
-    Category.create!(category)
+    Category.create!(:name => cat_name)
     flash[:notice] = "Category '#{cat_name}' created!"
     redirect_to admin_path
   end
 
   def new_message message
     message_text = message[:text]
-    
-    if message_text == ""
-      flash[:notice] = "Message cannot be blank."
-      redirect_to admin_path
-      return
-    end
-    
-    MessageTemplate.create!(:text => message_text, :category => Category.find_by_name(message[:category]))
-    flash[:notice] = "Message '#{message_text}' added in category '#{message[:category]}'"
+    MessageTemplate.create!(:text => message[:text], :category => Category.find_by_name(message[:category]))
+    flash[:notice] = "Message '#{message_text}' added with category '#{message[:category]}'!"
     redirect_to admin_path
   end
-
-
 
   def delete_something
     if params[:message_id]
