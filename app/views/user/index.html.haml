@@ -95,7 +95,7 @@
               %h4 Categories:
               = form_tag profile_path, :method => :put do
                 - @categories.each do |cat|
-                  = check_box_tag 'category_id[]',cat.id, @subscribed_categories.include?(cat.id.to_s)
+                  = check_box_tag 'category_id[]',cat.id, @subscribed_categories.include?(cat.id.to_s), :id => "category_id_#{cat.name}" 
                   = cat.name
                   %br
                 = submit_tag 'Subscribe', :id => 'subscribe'
@@ -103,7 +103,7 @@
               = form_tag profile_path, :method => :put do
                 - @days.each do |day|
                   = day
-                  = check_box_tag 'days[]', "#{day}", @subscribed_days.include?(day)
+                  = check_box_tag 'days[]', "#{day}", @subscribed_days.include?(day), :id => "days_id_#{day}"
                 = submit_tag 'Update', :id => 'availability'
 
 
