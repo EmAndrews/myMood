@@ -12,3 +12,7 @@ google doc: https://docs.google.com/a/berkeley.edu/document/d/1_atp_34G3j5NTnUAk
 Twilio Testing:
 from kevin: https://github.com/kamikaze823/futurescientists/blob/master/spec/controllers/sms_controller_spec.rb
 sms-spec: http://www.mutuallyhuman.com/blog/2012/04/03/testing-sms-interactions-in-ruby-on-rails/
+
+
+csv:
+http://railscasts.com/episodes/362-exporting-csv-and-excel?view=asciicast

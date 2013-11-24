@@ -23,37 +23,38 @@ class AdminController < ApplicationController
     end
   end
 
-  #def new_category category
-  #  if category[:name] == '' || category[:prefix] == ''
-  #    flash[:notice] = 'Please include a category name and prefix.'
-  #    redirect_to admin_path
-  #    return
-  #  end
-  #  unless category[:prefix].match(/^[a-zA-Z]+$/)
-  #    flash[:notice] = 'Only letters are allowed in the prefix.'
-  #    redirect_to admin_path
-  #    return
-  #  end
-  #  cat_name = category[:name]
-  #  Category.create!(category)
-  #  flash[:notice] = "Category '#{cat_name}' created!"
-  #  redirect_to admin_path
-  #end
-  #
-  #def new_message message
-  #  message_text = message[:text]
-  #
-  #  if message_text == ""
-  #    flash[:notice] = "Message cannot be blank."
-  #    redirect_to admin_path
-  #    return
-  #  end
-  #
-  #  MessageTemplate.create!(:text => message_text, :category => Category.find_by_name(message[:category]))
-  #  flash[:notice] = "Message '#{message_text}' added in category '#{message[:category]}'"
-  #  redirect_to admin_path
-  #end
+  def new_category category
+    if category[:name] == '' || category[:prefix] == ''
+      flash[:notice] = 'Please include a category name and prefix.'
+      redirect_to admin_path
+      return
+    end
+    unless category[:prefix].match(/^[a-zA-Z]+$/)
+      flash[:notice] = 'Only letters are allowed in the prefix.'
+      redirect_to admin_path
+      return
+    end
+    cat_name = category[:name]
+    Category.create!(category)
+    flash[:notice] = "Category '#{cat_name}' created!"
+    redirect_to admin_path
+  end
+  
+  def new_message message
+    message_text = message[:text]
+  
+    if message_text == ""
+      flash[:notice] = "Message cannot be blank."
+      redirect_to admin_path
+      return
+    end
+  
+    MessageTemplate.create!(:text => message_text, :category => Category.find_by_name(message[:category]))
+    flash[:notice] = "Message '#{message_text}' added in category '#{message[:category]}'"
+    redirect_to admin_path
+  end
 
+=begin
   def new_category category
     cat_name = category[:name]
     Category.create!(:name => cat_name)
@@ -80,7 +81,7 @@ class AdminController < ApplicationController
     end
     redirect_to admin_path
   end
-
+=end
   def delete_category category
     flash[:notice] = "Category '#{category.name}' and messages deleted."
     Category.destroy(category.id)
@@ -90,10 +91,5 @@ class AdminController < ApplicationController
     MessageTemplate.destroy(message.id)
     flash[:notice] = "Message '#{message.text}' deleted."
   end
-
-
-
-
-
 
 end

@@ -1,6 +1,9 @@
+=begin
 require 'logger'
 #require_relative 'util'
 include Util
+
+#This class is used purely as a testing environment for experimental features.
 
 class AndreController < ApplicationController
 
@@ -66,3 +69,4 @@ class AndreController < ApplicationController
   end
 
 end
+=end
