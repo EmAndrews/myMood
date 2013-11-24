@@ -158,3 +158,12 @@ body {
     height: 400px;
     margin-left: 0;
 }
+
+.delete-btn {
+    line-height: 18px;
+    padding: 0;
+}
+
+#messages #categories {
+    overflow-y: auto
+}
