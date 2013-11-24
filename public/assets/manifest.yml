@@ -1,6 +1,6 @@
 ---
-background.jpg: background-cd91c6e9661ba707015abd9a4f5884ca.jpg
-background/index.jpg: background-cd91c6e9661ba707015abd9a4f5884ca.jpg
+background.jpg: background-516c4ed294c760ff3f1dd8a98f787329.jpg
+background/index.jpg: background-516c4ed294c760ff3f1dd8a98f787329.jpg
 favicon.png: favicon-fa84d9c0fc48a8a35c3aac25e1f5dde5.png
 favicon/index.png: favicon-fa84d9c0fc48a8a35c3aac25e1f5dde5.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
@@ -14,7 +14,7 @@ rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 LICENSE: LICENSE
 application.js: application-7053d46b2c3f9f7b8d7f11f881752107.js
 application/index.js: application-7053d46b2c3f9f7b8d7f11f881752107.js
-application.css: application-807edb4443ee69c60098c8a4da20393c.css
-application/index.css: application-807edb4443ee69c60098c8a4da20393c.css
+application.css: application-6d757254937aa4a007cc7a229289cde9.css
+application/index.css: application-6d757254937aa4a007cc7a229289cde9.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 jquery/index.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
