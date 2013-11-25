@@ -37,7 +37,7 @@ class SmsController < ApplicationController
 		#from the regex
 	  category = data[:letter].downcase
 		mood = data[:rating]
-		extra = data[:message]
+		#extra = data[:message]
 		
 		#Make sure the category exists
 		cat_id = Category.where(:prefix => category)
@@ -55,13 +55,13 @@ class SmsController < ApplicationController
 		end
 		
 		#make sure mood is in range
-		if ((mood.to_i() > 10) or (mood.to_i() < 1))
-			Util.send_message(from, "We can only accept ratings from 1-10.  Please try again.")
+		if (mood.to_i() > 10) or (mood.to_i() < 1)
+			Util.send_message(from, 'We can only accept ratings from 1-10.  Please try again.')
 			save_nonparseable_message(user, message)
 			return
 		end
 		
-		Util.send_message(from, "You entered " + mood + " for " + cat_id[0].name + ". Thank you!")
+		Util.send_message(from, 'You entered ' + mood + ' for ' + cat_id[0].name + '. Thank you!')
 		save_message(user, message, mood)
 	end
 	

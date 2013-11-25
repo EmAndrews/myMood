@@ -72,7 +72,7 @@
                           = form_tag admin_path, :method => :delete do
                             -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
                             = hidden_field :category_id, category.id
-                            = submit_tag '×', :class => 'delete-btn'
+                            = submit_tag '×', :class => 'delete-btn', :data => { :confirm => 'Are you sure?' }
                 %a.btn{'data-toggle' => 'modal', href: '#addCategoryModal', role: 'button'} Add new category
         %div.row-fluid
           %div.span10.offset1
@@ -94,7 +94,7 @@
                       = form_tag admin_path, :method => :delete do
                         -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
                         = hidden_field :message_id, message.id
-                        = submit_tag '×', :class => 'delete-btn'
+                        = submit_tag '×', :class => 'delete-btn', :data => { :confirm => 'Are you sure?' }
               %a.btn{'data-toggle' => 'modal', href: '#addMessageModal', role: 'button'} Add new message
 
 

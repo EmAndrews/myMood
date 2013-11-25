@@ -1,0 +1,483 @@
+---
+Cucumber Features:
+  :original_result:
+    /home/kat/myMood/app/models/user.rb:
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 38
+    - 38
+    - 
+    - 
+    /home/kat/myMood/app/models/model.rb:
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    /home/kat/myMood/app/controllers/application_controller.rb:
+    - 1
+    - 1
+    - 
+    - 1
+    - 10
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 
+    /home/kat/myMood/lib/custom_failure.rb:
+    - 1
+    - 1
+    - 14
+    - 
+    - 
+    - 1
+    - 14
+    - 0
+    - 
+    - 14
+    - 
+    - 
+    - 
+    /home/kat/myMood/app/helpers/application_helper.rb:
+    - 1
+    - 
+    - 1
+    - 66
+    - 
+    - 
+    - 1
+    - 44
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    /home/kat/myMood/app/controllers/admin_controller.rb:
+    - 1
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 16
+    - 16
+    - 16
+    - 
+    - 
+    - 
+    - 1
+    - 9
+    - 9
+    - 2
+    - 7
+    - 7
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 7
+    - 2
+    - 2
+    - 2
+    - 
+    - 5
+    - 2
+    - 2
+    - 2
+    - 
+    - 3
+    - 3
+    - 3
+    - 3
+    - 
+    - 
+    - 1
+    - 2
+    - 
+    - 2
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    /home/kat/myMood/lib/util.rb:
+    - 1
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 1
+    - 
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 0
+    - 0
+    - 
+    - 
+    /home/kat/myMood/app/controllers/andre_controller.rb:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    /home/kat/myMood/app/controllers/registrations_controller.rb:
+    - 1
+    - 
+    - 1
+    - 4
+    - 4
+    - 
+    - 4
+    - 1
+    - 
+    - 3
+    - 3
+    - 3
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    /home/kat/myMood/app/controllers/sms_controller.rb:
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 1
+    - 
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 0
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    /home/kat/myMood/app/controllers/user_controller.rb:
+    - 1
+    - 1
+    - 
+    - 1
+    - 24
+    - 24
+    - 24
+    - 24
+    - 
+    - 24
+    - 24
+    - 1
+    - 23
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 3
+    - 1
+    - 1
+    - 
+    - 1
+    - 2
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 6
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    /home/kat/myMood/app/models/category.rb:
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    /home/kat/myMood/app/models/message_sequence.rb:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    /home/kat/myMood/app/models/message_template.rb:
+    - 1
+    - 1
+    - 1
+    - 
+    /home/kat/myMood/app/models/processed_messages.rb:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+  :created_at: 2013-11-24 17:23:37.579949855 -08:00
