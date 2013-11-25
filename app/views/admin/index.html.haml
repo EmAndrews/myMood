@@ -26,7 +26,7 @@
 
     %div.container-fluid.content
       %div#homepage-content
-        %div.row-fluid.opaque
+        %div.row-fluid
           - flash.each do |name, msg|
             -#- if msg.eql?('You have successfully subscribed to new categories!')
             -#  %script
@@ -34,21 +34,22 @@
             -#    $('#settings-content').attr('display', 'block');
             -#- elsif name.eql?(:notice) && !msg.eql?('Signed in successfully.')
             - if name.eql?(:notice) && !msg.eql?('Signed in successfully.')
-              %div.span10.offset1.well#notice{:style => 'padding-top: 13px; padding-bottom: 13px'}
+              %div.span10.offset1.well#notice
                 %h4.message= msg
                 %button.btn.status-button{:style => 'margin-top: 5px; margin-left: 10px'} Ok
             - elsif !msg.eql?('You are already signed in.') && name.eql?(:alert)
-              %div.span10.offset1.well#alert{:style => 'padding-top: 13px; padding-bottom: 13px'}
+              %div.span10.offset1.well#alert
                 %h4.message= msg
                 %button.btn.status-button{:style => 'margin-top: 5px; margin-left: 10px; float: left'} Ok
                 %button.btn#failed-change{:style => 'margin-top: 5px; margin-left: 10px'} Go Back to settings
-        %div.row-fluid.opaque
+        %div.row-fluid
           %div.span5.offset1
             %h3 Average Graphs for All Users
             %div#carousel.carousel.slide
               %div.carousel-inner
                 %div.active.item#line-graph
                 %div.item#pie-chart
+                %div.item#admin-pie-chart
               %a.carousel-control.left#prev{'data-slide' => 'prev', href: '#carousel'} ‹
               %a.carousel-control.right#next{'data-slide' => 'next', href: '#carousel'} ›
           %div.span5
@@ -72,7 +73,7 @@
                           = form_tag admin_path, :method => :delete do
                             -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
                             = hidden_field :category_id, category.id
-                            = submit_tag '×', :class => 'delete-btn', :data => { :confirm => 'Are you sure?' }
+                            = submit_tag '×', :class => 'delete-btn btn', :data => { :confirm => 'Are you sure?' }
                 %a.btn{'data-toggle' => 'modal', href: '#addCategoryModal', role: 'button'} Add new category
         %div.row-fluid
           %div.span10.offset1
@@ -94,7 +95,7 @@
                       = form_tag admin_path, :method => :delete do
                         -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
                         = hidden_field :message_id, message.id
-                        = submit_tag '×', :class => 'delete-btn', :data => { :confirm => 'Are you sure?' }
+                        = submit_tag '×', :class => 'delete-btn btn', :data => { :confirm => 'Are you sure?' }
               %a.btn{'data-toggle' => 'modal', href: '#addMessageModal', role: 'button'} Add new message
 
 
@@ -151,7 +152,7 @@
           = text_field :category, 'name'
           = label :category, :prefix, 'Category Prefix'
           = text_field :category, 'prefix'
-          = submit_tag 'Add Category', :id => 'add-new-category'
+          = submit_tag 'Add Category', :id => 'add-new-category', :class => 'btn'
 
     #addMessageModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'addMessageModalLabel', role: 'dialog', tabindex: '-1'}
       .modal-header
@@ -163,4 +164,4 @@
           = text_field :message, 'text', :required => 'true'
           = label :message, :category, 'Message Category'
           = select :message, :category, @categories.map{|c| [c.name, c.name]}, :required => 'true'
-          = submit_tag 'Add Message', :id => 'add-new-message'
+          = submit_tag 'Add Message', :id => 'add-new-message', :class => 'btn'

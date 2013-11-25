@@ -68,7 +68,7 @@ $(function () {
         },
         series: [{
             type: 'pie',
-            name: 'Browser share',
+            name: 'Percent of Users',
             data: [
                 ['Yes',       73.2],
                 {
@@ -82,15 +82,51 @@ $(function () {
     });
 });
 
+$(function () {
+    var h = new Highcharts.Chart({
+        chart: {
+            renderTo: 'admin-pie-chart',
+            type: 'pie',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Active vs Inactive Users as of today'
+        },
+        tooltip: {
+            pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: "<b>{point.name}</b>: {point.percentage:.1f} %"
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Percent of Users',
+            data: [
+                ['Active',       65.0],
+                {
+                    name: 'Inactive',
+                    y: 35.0,
+                    sliced: true,
+                    selected: true
+                }
+            ]
+        }]
+    });
+});
+
 $(document).ready(function () {
-//    $.fn.carousel.defaults = {
-//        interval: false, pause: 'hover'
-//    };
-//    $('.carousel').carousel({interval: false});
-//
-//    $(document).on('mouseleave', '.carousel', function() {
-//        $(this).carousel('pause');
-//    });
+    $('.carousel').carousel({interval: false});
 
     $('.status-button').click( function() {
         $('#notice').remove();

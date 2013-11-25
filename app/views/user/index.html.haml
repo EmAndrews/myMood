@@ -27,7 +27,7 @@
 
     %div.container-fluid.content
       %div#homepage-content
-        %div.row-fluid.opaque
+        %div.row-fluid
           - flash.each do |name, msg|
             -#- if msg.eql?('You have successfully subscribed to new categories!')
             -#  %script
@@ -35,11 +35,11 @@
             -#    $('#settings-content').attr('display', 'block');
             -#- elsif name.eql?(:notice) && !msg.eql?('Signed in successfully.')
             - if name.eql?(:notice) && !msg.eql?('Signed in successfully.')
-              %div.span10.offset1.well#notice{:style => 'padding-top: 13px; padding-bottom: 13px'}
+              %div.span10.offset1.well#notice
                 %h4.message= msg
                 %button.btn.status-button{:style => 'margin-top: 5px; margin-left: 10px'} Ok
             - elsif !msg.eql?('You are already signed in.') && name.eql?(:alert)
-              %div.span10.offset1.well#alert{:style => 'padding-top: 13px; padding-bottom: 13px'}
+              %div.span10.offset1.well#alert
                 %h4.message= msg
                 %button.btn.status-button{:style => 'margin-top: 5px; margin-left: 10px; float: left'} Ok
                 %button.btn#failed-change{:style => 'margin-top: 5px; margin-left: 10px'} Go Back to settings
@@ -51,7 +51,7 @@
             %h3 It's great that you're doing well! Try thinking of what influenced your mood and reflect on it when you don't feel well.
         %br
         %br
-        %div.row-fluid.opaque
+        %div.row-fluid
           %div.span5.offset1
             %div#myCarousel.carousel.slide
               %div.carousel-inner
@@ -67,7 +67,7 @@
               %br
               MyMood: I see you're not feeling well, what's wrong?
       %div#settings-content
-        %div.row-fluid.opaque
+        %div.row-fluid
           %div.span5.offset1
             -#%h3.title-against-dark-bg User Settings
             %h3 User Settings
@@ -86,28 +86,30 @@
                   = f.label :current_password
                   %i (we need your current password to confirm your changes)
                   = f.password_field :current_password
-                %div= f.submit 'Save'
+                %div= f.submit 'Save', :class => 'btn'
               %p
-                #{button_to 'Cancel my account', registration_path(resource_name), :data => { :confirm => 'Are you sure?' }, :method => :delete}
+                #{button_to 'Cancel my account', registration_path(resource_name), :data => { :confirm => 'Are you sure?' }, :method => :delete, :class => 'btn'}
               = link_to 'Back', :back
           %div.span5
             -#%h3.title-against-dark-bg Message Settings
             %h3 Message Settings
             %div.well.settings
               = flash[:notice]
-              %h4 Categories:
-              = form_tag profile_path, :method => :put do
-                - @categories.each do |cat|
-                  = check_box_tag 'category_id[]',cat.id, @subscribed_categories.include?(cat.id.to_s), :id => "category_id_#{cat.name}" 
-                  = cat.name
-                  %br
-                = submit_tag 'Subscribe', :id => 'subscribe'
               %h4 Schedule Preferences
+              %em (Select which days of the week you wish to receive messages)
               = form_tag profile_path, :method => :put do
                 - @days.each do |day|
                   = day
                   = check_box_tag 'days[]', "#{day}", @subscribed_days.include?(day), :id => "days_id_#{day}"
-                = submit_tag 'Update', :id => 'availability'
+                = submit_tag 'Update', :id => 'availability', :class => 'btn'
+              %h4 Categories:
+              = form_tag profile_path, :method => :put do
+                - @categories.each do |cat|
+                  = check_box_tag 'category_id[]',cat.id, @subscribed_categories.include?(cat.id.to_s), :id => "category_id_#{cat.name}"
+                  = cat.name
+                  %br
+                  %br
+                = submit_tag 'Subscribe', :id => 'subscribe', :class => 'btn'
 
 
     -#= javascript_include_tag 'bootstrap.min'

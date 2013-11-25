@@ -117,13 +117,15 @@ html, body, .wrapper {
 }
 
 #notice {
-    border-color: green;
+    border: 1px dashed green;
     background-color: #d2f9ac;
+    padding: 0 0 0 10px;
 }
 
 #alert {
-    border-color: red;
+    border: 1px dashed red;
     background-color: lightpink;
+    padding: 0 0 0 10px;
 }
 
 #failed-change #status-button {
@@ -140,10 +142,6 @@ body {
     background-size: cover;
 }
 
-.opaque {
-    opacity: 0.9;
-}
-
 .modal {
     width: 250px;
     margin-left: -125px;
@@ -156,10 +154,15 @@ body {
 
 .delete-btn {
     line-height: 18px;
-    padding: 0;
+    padding: 0 16px 0 16px;
 }
 
 #category-table {
     max-height: 24em;
     overflow-y: auto
+}
+
+#remember-me {
+    float: left;
+    margin-right: 5px;
 }
