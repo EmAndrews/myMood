@@ -1,7 +1,7 @@
 ---
 Cucumber Features:
   :original_result:
-    /home/kat/myMood/app/models/user.rb:
+    /home/saasbook/newMyMood/myMood/app/models/user.rb:
     - 1
     - 
     - 
@@ -31,11 +31,11 @@ Cucumber Features:
     - 
     - 1
     - 1
-    - 38
-    - 38
+    - 0
+    - 0
     - 
     - 
-    /home/kat/myMood/app/models/model.rb:
+    /home/saasbook/newMyMood/myMood/app/models/model.rb:
     - 1
     - 
     - 
@@ -46,12 +46,12 @@ Cucumber Features:
     - 1
     - 
     - 
-    /home/kat/myMood/app/controllers/application_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/application_controller.rb:
     - 1
     - 1
     - 
     - 1
-    - 10
+    - 0
     - 
     - 
     - 
@@ -65,88 +65,88 @@ Cucumber Features:
     - 
     - 
     - 
-    /home/kat/myMood/lib/custom_failure.rb:
+    /home/saasbook/newMyMood/myMood/lib/custom_failure.rb:
     - 1
     - 1
-    - 14
+    - 0
     - 
     - 
     - 1
-    - 14
+    - 0
     - 0
     - 
-    - 14
+    - 0
     - 
     - 
     - 
-    /home/kat/myMood/app/helpers/application_helper.rb:
+    /home/saasbook/newMyMood/myMood/app/helpers/application_helper.rb:
     - 1
     - 
     - 1
-    - 66
+    - 0
     - 
     - 
     - 1
-    - 44
+    - 0
     - 
     - 
     - 1
     - 0
     - 
     - 
-    /home/kat/myMood/app/controllers/admin_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/admin_controller.rb:
     - 1
     - 1
     - 
     - 1
     - 
     - 1
-    - 16
-    - 16
-    - 16
+    - 0
+    - 0
+    - 0
     - 
     - 
     - 
     - 1
-    - 9
-    - 9
-    - 2
-    - 7
-    - 7
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     - 
     - 0
     - 
     - 
     - 
     - 1
-    - 7
-    - 2
-    - 2
-    - 2
+    - 0
+    - 0
+    - 0
+    - 0
     - 
-    - 5
-    - 2
-    - 2
-    - 2
+    - 0
+    - 0
+    - 0
+    - 0
     - 
-    - 3
-    - 3
-    - 3
-    - 3
+    - 0
+    - 0
+    - 0
+    - 0
     - 
     - 
     - 1
-    - 2
+    - 0
     - 
-    - 2
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
     - 
     - 
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
     - 
     - 
     - 1
@@ -173,7 +173,7 @@ Cucumber Features:
     - 
     - 
     - 
-    /home/kat/myMood/lib/util.rb:
+    /home/saasbook/newMyMood/myMood/lib/util.rb:
     - 1
     - 
     - 1
@@ -213,7 +213,7 @@ Cucumber Features:
     - 0
     - 
     - 
-    /home/kat/myMood/app/controllers/andre_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/andre_controller.rb:
     - 
     - 
     - 
@@ -286,34 +286,49 @@ Cucumber Features:
     - 
     - 
     - 
-    /home/kat/myMood/app/controllers/registrations_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/download_controller.rb:
     - 1
     - 
     - 1
-    - 4
-    - 4
     - 
-    - 4
-    - 1
     - 
-    - 3
-    - 3
-    - 3
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
     - 
     - 
     - 
+    /home/saasbook/newMyMood/myMood/app/controllers/registrations_controller.rb:
     - 1
-    - 1
-    - 1
-    - 1
     - 
     - 1
+    - 0
+    - 0
     - 
-    - 1
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
     - 1
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 0
+    - 0
     - 
     - 
-    /home/kat/myMood/app/controllers/sms_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/sms_controller.rb:
     - 1
     - 
     - 1
@@ -397,61 +412,61 @@ Cucumber Features:
     - 
     - 
     - 
-    /home/kat/myMood/app/controllers/user_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/user_controller.rb:
     - 1
     - 1
     - 
     - 1
-    - 24
-    - 24
-    - 24
-    - 24
+    - 0
+    - 0
+    - 0
+    - 0
     - 
-    - 24
-    - 24
-    - 1
-    - 23
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     - 
     - 
     - 
     - 
     - 1
-    - 1
-    - 1
-    - 3
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     - 
-    - 1
-    - 2
-    - 1
+    - 0
+    - 0
+    - 0
     - 
     - 
     - 
-    - 1
     - 0
+    - 0
     - 
     - 
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
     - 
     - 
-    - 1
     - 1
-    - 1
-    - 1
-    - 1
-    - 6
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     - 
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
     - 
     - 
-    /home/kat/myMood/app/models/category.rb:
+    /home/saasbook/newMyMood/myMood/app/models/category.rb:
     - 1
     - 1
     - 
@@ -462,28 +477,28 @@ Cucumber Features:
     - 
     - 
     - 
-    /home/kat/myMood/app/models/message_sequence.rb:
+    /home/saasbook/newMyMood/myMood/app/models/message_sequence.rb:
     - 1
     - 1
     - 1
     - 1
     - 
-    /home/kat/myMood/app/models/message_template.rb:
+    /home/saasbook/newMyMood/myMood/app/models/message_template.rb:
     - 1
     - 1
     - 1
     - 
-    /home/kat/myMood/app/models/processed_messages.rb:
+    /home/saasbook/newMyMood/myMood/app/models/processed_messages.rb:
     - 1
     - 1
     - 1
     - 1
     - 
     - 
-  :created_at: 2013-11-24 17:23:37.579949855 -08:00
+  :created_at: 2013-12-01 13:48:14.516460654 -08:00
 RSpec:
   :original_result:
-    /home/kat/myMood/app/models/user.rb:
+    /home/saasbook/newMyMood/myMood/app/models/user.rb:
     - 1
     - 
     - 
@@ -517,7 +532,7 @@ RSpec:
     - 9
     - 
     - 
-    /home/kat/myMood/app/models/model.rb:
+    /home/saasbook/newMyMood/myMood/app/models/model.rb:
     - 1
     - 
     - 
@@ -528,7 +543,7 @@ RSpec:
     - 1
     - 
     - 
-    /home/kat/myMood/app/controllers/application_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/application_controller.rb:
     - 1
     - 1
     - 
@@ -547,7 +562,7 @@ RSpec:
     - 
     - 
     - 
-    /home/kat/myMood/lib/custom_failure.rb:
+    /home/saasbook/newMyMood/myMood/lib/custom_failure.rb:
     - 1
     - 1
     - 0
@@ -561,7 +576,7 @@ RSpec:
     - 
     - 
     - 
-    /home/kat/myMood/app/helpers/application_helper.rb:
+    /home/saasbook/newMyMood/myMood/app/helpers/application_helper.rb:
     - 1
     - 
     - 1
@@ -576,7 +591,7 @@ RSpec:
     - 0
     - 
     - 
-    /home/kat/myMood/app/controllers/admin_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/admin_controller.rb:
     - 1
     - 1
     - 
@@ -598,37 +613,6 @@ RSpec:
     - 
     - 0
     - 
-    - 
-    - 
-    - 1
-    - 0
-    - 0
-    - 0
-    - 0
-    - 
-    - 0
-    - 0
-    - 0
-    - 0
-    - 
-    - 0
-    - 0
-    - 0
-    - 0
-    - 
-    - 
-    - 1
-    - 0
-    - 
-    - 0
-    - 0
-    - 0
-    - 0
-    - 
-    - 
-    - 0
-    - 0
-    - 0
     - 
     - 
     - 1
@@ -640,6 +624,37 @@ RSpec:
     - 0
     - 0
     - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
     - 
     - 0
     - 
@@ -655,26 +670,26 @@ RSpec:
     - 
     - 
     - 
-    /home/kat/myMood/lib/util.rb:
+    /home/saasbook/newMyMood/myMood/lib/util.rb:
     - 1
     - 
     - 1
-    - 0
-    - 0
+    - 2
+    - 2
     - 
-    - 0
+    - 2
     - 
-    - 0
+    - 2
     - 
     - 
     - 
     - 1
-    - 25
-    - 25
+    - 27
+    - 27
     - 
-    - 25
+    - 27
     - 
-    - 25
+    - 27
     - 
     - 
     - 1
@@ -695,7 +710,7 @@ RSpec:
     - 17
     - 
     - 
-    /home/kat/myMood/app/controllers/andre_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/andre_controller.rb:
     - 
     - 
     - 
@@ -768,7 +783,22 @@ RSpec:
     - 
     - 
     - 
-    /home/kat/myMood/app/controllers/registrations_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/download_controller.rb:
+    - 1
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    /home/saasbook/newMyMood/myMood/app/controllers/registrations_controller.rb:
     - 1
     - 
     - 1
@@ -795,7 +825,7 @@ RSpec:
     - 0
     - 
     - 
-    /home/kat/myMood/app/controllers/sms_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/sms_controller.rb:
     - 1
     - 
     - 1
@@ -879,7 +909,7 @@ RSpec:
     - 
     - 
     - 
-    /home/kat/myMood/app/controllers/user_controller.rb:
+    /home/saasbook/newMyMood/myMood/app/controllers/user_controller.rb:
     - 1
     - 1
     - 
@@ -933,7 +963,7 @@ RSpec:
     - 0
     - 
     - 
-    /home/kat/myMood/app/models/category.rb:
+    /home/saasbook/newMyMood/myMood/app/models/category.rb:
     - 1
     - 1
     - 
@@ -944,22 +974,22 @@ RSpec:
     - 
     - 
     - 
-    /home/kat/myMood/app/models/message_sequence.rb:
+    /home/saasbook/newMyMood/myMood/app/models/message_sequence.rb:
     - 1
     - 1
     - 1
     - 1
     - 
-    /home/kat/myMood/app/models/message_template.rb:
+    /home/saasbook/newMyMood/myMood/app/models/message_template.rb:
     - 1
     - 1
     - 1
     - 
-    /home/kat/myMood/app/models/processed_messages.rb:
+    /home/saasbook/newMyMood/myMood/app/models/processed_messages.rb:
     - 1
     - 1
     - 1
     - 1
     - 
     - 
-  :created_at: 2013-11-24 17:29:45.714381779 -08:00
+  :created_at: 2013-11-24 23:11:11.714596869 -08:00
