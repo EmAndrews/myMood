@@ -171,3 +171,8 @@ body {
     float: left;
     margin-right: 10px;
 }
+
+#add-message {
+    margin-top: 17px;
+    margin-bottom: 15px;
+}

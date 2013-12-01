@@ -1,13 +1,6 @@
 %html
 
   %head
-    -#%meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
-    -#%title My Mood
-    -#
-    -#= stylesheet_link_tag 'bootstrap.min'
-    -#= stylesheet_link_tag 'index'
-    -#= stylesheet_link_tag 'bootstrap-responsive.min'
-    -#= stylesheet_link_tag 'jquery-ui'
 
   %body
     %div.navbar.navbar-inverse.navbar-fixed-top
@@ -29,11 +22,6 @@
       %div
         %div.row-fluid
           - flash.each do |name, msg|
-            -#- if msg.eql?('You have successfully subscribed to new categories!')
-            -#  %script
-            -#    $('#homepage-content').hide();
-            -#    $('#settings-content').attr('display', 'block');
-            -#- elsif name.eql?(:notice) && !msg.eql?('Signed in successfully.')
             - if name.eql?(:notice) && !msg.eql?('Signed in successfully.')
               %div.span10.offset1.well#notice
                 %h4.message= msg
@@ -66,10 +54,7 @@
                     - @categories.each do |category|
                       %tr
                         %td= category.name
-                        -#- if category.prefix
                         %td= category.prefix
-                        -#- else
-                        -#  %td No Prefix
                         %td
                           = form_tag admin_path, :method => :delete do
                             -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
@@ -79,7 +64,7 @@
         %div.row-fluid
           %div.span10.offset1
             %h3#message-header Messages
-            %a.btn{'data-toggle' => 'modal', href: '#addMessageModal', role: 'button'} Add new message
+            %a.btn#add-message{'data-toggle' => 'modal', href: '#addMessageModal', role: 'button'} Add new message
             %div#messages.well
               %table.table.table-striped.table-hover
                 %tr
