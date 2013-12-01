@@ -25,7 +25,8 @@
               = link_to('Logout', destroy_user_session_path, :method => :delete)
 
     %div.container-fluid.content
-      %div#homepage-content
+      -#%div#homepage-content
+      %div
         %div.row-fluid
           - flash.each do |name, msg|
             -#- if msg.eql?('You have successfully subscribed to new categories!')
@@ -77,7 +78,8 @@
                 %a.btn{'data-toggle' => 'modal', href: '#addCategoryModal', role: 'button'} Add new category
         %div.row-fluid
           %div.span10.offset1
-            %h3 Messages
+            %h3#message-header Messages
+            %a.btn{'data-toggle' => 'modal', href: '#addMessageModal', role: 'button'} Add new message
             %div#messages.well
               %table.table.table-striped.table-hover
                 %tr
@@ -96,7 +98,6 @@
                         -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
                         = hidden_field :message_id, message.id
                         = submit_tag '×', :class => 'delete-btn btn', :data => { :confirm => 'Are you sure?' }
-              %a.btn{'data-toggle' => 'modal', href: '#addMessageModal', role: 'button'} Add new message
 
 
 

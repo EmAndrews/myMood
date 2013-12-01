@@ -166,3 +166,8 @@ body {
     float: left;
     margin-right: 5px;
 }
+
+#message-header {
+    float: left;
+    margin-right: 10px;
+}

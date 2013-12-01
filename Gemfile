@@ -17,6 +17,7 @@ group :development, :test do
   gem 'sms-spec'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'jasmine'
 end
 gem 'pg'
 gem 'devise'
