@@ -18,6 +18,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'jasmine'
+  gem 'jasmine-jquery-rails'
 end
 gem 'pg'
 gem 'devise'
