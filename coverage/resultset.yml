@@ -498,7 +498,7 @@ Cucumber Features:
   :created_at: 2013-12-01 13:48:14.516460654 -08:00
 RSpec:
   :original_result:
-    /home/saasbook/newMyMood/myMood/app/models/user.rb:
+    /home/saasbook/github/myMood/app/models/user.rb:
     - 1
     - 
     - 
@@ -528,11 +528,11 @@ RSpec:
     - 
     - 1
     - 1
-    - 9
-    - 9
+    - 15
+    - 15
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/models/model.rb:
+    /home/saasbook/github/myMood/app/models/model.rb:
     - 1
     - 
     - 
@@ -543,7 +543,7 @@ RSpec:
     - 1
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/controllers/application_controller.rb:
+    /home/saasbook/github/myMood/app/controllers/application_controller.rb:
     - 1
     - 1
     - 
@@ -562,7 +562,7 @@ RSpec:
     - 
     - 
     - 
-    /home/saasbook/newMyMood/myMood/lib/custom_failure.rb:
+    /home/saasbook/github/myMood/lib/custom_failure.rb:
     - 1
     - 1
     - 0
@@ -576,7 +576,7 @@ RSpec:
     - 
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/helpers/application_helper.rb:
+    /home/saasbook/github/myMood/app/helpers/application_helper.rb:
     - 1
     - 
     - 1
@@ -591,7 +591,7 @@ RSpec:
     - 0
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/controllers/admin_controller.rb:
+    /home/saasbook/github/myMood/app/controllers/admin_controller.rb:
     - 1
     - 1
     - 
@@ -613,37 +613,6 @@ RSpec:
     - 
     - 0
     - 
-    - 
-    - 
-    - 1
-    - 0
-    - 0
-    - 0
-    - 0
-    - 
-    - 0
-    - 0
-    - 0
-    - 0
-    - 
-    - 0
-    - 0
-    - 0
-    - 0
-    - 
-    - 
-    - 1
-    - 0
-    - 
-    - 0
-    - 0
-    - 0
-    - 0
-    - 
-    - 
-    - 0
-    - 0
-    - 0
     - 
     - 
     - 1
@@ -655,6 +624,37 @@ RSpec:
     - 0
     - 0
     - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
     - 
     - 0
     - 
@@ -670,26 +670,26 @@ RSpec:
     - 
     - 
     - 
-    /home/saasbook/newMyMood/myMood/lib/util.rb:
+    /home/saasbook/github/myMood/lib/util.rb:
     - 1
     - 
     - 1
-    - 2
-    - 2
+    - 0
+    - 0
     - 
-    - 2
+    - 0
     - 
-    - 2
+    - 0
     - 
     - 
     - 
     - 1
-    - 27
-    - 27
+    - 25
+    - 25
     - 
-    - 27
+    - 25
     - 
-    - 27
+    - 25
     - 
     - 
     - 1
@@ -710,7 +710,7 @@ RSpec:
     - 17
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/controllers/andre_controller.rb:
+    /home/saasbook/github/myMood/app/controllers/andre_controller.rb:
     - 
     - 
     - 
@@ -783,22 +783,7 @@ RSpec:
     - 
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/controllers/download_controller.rb:
-    - 1
-    - 
-    - 1
-    - 
-    - 
-    - 
-    - 1
-    - 0
-    - 0
-    - 0
-    - 0
-    - 
-    - 
-    - 
-    /home/saasbook/newMyMood/myMood/app/controllers/registrations_controller.rb:
+    /home/saasbook/github/myMood/app/controllers/registrations_controller.rb:
     - 1
     - 
     - 1
@@ -825,7 +810,7 @@ RSpec:
     - 0
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/controllers/sms_controller.rb:
+    /home/saasbook/github/myMood/app/controllers/sms_controller.rb:
     - 1
     - 
     - 1
@@ -909,7 +894,7 @@ RSpec:
     - 
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/controllers/user_controller.rb:
+    /home/saasbook/github/myMood/app/controllers/user_controller.rb:
     - 1
     - 1
     - 
@@ -963,7 +948,7 @@ RSpec:
     - 0
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/models/category.rb:
+    /home/saasbook/github/myMood/app/models/category.rb:
     - 1
     - 1
     - 
@@ -974,22 +959,31 @@ RSpec:
     - 
     - 
     - 
-    /home/saasbook/newMyMood/myMood/app/models/message_sequence.rb:
+    /home/saasbook/github/myMood/app/models/message_sequence.rb:
     - 1
     - 1
     - 1
     - 1
     - 
-    /home/saasbook/newMyMood/myMood/app/models/message_template.rb:
+    /home/saasbook/github/myMood/app/models/message_template.rb:
     - 1
     - 1
     - 1
     - 
-    /home/saasbook/newMyMood/myMood/app/models/processed_messages.rb:
+    /home/saasbook/github/myMood/app/models/processed_messages.rb:
     - 1
     - 1
     - 1
     - 1
     - 
     - 
-  :created_at: 2013-11-24 23:11:11.714596869 -08:00
+    /home/saasbook/github/myMood/lib/MessageSendingJob.rb:
+    - 1
+    - 
+    - 1
+    - 1
+    - 0
+    - 0
+    - 
+    - 
+  :created_at: 2013-12-01 21:33:23.792158947 -08:00
