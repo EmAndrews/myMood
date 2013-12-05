@@ -7,4 +7,21 @@ class Category < ActiveRecord::Base
   #has_one :schedule
   #has_one :sequence
 
+
+  def get_message(seq_num)
+    messages = MessageTemplates.find_by_category(self.id)
+    if messages == nil or messages.count == 0
+      return nil
+    end
+    if seq_num > messages.count
+      seq_num = 1
+    end
+    messages.each do |m|
+      if m.sequence_number == seq_num
+        return m
+      end
+    end
+    return nil
+  end
+
 end

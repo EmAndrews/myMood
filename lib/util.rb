@@ -36,4 +36,10 @@ module Util
 		client = Twilio::REST::Client.new sid, token
 		client.account.sms.messages.create(:from => '+15109964117', :to => to, :body => message)
 	end
+
+  def self.week_day_prefix_map
+    return {1 => "M", 2 => "Tu", 3 => "W", 4 => "Th", 5 => "F", 6 => "Sa", 0 => "Su"}
+  end
+
+
 end

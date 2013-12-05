@@ -25,9 +25,27 @@ class User < ActiveRecord::Base
   serialize :subscription, Hash
   serialize :availability, Hash
 
+  def wants_messages_today
+    day = Time.now.wday
+    pre = Util.week_day_prefix_map[day]
+    puts "User> pre: #{pre}, avail: #{self.availability.keys}"
+    return self.availability.keys.include? pre
+  end
+
+  def subscribed_categories
+    return self.subscription.keys
+  end
+
+
+  def add_sent_message_to_conversation mess
+    ProcessedMessages.create!(:text => mess.text, :data => nil,
+                    :from_my_mood => true, :date_processed => Time.now)
+  end
+
   private
     def initial_sign_up
-      self.availability = {"M" => [], "Tu" => [], "W" => [], "Th" => [], "F" => [], "Sa" => [], "Su" => [] }
+      self.availability = {"M" => [], "Tu" => [], "W" => [], "Th" => [],
+                            "F" => [], "Sa" => [], "Su" => [] }
       self.subscription = {"1" => {}}
     end
 end
