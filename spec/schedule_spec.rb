@@ -26,7 +26,8 @@ describe MessageSendingJob do
     end
     
     it 'should iterate through all users' do
-        User.should_receive(:where).and_return([@user1, @user2])
+        User.should_receive(:all)
+        User.stub(:all).and_return([@user1, @user2])
         p Time.now
     end
     

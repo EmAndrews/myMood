@@ -21,21 +21,21 @@
       <img src="./assets/0.4.5/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-12-01T21:33:23-08:00">2013-12-01T21:33:23-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-12-04T17:25:44-08:00">2013-12-04T17:25:44-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     All Files
-    (<span class="red">56.09%</span>)
+    (<span class="red">53.75%</span>)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>16</b> files in total.
-    <b>230</b> relevant lines. 
+    <b>240</b> relevant lines. 
     <span class="green"><b>129</b> lines covered</span> and
-    <span class="red"><b>101</b> lines missed </span>
+    <span class="red"><b>111</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -169,11 +169,11 @@
       
       <tr>
         <td><a href="#250aadb70536919edda0038d94bffe4f80aed7e4" class="src_link" title="./lib/MessageSendingJob.rb">./lib/MessageSendingJob.rb</a></td>
-        <td class="red">60.0 %</td>
-        <td>8</td>
-        <td>5</td>
+        <td class="red">20.0 %</td>
+        <td>21</td>
+        <td>15</td>
         <td>3</td>
-        <td>2</td>
+        <td>12</td>
       </tr>
       
       <tr>
@@ -406,14 +406,14 @@
           <div class="file_list_container" id="Libraries">
   <h2>
     Libraries
-    (<span class="red">71.43%</span>)
+    (<span class="red">55.56%</span>)
   </h2>
   <a name="Libraries"></a>
   <div>
     <b>3</b> files in total.
-    <b>35</b> relevant lines. 
+    <b>45</b> relevant lines. 
     <span class="green"><b>25</b> lines covered</span> and
-    <span class="red"><b>10</b> lines missed </span>
+    <span class="red"><b>20</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -430,11 +430,11 @@
       
       <tr>
         <td><a href="#250aadb70536919edda0038d94bffe4f80aed7e4" class="src_link" title="./lib/MessageSendingJob.rb">./lib/MessageSendingJob.rb</a></td>
-        <td class="red">60.0 %</td>
-        <td>8</td>
-        <td>5</td>
+        <td class="red">20.0 %</td>
+        <td>21</td>
+        <td>15</td>
         <td>3</td>
-        <td>2</td>
+        <td>12</td>
       </tr>
       
       <tr>
@@ -6133,7 +6133,7 @@
     <tr>
       <td colspan="3">
         <h3>./lib/MessageSendingJob.rb</h3>
-        <h4><span class="red">60.0 %</span> covered</h4>
+        <h4><span class="red">20.0 %</span> covered</h4>
       </td>
     </tr>
     <tr>
@@ -6223,9 +6223,178 @@
     </tr>
   
     
-    <tr class="never" >
+    <tr class="miss" data-hits="0">
       <td class="line_number">
         <pre>7</pre>
+      </td>
+      <td>
+        <pre>    @users = User.all</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="miss" data-hits="0">
+      <td class="line_number">
+        <pre>8</pre>
+      </td>
+      <td>
+        <pre>    for user in @users do</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="miss" data-hits="0">
+      <td class="line_number">
+        <pre>9</pre>
+      </td>
+      <td>
+        <pre>      if user.wants_messages_today</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="miss" data-hits="0">
+      <td class="line_number">
+        <pre>10</pre>
+      </td>
+      <td>
+        <pre>        for cat in user.get_categories</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="miss" data-hits="0">
+      <td class="line_number">
+        <pre>11</pre>
+      </td>
+      <td>
+        <pre>          next_message_id = user.subscription[cat.id][:next_message]</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="miss" data-hits="0">
+      <td class="line_number">
+        <pre>12</pre>
+      </td>
+      <td>
+        <pre>          @message_to_send = Message.find_by_id(next_message_id)</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="miss" data-hits="0">
+      <td class="line_number">
+        <pre>13</pre>
+      </td>
+      <td>
+        <pre>          next_seq_num = @message_to_send.sequence_number + 1</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="miss" data-hits="0">
+      <td class="line_number">
+        <pre>14</pre>
+      </td>
+      <td>
+        <pre>          user.subscription[cat.id][:next_message] = cat.get_message(next_seq_num).id</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="miss" data-hits="0">
+      <td class="line_number">
+        <pre>15</pre>
+      </td>
+      <td>
+        <pre>          Util.send_message(user.phone_number, @messsage_to_send)</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="miss" data-hits="0">
+      <td class="line_number">
+        <pre>16</pre>
+      </td>
+      <td>
+        <pre>          user.add_sent_message_to_conversation @message_to_send</pre>
+      </td>
+      <td class="hits">
+        0
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>17</pre>
+      </td>
+      <td>
+        <pre>        end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>18</pre>
+      </td>
+      <td>
+        <pre>      end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>19</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>20</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -6238,7 +6407,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>8</pre>
+        <pre>21</pre>
       </td>
       <td>
         <pre>end</pre>
