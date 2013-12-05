@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
 
 
   def get_message(seq_num)
-    messages = MessageTemplates.find_by_category(self.id)
+    messages = self.message_templates
     if messages == nil or messages.count == 0
       return nil
     end
@@ -22,6 +22,16 @@ class Category < ActiveRecord::Base
       end
     end
     return nil
+  end
+
+  def update_seqs_by_removing(message)
+    self.message_templates.each do |m|
+      if m.sequence_number > message.sequence_number
+        puts "category>> Updating message: #{m.text}, #{m.sequence_number}"
+        m.sequence_number -= 1
+        m.save!
+      end
+    end
   end
 
 end

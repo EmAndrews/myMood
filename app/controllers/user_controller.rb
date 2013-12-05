@@ -1,3 +1,5 @@
+include Util
+
 class UserController < ApplicationController
   before_filter :authenticate_user!
 
@@ -8,7 +10,7 @@ class UserController < ApplicationController
       redirect_to admin_path
     end
     @categories = Category.all
-    @days = %w(M Tu W Th F Sa Su)
+    @days = Util.week_day_prefixes
     @subscribed_categories = @user.subscription.keys
 
     @subscribed_days = @user.availability.keys
@@ -27,9 +29,10 @@ class UserController < ApplicationController
     unsubscribe = c_ids -  @new_subscribed_categories
     @user = User.find_by_phone_number(params[:phone_number])
     
-    @new_subscribed_categories.each do |cat|
-      if @user.subscription[cat] == nil
-        @user.subscription[cat] = {'place_in_queue' => 0}
+    @new_subscribed_categories.each do |cat_id|
+      cat = Category.find_by_id(cat_id)
+      if @user.subscription[cat_id] == nil
+        @user.subscription[cat_id] = {:next_message => cat.message_templates[0].id}
       end
     end
     

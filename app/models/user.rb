@@ -28,7 +28,9 @@ class User < ActiveRecord::Base
   def wants_messages_today
     day = Time.now.wday
     pre = Util.week_day_prefix_map[day]
-    puts "User> pre: #{pre}, avail: #{self.availability.keys}"
+    puts Util.week_day_prefix_map
+    puts pre
+    puts self.availability.keys
     return self.availability.keys.include? pre
   end
 
@@ -40,12 +42,16 @@ class User < ActiveRecord::Base
   def add_sent_message_to_conversation mess
     ProcessedMessages.create!(:text => mess.text, :data => nil,
                     :from_my_mood => true, :date_processed => Time.now)
+    self.save!
   end
 
   private
     def initial_sign_up
-      self.availability = {"M" => [], "Tu" => [], "W" => [], "Th" => [],
-                            "F" => [], "Sa" => [], "Su" => [] }
-      self.subscription = {"1" => {}}
+      self.availability = {}
+      Util.week_day_prefixes.map {|p| self.availability[p] = []}
+      #TODO Fill me in with the default subscription.
+      self.subscription = {Category.all[0].id.to_s =>
+                            {:next_message => Category.all[0].message_templates[0].id}
+                          }
     end
 end
