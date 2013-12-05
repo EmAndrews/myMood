@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
 # # :Subsription is json object.
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :phone_number, :name, :subscription, :availability
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :phone_number, :name, :subscription, :availability, :is_admin
   # attr_accessible :title, :body
 
   # Trying to mimic devise. 

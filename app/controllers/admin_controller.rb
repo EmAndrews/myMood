@@ -2,6 +2,7 @@ require 'logger'
 include Util
 
 class AdminController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
     Rails.logger.debug('Hi Admin')

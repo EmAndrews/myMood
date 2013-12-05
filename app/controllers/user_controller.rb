@@ -2,9 +2,13 @@ class UserController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @user = User.find_by_phone_number(params[:phone_number])
+    if @user.is_admin?
+      p "HOLY SHIT WE'RE REDIRECTING TO ADMIN"
+      redirect_to admin_path
+    end
     @categories = Category.all
     @days = %w(M Tu W Th F Sa Su)
-    @user = User.find_by_phone_number(params[:phone_number])
     @subscribed_categories = @user.subscription.keys
 
     @subscribed_days = @user.availability.keys

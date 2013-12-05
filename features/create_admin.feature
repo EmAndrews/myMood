@@ -6,7 +6,7 @@ Feature: Create categories as an admin
 	
 Background: I am an admin
 	Given the following users exist:
-  | phone_number   | name    | password  | email | admin |
+  | phone_number   | name    | password  | email | is_admin |
   | 123-456-7890   | Admin   | hunter222 | a@a.a | True  |
   | 111-111-1111   | Bob B   | abcdefgh9 | b@b.b | False |
 
