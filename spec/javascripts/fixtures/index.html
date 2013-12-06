@@ -2,8 +2,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>My Mood</title>
 
-<body style=""><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="padding-bottom: 57px; padding-right: 28px; display: none;"><div id="cboxWrapper" style=""><div id="false" style=""><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div id="false" style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" class="" style="width: 0px; height: 0px; overflow: hidden;"></div><div id="cboxLoadingOverlay" class="" style=""></div><div id="cboxLoadingGraphic" class="" style=""></div><div id="cboxTitle" class="" style=""></div><div id="cboxCurrent" class="" style=""></div><div id="cboxNext" class="" style=""></div><div id="cboxPrevious" class="" style=""></div><div id="cboxSlideshow" class="" style=""></div><div id="cboxClose" class="" style=""></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div id="false" style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div id="false" style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div>
-
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
@@ -26,6 +24,13 @@
 <div class="container-fluid content">
     <div id="homepage-content">
         <div class="row-fluid">
+            <div class="span10 offset1 well" id="alert">
+                <h4 class="message">
+                    <p>Message</p>
+                </h4>
+                <button class="btn status-button" style="margin-top: 5px; margin-left: 10px; float: left">Ok</button>
+                <button class="btn" id="failed-change" style="margin-top: 5px; margin-left: 10px">Go Back to settings</button>
+            </div>
         </div>
         <div class="row-fluid">
             <div class="span2 offset1">
@@ -66,7 +71,7 @@
                 <div class="well settings">
                     <form accept-charset="UTF-8" action="/users" class="new_user" id="new_user" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="_method" type="hidden" value="put"><input name="authenticity_token" type="hidden" value="+1tMsyQ1NP85JuVk/u3Al1Ml899cCjHA5j4HROutdN4="></div>
                         <div>
-                            <label for="user_New Password">New password</label>
+                            <label>New password</label>
                             <i>(leave blank if you don't want to change it)</i>
                             <br>
                             <input autocomplete="off" id="user_password" name="user[password]" size="30" type="password">
