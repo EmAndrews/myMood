@@ -20,11 +20,10 @@ module Util
 	end
 
 	def self.send_message(to, message)
-    #puts ">>Util>> Sending message #{message} to #{to}"
 	  sid = 'ACb85e0121426b1e833e86822cc2800cb6'
 	  token =  'dc7e939dfe23d90dc37644173b7e7415'
 	  
-	  user = User.where(:phone_number => self.convert_to_database_phone(to))
+    user = User.where(:phone_number => self.convert_to_database_phone(to))
 	  unless user.blank?
 			m = ProcessedMessages.new(:text => message)
 	  	m.user_id = user[0].id
@@ -36,4 +35,18 @@ module Util
 		client = Twilio::REST::Client.new sid, token
 		client.account.sms.messages.create(:from => '+15109964117', :to => to, :body => message)
 	end
+
+
+  def self.week_day_prefixes
+    return ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa']
+  end
+
+  def self.week_day_prefix_map
+    i = -1
+    m = {}
+    self.week_day_prefixes.map {|p| m[i+=1] = p}
+    return m
+  end
+
+
 end

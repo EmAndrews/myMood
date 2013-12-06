@@ -3,7 +3,6 @@ class ProcessedMessages < ActiveRecord::Base
 	belongs_to :user 
 	has_one :category 
 	
-	
 	def self.to_csv(options = {})
 		print "testing"
 		CSV.generate(options) do |csv|

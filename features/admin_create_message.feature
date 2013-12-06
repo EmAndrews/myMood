@@ -5,7 +5,11 @@ Feature: Create messages as an admin
 	I want to create messages in categories
 	
 Background: I am an admin
-	Given I am on the myMood home page
+	Given the following users exist:
+    | phone_number | name | password   | email | is_admin |
+    | 111-111-1111 | Admin | admin_password | a@a.a | True|
+
+  Given I am on the myMood home page
 	When I fill in "user_phone_number" with "111-111-1111"
 	When I fill in "user_password" with "admin_password"
 	And I press "Sign in"

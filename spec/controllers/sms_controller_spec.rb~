@@ -12,6 +12,8 @@ describe SmsController do
     clear_messages  #no messages sent yet
     mood_cat = Category.new(:name => "mood", :prefix => 'm')
     mood_cat.save!
+    messTemp = MessageTemplate.new()
+    messTemp.save!
     sleep_cat = Category.new(:name => "sleep", :prefix => 's')
     sleep_cat.save!
     user = User.new(:name => "Kim", :subscription => {mood_cat.id => {}}, :phone_number => kim_phone_dashes, :password => "password123", :password_confirmation => "password123", :email => "email@email.com")
@@ -26,9 +28,6 @@ describe SmsController do
 		it 'should be sent to the user' do
 			open_last_text_message_for kim_phone
 			current_text_message.should have_body "Hello!  How are you feeling today, on a scale of m1-m10?"
-	 	end
-    it 'should be recorded in users conversation' do
-      #TODO: find "Hello!  How are you feeling today, on a scale of m1-m10?" from twilio_number in conversation
 	 	end
 	end
 	

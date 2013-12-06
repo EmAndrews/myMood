@@ -82,80 +82,107 @@ $(function () {
     });
 });
 
-$(function () {
-    var h = new Highcharts.Chart({
-        chart: {
-            renderTo: 'admin-pie-chart',
-            type: 'pie',
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: 'Active vs Inactive Users as of today'
-        },
-        tooltip: {
-            pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    color: '#000000',
-                    connectorColor: '#000000',
-                    format: "<b>{point.name}</b>: {point.percentage:.1f} %"
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Percent of Users',
-            data: [
-                ['Active',       65.0],
-                {
-                    name: 'Inactive',
-                    y: 35.0,
-                    sliced: true,
-                    selected: true
-                }
-            ]
-        }]
-    });
-});
-
-$(document).ready(function () {
+function setCarouselToStopSpinning() {
     $('.carousel').carousel({interval: false});
+}
 
-    $('.status-button').click( function() {
+function removeStatusBarHandler() {
+    $('.status-button').click(function () {
         $('#notice').remove();
         $('#alert').remove();
     });
-
-    $('#failed-change').click( function() {
+}
+function goBackToSettingsAfterFailedChange() {
+    $('#failed-change').click(function () {
         $('#alert').remove();
         $('#homepage-content').hide();
         $('#settings-content').show();
         return false;
     });
-
-    $('#settings').click( function() {
+}
+function clickingOnSettingsHandler() {
+    $('#settings').click(function () {
         $('#homepage-content').hide();
         $('#settings-content').show();
         return false;
     });
-
-    $('.brand').click( function() {
+}
+function clickingOnBrandHandler() {
+    $('.brand').click(function () {
         $('#settings-content').hide();
         $('#homepage-content').show();
         return false;
     });
-
-    $('.home').click( function() {
+}
+function clickingOnHomeHandler() {
+    $('.home').click(function () {
         $('#settings-content').hide();
         $('#homepage-content').show();
         return false;
     });
+}
+function drawAdminPieChartIfAdmin() {
+    if ($('#admin-pie-chart').length != 0) {
+        $(function () {
+            var h = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'admin-pie-chart',
+                    type: 'pie',
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Active vs Inactive Users as of today'
+                },
+                tooltip: {
+                    pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            color: '#000000',
+                            connectorColor: '#000000',
+                            format: "<b>{point.name}</b>: {point.percentage:.1f} %"
+                        }
+                    }
+                },
+                series: [
+                    {
+                        type: 'pie',
+                        name: 'Percent of Users',
+                        data: [
+                            ['Active', 65.0],
+                            {
+                                name: 'Inactive',
+                                y: 35.0,
+                                sliced: true,
+                                selected: true
+                            }
+                        ]
+                    }
+                ]
+            });
+        });
+    }
+}
+$(document).ready(function () {
+
+    drawAdminPieChartIfAdmin();
+
+    setCarouselToStopSpinning();
+
+    removeStatusBarHandler();
+
+    goBackToSettingsAfterFailedChange();
+
+    clickingOnSettingsHandler();
+
+    clickingOnBrandHandler();
+
+    clickingOnHomeHandler();
 });
 

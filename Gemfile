@@ -7,6 +7,10 @@ gem 'rails', '3.2.14'
 
 gem 'twilio-ruby'
 
+group :test do
+  gem 'sms-spec'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'cucumber-rails', '1.0.6', :require => false
@@ -14,9 +18,10 @@ group :development, :test do
   gem 'simplecov'
   gem 'rspec-rails', '~> 2.0'
   gem 'rspec-expectations'
-  gem 'sms-spec'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'jasmine'
+  gem 'jasmine-jquery-rails'
 end
 gem 'pg'
 gem 'devise'

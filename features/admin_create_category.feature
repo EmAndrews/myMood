@@ -6,7 +6,7 @@ Feature: Create categories as an admin
 	
 Background: I am an admin
 	Given the following users exist:
-  | phone_number   | name    | password   | email | admin |
+  | phone_number   | name    | password   | email | is_admin |
   | 111-111-1111   | Admin   | admin_pass | a@a.a | True  |
 
 	Given I am on the myMood home page
