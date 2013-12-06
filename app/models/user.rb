@@ -50,6 +50,12 @@ class User < ActiveRecord::Base
       self.availability = {}
       Util.week_day_prefixes.map {|p| self.availability[p] = []}
       #TODO Fill me in with the default subscription.
+      if Category.all.blank?
+      	return
+      end
+      if Category.all[0].message_templates.blank?
+      	return
+      end
       self.subscription = {Category.all[0].id.to_s =>
                             {:next_message => Category.all[0].message_templates[0].id}
                           }

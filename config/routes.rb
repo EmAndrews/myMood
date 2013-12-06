@@ -9,8 +9,9 @@ Mm::Application.routes.draw do
   end
   
 
-
   get 'user_messages' => 'user#get_user_messages'
+  match 'admin/download' => 'download#download'
+  
 #resources :emily, :collection => { :subscribe_to => :put }
 
   get 'andre' => 'andre#index'

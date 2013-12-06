@@ -12,6 +12,8 @@ describe SmsController do
     clear_messages  #no messages sent yet
     mood_cat = Category.new(:name => "mood", :prefix => 'm')
     mood_cat.save!
+    messTemp = MessageTemplate.new(:category => mood_cat, :sequence_number => 0)
+    messTemp.save!
     sleep_cat = Category.new(:name => "sleep", :prefix => 's')
     sleep_cat.save!
     user = User.new(:name => "Kim", :subscription => {mood_cat.id => {}}, :phone_number => kim_phone_dashes, :password => "password123", :password_confirmation => "password123", :email => "email@email.com")
