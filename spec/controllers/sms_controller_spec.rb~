@@ -27,9 +27,6 @@ describe SmsController do
 			open_last_text_message_for kim_phone
 			current_text_message.should have_body "Hello!  How are you feeling today, on a scale of m1-m10?"
 	 	end
-    it 'should be recorded in users conversation' do
-      #TODO: find "Hello!  How are you feeling today, on a scale of m1-m10?" from twilio_number in conversation
-	 	end
 	end
 	
 	describe 'user responds to service: ' do

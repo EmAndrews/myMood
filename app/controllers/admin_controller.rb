@@ -59,7 +59,10 @@ class AdminController < ApplicationController
       return
     end
   
-    MessageTemplate.create!(:text => message_text, :category => Category.find_by_name(message[:category]))
+    #TODO Find message sequence number
+    cat = Category.find_by_name(message[:category])
+    seq_num = cat.message_templates.count + 1
+    MessageTemplate.create!(:text => message_text, :category => cat, :sequence_number => seq_num)
     flash[:notice] = "Message '#{message_text}' added in category '#{message[:category]}'"
     redirect_to admin_path
   end
@@ -83,6 +86,9 @@ class AdminController < ApplicationController
   end
 
   def delete_message message
+    puts "admin>> Deleting message #{message.text}, #{message.sequence_number}"
+    cat = message.category
+    cat.update_seqs_by_removing(message)
     MessageTemplate.destroy(message.id)
     flash[:notice] = "Message '#{message.text}' deleted."
   end

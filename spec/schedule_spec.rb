@@ -1,5 +1,4 @@
 require 'spec_helper'
-require_relative '../lib/MessageSendingJob'
 include Util
 
 describe MessageSendingJob do
