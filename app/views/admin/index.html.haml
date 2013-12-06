@@ -70,6 +70,7 @@
                 %tr
                   %th Message
                   %th Category
+                  %th Sequence Number
                   %th Delete
                 - @messages.each do |message|
                   %tr
@@ -78,6 +79,7 @@
                       %td= message.category.name
                     - else
                       %td No Category
+                    %td= message.sequence_number
                     %td
                       = form_tag admin_path, :method => :delete do
                         -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
