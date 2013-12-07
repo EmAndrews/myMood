@@ -57,4 +57,18 @@ class UserController < ApplicationController
     flash[:notice] = 'Your availability has been changed'
     redirect_to profile_path
   end
+
+##################################
+## -- TODO this is probably wrong.
+## -- Routed to by: "GET user_messages"
+  def get_user_messages
+    @user = User.find_by_phone_number(params[:phone_number])
+    respond_to do |format|
+      format.json {render :json => @user.processed_messages}
+    end
+  end
+##################################
+
+
+
 end

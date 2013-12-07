@@ -8,6 +8,10 @@ Mm::Application.routes.draw do
     match 'sms/receive_sms' => 'sms#receive_sms'  #kim's messing with stuff
   end
   
+
+  get 'user_messages' => 'user#get_user_messages'
+  match 'admin/download' => 'download#download'
+  
 #resources :emily, :collection => { :subscribe_to => :put }
 
   get 'andre' => 'andre#index'

@@ -2,7 +2,18 @@ require 'logger'
 include Util
 
 class AdminController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_admin
+
+  def authenticate_admin
+    authenticate_user!
+    @user = User.find_by_id(session['warden.user.user.key'])
+    p @user
+    p session[:id]
+    p session
+    if !@user.is_admin?
+      redirect_to '/'
+    end
+  end
 
   def index
     Rails.logger.debug('Hi Admin')
@@ -80,6 +91,19 @@ class AdminController < ApplicationController
     cat.update_seqs_by_removing(message)
     MessageTemplate.destroy(message.id)
     flash[:notice] = "Message '#{message.text}' deleted."
+  end
+  
+  def create_new_admin
+    admin_phone = params[:admin_phone_number]
+    if User.find_by_phone_number(admin_phone)
+      new_admin = User.find_by_phone_number(admin_phone)
+      new_admin.is_admin = true
+      name = new_admin.name
+      new_admin.save!
+      flash[:notice] = "#{name} has been given admin access"
+    else
+      flash[:notice] = "Sorry, there is no user that matches that phone number"
+    end
   end
 
 end
