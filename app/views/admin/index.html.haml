@@ -153,3 +153,9 @@
           = label :message, :category, 'Message Category'
           = select :message, :category, @categories.map{|c| [c.name, c.name]}, :required => 'true'
           = submit_tag 'Add Message', :id => 'add-new-message', :class => 'btn'
+
+    %div.well.span5
+      = form_for admin_path do
+        = label :admin_phone_number, :text, "New Admin Phone Number:"
+        = text_field :admin_phone_number, 'text'
+        = submit_tag 'Add Admin', :id => 'add-new-admin'
