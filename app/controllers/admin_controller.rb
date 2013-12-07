@@ -10,7 +10,7 @@ class AdminController < ApplicationController
     p @user
     p session[:id]
     p session
-    if !@user.is_admin?
+    unless @user.is_admin?
       redirect_to '/'
     end
   end

@@ -171,6 +171,13 @@ function drawAdminPieChartIfAdmin() {
 }
 $(document).ready(function () {
 
+    var user_msgs;
+    $.get('/user_messages',function(data) {
+        user_msgs = data;
+    }, 'json');
+
+    console.log(user_msgs);
+
     drawAdminPieChartIfAdmin();
 
     setCarouselToStopSpinning();

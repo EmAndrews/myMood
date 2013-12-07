@@ -58,17 +58,12 @@ class UserController < ApplicationController
     redirect_to profile_path
   end
 
-##################################
-## -- TODO this is probably wrong.
-## -- Routed to by: "GET user_messages"
+  ## -- Routed to by: "GET user_messages"
   def get_user_messages
-    @user = User.find_by_phone_number(params[:phone_number])
+    @user = current_user
     respond_to do |format|
       format.json {render :json => @user.processed_messages}
     end
   end
-##################################
-
-
 
 end
