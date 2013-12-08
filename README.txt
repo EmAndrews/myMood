@@ -17,7 +17,8 @@ In the method "self.send_message(to, message)"
 Change sid, token, and twilio_number (+1##########) to the new values
 
 	*** To change the text on the myMood homepage: ***
-Go to ???
+Go to app/views/devise/sessions/new.html.haml
+Change the old text to whatever you'd like it to say on the homepage
 
 
 
@@ -53,16 +54,17 @@ ADMIN INTERFACE
 
 
 
-SUPER TECHY CODE STUFF - PLEASE IGNORE
+SUPER TECHY CODE STUFF - Please ignore if you're not a super techy code person
 
 	*** Database Structure ***
 	
 	???
 
-	*** Handling multiple Twilio numbers: ***
+	*** Changing myMood to multiple Twilio numbers: ***
 Vic and Adrian suggested that they would like different phone numbers for different
 categories.  The suggestion came too late for us to implement it.  It requires some extra work.
-1. Store the new numbers in some sort of table, or hardcode them in
+
+1. Store the new numbers (and sid/tokens) in some sort of table, or hardcode them in
 	Make sure this is accessible to lib/Util.rb
 	
 2. In lib/util.rb, change send_sms to handle different twilio_numbers
