@@ -19,6 +19,9 @@ class AdminController < ApplicationController
     Rails.logger.debug('Hi Admin')
     @messages = MessageTemplate.all
     @categories = Category.all
+    if params[:commit] == "Download CSV"
+      download
+    end
   end
 
 
@@ -111,7 +114,6 @@ class AdminController < ApplicationController
   def download
     csv_file = ProcessedMessages.gen_csv()
     send_data csv_file, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=test.csv"
-    redirect_to admin_path
   end
 
 end

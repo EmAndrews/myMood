@@ -23,6 +23,7 @@ Mm::Application.routes.draw do
   delete 'admin' => 'admin#delete_something'
   get 'admin/download' => 'admin#download'
   post 'admin/create' => 'admin#create_new_admin'
+
   #match 'profile/:phone_number' => 'user#index', :as => :profile
   #get '/profile/:phone_number', to: 'user#index', as: 'profile'
 
