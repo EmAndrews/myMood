@@ -21,6 +21,7 @@ describe SmsController do
   end
 	
 	before do
+		clear_messages
 		Util.send_message('+14104023113', "Hello!  How are you feeling today, on a scale of m1-m10?")  #this works now, thanks andre!
 	end
 
