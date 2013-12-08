@@ -15,18 +15,12 @@ Background: I am an admin
 	When I fill in "user_password" with "hunter222"
 	And I press "Sign in"
 	
-Scenario: Admin creation interface
-	Given I am on the admin category page
-	Then I should see "To create a new admin, first create a normal account."
-	And I should see "Then, input that user's phone number and name."
-	And I should see "The name you give must match the name on the account."
-	
 Scenario: Create a new admin (successful)
 	Given I am on the admin category page
 	When I fill in "admin_phone_number_text" with "111-111-1111"
 	And I press "Add Admin"
 	
-	Then I should see "'111-111-1111' is now an admin."
+	Then I should see "Bob B has been given admin access"
 	
 	When I follow "Logout"
 	Given I am on the myMood home page
@@ -44,14 +38,14 @@ Scenario: Create a new admin (unsuccessful - blank phone)
 	When I fill in "admin_phone_number_text" with ""
 	And I press "Add Admin"
 	
-	Then I should see "Phone number cannot be blank."
+	Then I should see "Sorry, there is no user that matches that phone number"
 	
 Scenario: Create a new admin (unsuccessful - bad number)
 	Given I am on the admin category page
 	When I fill in "admin_phone_number_text" with "123-111-1111"
 	And I press "Add Admin"
 	
-	Then I should see "Could not find user '123-111-1111'"
+	Then I should see "Sorry, there is no user that matches that phone number"
 	
 Scenario: Non-admin cannot see admin page
 	When I follow "Logout"

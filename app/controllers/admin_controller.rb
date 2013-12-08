@@ -103,7 +103,7 @@ class AdminController < ApplicationController
       new_admin.save!
       flash[:notice] = "#{name} has been given admin access"
     else
-      flash[:notice] = "Sorry, there is no user that matches that phone number"
+      flash[:alert] = "Sorry, there is no user that matches that phone number"
     end
     redirect_to admin_path
   end
