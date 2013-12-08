@@ -7,9 +7,9 @@ class AdminController < ApplicationController
   def authenticate_admin
     authenticate_user!
     @user = User.find_by_id(session['warden.user.user.key'])
-    p @user
-    p session[:id]
-    p session
+    #p @user
+    #p session[:id]
+    #p session
     unless @user.is_admin?
       redirect_to '/'
     end
