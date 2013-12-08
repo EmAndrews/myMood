@@ -62,5 +62,6 @@ class User < ActiveRecord::Base
     end
 
     def welcome_message
+    	Util.send_message(Util.convert_to_twilio_phone(phone_number), "Welcome to myMood!")
     end
 end

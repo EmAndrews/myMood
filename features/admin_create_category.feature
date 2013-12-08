@@ -7,7 +7,7 @@ Feature: Create categories as an admin
 Background: I am an admin
 	Given the following users exist:
   | phone_number   | name    | password   | email | is_admin |
-  | 111-111-1111   | Admin   | admin_pass | a@a.a | True  |
+  | 111-111-1111   | Admin   | admin_pass | a@a.a | true  |
 
 	Given I am on the myMood home page
 	When I fill in "user_phone_number" with "111-111-1111"
