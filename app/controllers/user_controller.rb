@@ -6,7 +6,6 @@ class UserController < ApplicationController
   def index
     @user = User.find_by_phone_number(params[:phone_number])
     if @user.is_admin?
-      p "redirect to admin"
       redirect_to admin_path
     end
     @categories = Category.all
