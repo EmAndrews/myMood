@@ -30,7 +30,6 @@
               %div.span10.offset1.well#alert
                 %h4.message= msg
                 %button.btn.status-button{:style => 'margin-top: 5px; margin-left: 10px; float: left'} Ok
-                %button.btn#failed-change{:style => 'margin-top: 5px; margin-left: 10px'} Go Back to settings
         %div.row-fluid
           %div.span5.offset1
             %h3 Average Graphs for All Users
@@ -61,7 +60,7 @@
                             = submit_tag '×', :class => 'delete-btn btn', :id => 'category-' + category.prefix, :data => { :confirm => 'Are you sure?' }
                 %a.btn{'data-toggle' => 'modal', href: '#addCategoryModal', role: 'button'} Add new category
         %div.row-fluid
-          %div.span10.offset1
+          %div.span7.offset1
             %h3#message-header Messages
             %a.btn#add-message{'data-toggle' => 'modal', href: '#addMessageModal', role: 'button'} Add new message
             %div#messages.well
@@ -85,6 +84,24 @@
                       = form_tag admin_path, :method => :delete do
                         = hidden_field :message_id, message.id
                         = submit_tag '×', :class => 'delete-btn btn', :id => 'message-' + counter.to_s, :data => { :confirm => 'Are you sure?' }
+          %div.span3
+            %h3 Options
+            %div.well
+              %a.btn{'data-toggle' => 'modal', href: '#addAdminModal', role: 'button'} Add new admin
+              %br
+              %br
+              = form_for admin_download_path, :method => :get do
+                = submit_tag 'Download CSV', :id => 'download_csv', :class => 'btn'
+
+    #addAdminModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'addAdminModalLabel', role: 'dialog', tabindex: '-1'}
+      .modal-header
+        %button.close{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'} ×
+        %h3#addAdminModalLabel Add Admin
+      .modal-body
+        = form_for admin_create_path do
+          = label :admin_phone_number, 'New Admin Phone Number:'
+          = text_field :admin_phone_number, :text
+          = submit_tag 'Add Admin', :id => 'add-new-admin', :class => 'btn'
 
     #addCategoryModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'addCategoryModalLabel', role: 'dialog', tabindex: '-1'}
       .modal-header
@@ -119,14 +136,3 @@
         = button_to admin_download_path
         = form_for admin_download_path, :method => :get do
           = submit_tag 'Download CSV', :id => 'download_csv'
-
-    %div.well.span5
-      = form_for admin_create_path do
-        = label :admin_phone_number, "New Admin Phone Number:"
-        = text_field :admin_phone_number, :text
-        = submit_tag 'Add Admin', :id => 'add-new-admin'
-    
-    %div.well.span5
-      = button_to admin_download_path
-      = form_for admin_download_path, :method => :get do
-        = submit_tag 'Download CSV', :id => 'download_csv'
