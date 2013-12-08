@@ -84,7 +84,7 @@
                     %td
                       = form_tag admin_path, :method => :delete do
                         = hidden_field :message_id, message.id
-                        = submit_tag '×', :class => 'delete-btn btn', :id => 'message-' + counter, :data => { :confirm => 'Are you sure?' }
+                        = submit_tag '×', :class => 'delete-btn btn', :id => 'message-' + counter.to_s, :data => { :confirm => 'Are you sure?' }
 
     #addCategoryModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'addCategoryModalLabel', role: 'dialog', tabindex: '-1'}
       .modal-header
