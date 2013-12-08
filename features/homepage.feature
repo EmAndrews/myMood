@@ -10,4 +10,3 @@ Scenario: Viewing hompage
         And I should see "Password"
         And I should see "Remember me"
         And I should see "Sign up"
-        And I should see "Forgot your password?"

@@ -16,4 +16,10 @@ describe Util do
 			Util.convert_to_database_phone("2223334444").should == "222-333-4444"
 		end
 	end
+	
+	describe 'week day prefix map' do
+		it 'should return a map' do
+			Util.week_day_prefix_map.should == {0 => "Su", 1 => "M", 2 => "Tu", 3 => "W", 4 => "Th", 5 => "F", 6 => "Sa" } 
+		end
+	end
 end

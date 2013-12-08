@@ -34,7 +34,11 @@ module Util
 		end
 	  
 		client = Twilio::REST::Client.new sid, token
-		client.account.sms.messages.create(:from => twilio_number, :to => to, :body => message)
+		begin
+			client.account.sms.messages.create(:from => twilio_number, :to => to, :body => message)
+		rescue
+			puts "message not sent, twilio crashed!"
+		end
 	end
 
 
