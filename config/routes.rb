@@ -10,7 +10,6 @@ Mm::Application.routes.draw do
   
 
   get 'user_messages' => 'user#get_user_messages'
-  match 'admin/download' => 'download#download'
   
 #resources :emily, :collection => { :subscribe_to => :put }
 
@@ -22,8 +21,8 @@ Mm::Application.routes.draw do
   get 'admin' => 'admin#index'
   post 'admin' => 'admin#new_something'
   delete 'admin' => 'admin#delete_something'
-
-
+  get 'admin/download' => 'admin#download'
+  post 'admin/create' => 'admin#create_new_admin'
   #match 'profile/:phone_number' => 'user#index', :as => :profile
   #get '/profile/:phone_number', to: 'user#index', as: 'profile'
 
@@ -87,4 +86,6 @@ Mm::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+#Test
 end

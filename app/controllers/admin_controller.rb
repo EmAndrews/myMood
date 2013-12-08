@@ -6,13 +6,13 @@ class AdminController < ApplicationController
 
   def authenticate_admin
     authenticate_user!
-    @user = User.find_by_id(session['warden.user.user.key'])
-    p @user
-    p session[:id]
-    p session
-    unless @user.is_admin?
-      redirect_to '/'
-    end
+# @user = User.find_by_id(session['warden.user.user.key'])
+#p @user
+#p session[:id]
+#  p session
+#  unless @user.is_admin?
+#    redirect_to '/'
+#  end
   end
 
   def index
@@ -28,6 +28,8 @@ class AdminController < ApplicationController
       new_message params[:message]
     elsif commit == 'Add Category'
       new_category params[:category]
+    elsif commit == 'Add Admin'
+      create_new_admin params[:admin_phone_number][:text]
     else
       redirect_to admin_path
     end
@@ -93,8 +95,7 @@ class AdminController < ApplicationController
     flash[:notice] = "Message '#{message.text}' deleted."
   end
   
-  def create_new_admin
-    admin_phone = params[:admin_phone_number]
+  def create_new_admin admin_phone
     if User.find_by_phone_number(admin_phone)
       new_admin = User.find_by_phone_number(admin_phone)
       new_admin.is_admin = true
@@ -104,6 +105,13 @@ class AdminController < ApplicationController
     else
       flash[:notice] = "Sorry, there is no user that matches that phone number"
     end
+    redirect_to admin_path
+  end
+  
+  def download
+    csv_file = ProcessedMessages.gen_csv()
+    send_data csv_file, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=test.csv"
+    redirect_to admin_path
   end
 
 end

@@ -154,8 +154,23 @@
           = select :message, :category, @categories.map{|c| [c.name, c.name]}, :required => 'true'
           = submit_tag 'Add Message', :id => 'add-new-message', :class => 'btn'
 
+    #downloadModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'downloadModalLabel', role: 'dialog', tabindex: '-1'}
+      .modal-header
+        %button.close{'aria-hidden' => 'true', 'data-dismiss' => 'modal', type: 'button'} ×
+        %h3#downloadModalLabel Download CSV
+      .modal-body
+        Hi Emily
+        = button_to admin_download_path
+        = form_for admin_download_path, :method => :get do
+          = submit_tag 'Download CSV', :id => 'download_csv'
+
     %div.well.span5
-      = form_for admin_path do
-        = label :admin_phone_number, :text, "New Admin Phone Number:"
-        = text_field :admin_phone_number, 'text'
+      = form_for admin_create_path do
+        = label :admin_phone_number, "New Admin Phone Number:"
+        = text_field :admin_phone_number, :text
         = submit_tag 'Add Admin', :id => 'add-new-admin'
+    
+    %div.well.span5
+      = button_to admin_download_path
+      = form_for admin_download_path, :method => :get do
+        = submit_tag 'Download CSV', :id => 'download_csv'
