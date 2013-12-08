@@ -60,9 +60,8 @@ class UserController < ApplicationController
 
   ## -- Routed to by: "GET user_messages"
   def get_user_messages
-    @user = current_user
     respond_to do |format|
-      format.json {render :json => @user.processed_messages}
+      format.json {render :json => :processed_messages}
     end
   end
 
