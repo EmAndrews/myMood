@@ -57,9 +57,8 @@
                         %td= category.prefix
                         %td
                           = form_tag admin_path, :method => :delete do
-                            -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
                             = hidden_field :category_id, category.id
-                            = submit_tag '×', :class => 'delete-btn btn', :data => { :confirm => 'Are you sure?' }
+                            = submit_tag '×', :class => 'delete-btn btn', :id => 'category-' + category.prefix, :data => { :confirm => 'Are you sure?' }
                 %a.btn{'data-toggle' => 'modal', href: '#addCategoryModal', role: 'button'} Add new category
         %div.row-fluid
           %div.span10.offset1
@@ -72,7 +71,9 @@
                   %th Category
                   %th Sequence Number
                   %th Delete
+                - counter = -1
                 - @messages.each do |message|
+                  - counter += 1
                   %tr
                     %td= message.text
                     - if message.category
@@ -82,53 +83,8 @@
                     %td= message.sequence_number
                     %td
                       = form_tag admin_path, :method => :delete do
-                        -# HACK HACK FIX ME THIS DOESN'T WORK PROPERLY
                         = hidden_field :message_id, message.id
-                        = submit_tag '×', :class => 'delete-btn btn', :data => { :confirm => 'Are you sure?' }
-
-
-
-      -#%div#settings-content
-      -#  %div.row-fluid.opaque
-      -#    %div.span5.offset1
-      -#      %h3.title-against-dark-bg User Settings
-      -#      %div.well.settings
-      -#        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-      -#          = devise_error_messages!
-      -#          %div
-      -#            = f.label 'New Password'
-      -#            %i (leave blank if you don't want to change it)
-      -#            %br
-      -#            = f.password_field :password, :autocomplete => 'off'
-      -#          %div
-      -#            = f.label :password_confirmation
-      -#            = f.password_field :password_confirmation
-      -#          %div
-      -#            = f.label :current_password
-      -#            %i (we need your current password to confirm your changes)
-      -#            = f.password_field :current_password
-      -#          %div= f.submit 'Save'
-      -#        %p
-      -#          #{button_to 'Cancel my account', registration_path(resource_name), :data => { :confirm => 'Are you sure?' }, :method => :delete}
-      -#        = link_to 'Back', :back
-      -#    %div.span5
-      -#      %h3.title-against-dark-bg Admins
-      -#      %div.well.settings
-      -#        -#= flash[:notice]
-      -#        -#%h4 Categories:
-      -#        -#= form_tag profile_path, :method => :put do
-      -#        -#  - @categories.each do |cat|
-      -#        -#    = check_box_tag 'category_id[]',cat.id, @subscribed_categories.include?(cat.id.to_s)
-      -#        -#    = cat.name
-      -#        -#    %br
-      -#        -#  = submit_tag 'Subscribe', :id => 'subscribe'
-      -#        -#%h4 Schedule Preferences
-      -#        -#= form_tag profile_path, :method => :put do
-      -#        -#  - @days.each do |day|
-      -#        -#    = day
-      -#        -#    = check_box_tag 'days[]', "#{day}", @subscribed_days.include?(day)
-      -#        -#  = submit_tag 'Update', :id => 'availability'
-
+                        = submit_tag '×', :class => 'delete-btn btn', :id => 'message-' + counter, :data => { :confirm => 'Are you sure?' }
 
     #addCategoryModal.modal.hide.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'addCategoryModalLabel', role: 'dialog', tabindex: '-1'}
       .modal-header
@@ -156,6 +112,6 @@
 
     %div.well.span5
       = form_for admin_path do
-        = label :admin_phone_number, :text, "New Admin Phone Number:"
+        = label :admin_phone_number, :text, 'New Admin Phone Number:'
         = text_field :admin_phone_number, 'text'
         = submit_tag 'Add Admin', :id => 'add-new-admin'
