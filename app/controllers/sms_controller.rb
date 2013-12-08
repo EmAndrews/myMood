@@ -5,6 +5,7 @@ class SmsController < ApplicationController
 	def receive_sms
 		message = params[:Body]
 		from = params[:From]		#phone number of user
+		to = params[:To] #the number this was sent to (the Twilio number)
 
 		#Look up user w/ phone number, make sure actually in db
 		users = User.where(:phone_number => Util.convert_to_database_phone(from))
