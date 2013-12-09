@@ -27,7 +27,6 @@ class Category < ActiveRecord::Base
   def update_seqs_by_removing(message)
     self.message_templates.each do |m|
       if m.sequence_number > message.sequence_number
-        puts "category>> Updating message: #{m.text}, #{m.sequence_number}"
         m.sequence_number -= 1
         m.save!
       end
