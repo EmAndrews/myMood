@@ -56,9 +56,15 @@ ADMIN INTERFACE
 
 SUPER TECHY CODE STUFF - Please ignore if you're not a super techy code person
 
-	*** Database Structure ***
-	
-	???
+	*** Database-y Stuff ***
+MessageTemplate: The things that will be (or have been sent as) messages from myMood to a user.
+	These belong to categories.
+ProcessedMessages: Things that have actually been sent from myMood, or were sent TO myMood from a user.
+	There is always a user_id, either who sent to myMood or who myMood sent to
+	Parse-able messages from the user will store the mood rating as its data
+lib/util.rb: send_message and other utilities live here
+User: Also admins, when is_admin is true.
+
 
 	*** Changing myMood to multiple Twilio numbers: ***
 Vic and Adrian suggested that they would like different phone numbers for different
