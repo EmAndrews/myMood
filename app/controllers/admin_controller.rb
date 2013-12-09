@@ -116,4 +116,17 @@ class AdminController < ApplicationController
     send_data csv_file, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=test.csv"
   end
 
+  def get_user_messages
+    # need messages from every user from the last 7 days
+    @processed_messages = ProcessedMessages.where('date_processed > ?', Date.today - 6)
+    @prefixes = Category.find(:all,:select => 'name, prefix')
+    respond_to do |format|
+      format.json {
+        render :json => {
+            :processed_messages => @processed_messages,
+            :prefixes => @prefixes,
+        }
+      }
+    end
+  end
 end

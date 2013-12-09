@@ -10,6 +10,7 @@ Mm::Application.routes.draw do
   
 
   get 'user_messages' => 'user#get_user_messages'
+  get 'all_messages' => 'admin#get_user_messages'
   
 #resources :emily, :collection => { :subscribe_to => :put }
 
