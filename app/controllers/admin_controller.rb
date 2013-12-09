@@ -6,13 +6,10 @@ class AdminController < ApplicationController
 
   def authenticate_admin
     authenticate_user!
-# @user = User.find_by_id(session['warden.user.user.key'])
-#p @user
-#p session[:id]
-#  p session
-#  unless @user.is_admin?
-#    redirect_to '/'
-#  end
+    @user = User.find_by_phone_number(current_user.phone_number)
+    unless @user.is_admin?
+      redirect_to '/'
+    end
   end
 
   def index
