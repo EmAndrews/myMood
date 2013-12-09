@@ -133,9 +133,9 @@ function drawAdminPieChartIfAdmin() {
 $(document).ready(function () {
 
     $.get('/user_messages',function (messages) {
-        console.log("data was successfully received from the ajax request");
-        console.log(messages.processed_messages);
-        console.log(messages.prefixes);
+//        console.log("data was successfully received from the ajax request");
+//        console.log(messages.processed_messages);
+//        console.log(messages.prefixes);
         // create dictionary {category, ratings (array[7]) to easily convert to how highcharts wants the data to be
         // convert the dates in data_graph to be indices for the last_seven_days
         //      (data_graph.date - 7th_day_ago) / 1000 / 60 / 60/ 24
@@ -291,8 +291,9 @@ $(document).ready(function () {
             });
         });
 
-    $.get('/all_messages',function (messages) {
 
+    $.get('/all_messages',function (messages) {
+        console.log(messages);
     }, 'json').fail(function() {
             // fail case
         });
