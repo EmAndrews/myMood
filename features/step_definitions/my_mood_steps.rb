@@ -1,9 +1,12 @@
-Given /^the following moods exist:$/ do |table|
-  table.hashes.each do |mood_point|
-    MoodPoint.create!(mood_point)
+#Fill in default messages.  Use this for subscription testing
+Given /^the following categories exist with messages:$/ do |table|
+  table.hashes.each do |cat|
+    c = Category.create!(cat)
+    MessageTemplate.create!(:category => c, :sequence_number => 0)
   end
 end
 
+#No default messages.  Useful for admin interface testing
 Given /^the following categories exist:$/ do |table|
   table.hashes.each do |cat|
     Category.create!(cat)

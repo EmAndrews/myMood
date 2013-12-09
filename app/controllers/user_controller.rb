@@ -31,6 +31,9 @@ class UserController < ApplicationController
     @new_subscribed_categories.each do |cat_id|
       cat = Category.find_by_id(cat_id)
       if @user.subscription[cat_id] == nil
+      	if cat.message_templates[0] == nil	#something broke, if we hit this
+      		return
+      	end
         @user.subscription[cat_id] = {:next_message => cat.message_templates[0].id}
       end
     end

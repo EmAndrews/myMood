@@ -6,14 +6,14 @@ Feature: change preferences
 
 Background: users are in the database
 
-  Given the following users exist:
-  | phone_number | name | password  | email |
-  | 222-222-2222 | Bob  | pass12345 | b@B.com |
-
-  Given the following categories exist:
+  Given the following categories exist with messages:
   | name | prefix |
   | mood | m      |
   | sleep | s     |
+
+  Given the following users exist:
+  | phone_number | name | password  | email |
+  | 222-222-2222 | Bob  | pass12345 | b@B.com |
 
   And I am on the myMood home page
   When I fill in "user_phone_number" with "222-222-2222"
