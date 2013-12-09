@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   private
     def initial_sign_up
       self.availability = {}
-      Util.week_day_prefixes.map {|p| self.availability[p] = 1}
+      Util.week_day_prefixes.map {|p| self.availability[p] = []}
       if Category.all.blank?
       	return
       end
