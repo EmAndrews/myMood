@@ -13,11 +13,7 @@ Background: I am an admin
 	When I fill in "user_phone_number" with "111-111-1111"
 	When I fill in "user_password" with "admin_password"
 	And I press "Sign in"
-	
-Scenario: I should see a download button
-	Given I am on the admin category page
-	Then I should see "Download CSV"
-	
+
 Scenario: Should be on admin page after download
 	Given I am on the admin category page
 	When I press "download_csv"
