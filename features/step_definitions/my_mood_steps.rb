@@ -6,6 +6,12 @@ Given /^the following categories exist with messages:$/ do |table|
   end
 end
 
+Given /^the following messages exist:$/ do |table|
+  table.hashes.each do |m|
+    MessageTemplate.create!(m)
+  end
+end
+
 #No default messages.  Useful for admin interface testing
 Given /^the following categories exist:$/ do |table|
   table.hashes.each do |cat|

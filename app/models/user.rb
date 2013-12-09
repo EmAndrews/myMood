@@ -63,4 +63,12 @@ class User < ActiveRecord::Base
     def welcome_message
     	Util.send_message(Util.convert_to_twilio_phone(phone_number), "Welcome to myMood!")
     end
+
+    def unsubscribe_from cat_id
+      self.subscription.remove cat_id
+      self.save!
+    end
+
+
+
 end
