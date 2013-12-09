@@ -132,121 +132,88 @@ function drawAdminPieChartIfAdmin() {
 }
 $(document).ready(function () {
 
-    $.get('/user_messages',function (messages) {
-//        console.log("data was successfully received from the ajax request");
-//        console.log(messages.processed_messages);
-//        console.log(messages.prefixes);
-        // create dictionary {category, ratings (array[7]) to easily convert to how highcharts wants the data to be
-        // convert the dates in data_graph to be indices for the last_seven_days
-        //      (data_graph.date - 7th_day_ago) / 1000 / 60 / 60/ 24
-        // use index to go into ratings array in dictionary
+    if ($('#settings').length != 0) {
+        $.get('/user_messages',function (messages) {
+    //        console.log("data was successfully received from the ajax request");
+    //        console.log(messages.processed_messages);
+    //        console.log(messages.prefixes);
+            // create dictionary {category, ratings (array[7]) to easily convert to how highcharts wants the data to be
+            // convert the dates in data_graph to be indices for the last_seven_days
+            //      (data_graph.date - 7th_day_ago) / 1000 / 60 / 60/ 24
+            // use index to go into ratings array in dictionary
 
-        // first create [[index into ratings array in dict, rating, category], ...]
-        var graph_data = [];
-        for (var i = 0; i < messages.processed_messages.length; i++) {
-            // only checking for messages the user responded with and not twilio's response
-            if (messages.processed_messages[i].data != null) {
-                graph_data[i] = [];
-                d = new Date();
-                d.setDate(d.getDate() - 6);
-                graph_data[i][0] = Math.floor((new Date(messages.processed_messages[i].date_processed) - d) / 1000 / 60 / 60/ 24);
-                graph_data[i][1] = messages.processed_messages[i].data;
-                // need to parse prefix from text and then find the corresponding Category it belongs to
-                var prefix = messages.processed_messages[i].text.split(messages.processed_messages[i].data)[0];
-                for (var j = 0; j < messages.prefixes.length; j++) {
-                    if (messages.prefixes[j].prefix == prefix) {
-                        graph_data[i][2] = messages.prefixes[j].name;
-                        break;
+            // first create [[index into ratings array in dict, rating, category], ...]
+            var graph_data = [];
+            for (var i = 0; i < messages.processed_messages.length; i++) {
+                // only checking for messages the user responded with and not twilio's response
+                if (messages.processed_messages[i].data != null) {
+                    graph_data[i] = [];
+                    d = new Date();
+                    d.setDate(d.getDate() - 6);
+                    graph_data[i][0] = Math.ceil((new Date(messages.processed_messages[i].date_processed) - d) / 1000 / 60 / 60/ 24);
+                    graph_data[i][1] = messages.processed_messages[i].data;
+                    // need to parse prefix from text and then find the corresponding Category it belongs to
+                    var prefix = messages.processed_messages[i].text.split(messages.processed_messages[i].data)[0];
+                    for (var j = 0; j < messages.prefixes.length; j++) {
+                        if (messages.prefixes[j].prefix == prefix) {
+                            graph_data[i][2] = messages.prefixes[j].name;
+                            break;
+                        }
                     }
                 }
             }
-        }
 
-        // sorting graph_data by date in ascending order
-        graph_data = graph_data.sort(function(a,b) {
-            return a[0] - b[0];
-        });
-
-        // getting last 7 days for the x-axis
-        var d = new Date();
-        d.setDate(d.getDate() - 6);
-        var last_seven_days = [];
-        for (var k = 0; k < 7; k++) {
-            last_seven_days[k] = (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
-            d.setDate(d.getDate() + 1);
-        }
-
-        // setting up the dictionary to then easily convert to data for the graph
-        var dict = {};
-        for (var l = 0; l < graph_data.length; l++) {
-            if (dict[graph_data[l][2]] == null) {
-                dict[graph_data[l][2]] = [null, null, null, null, null, null, null];
-            } else {
-                dict[graph_data[l][2]][graph_data[l][0]] = parseInt(graph_data[l][1]);
+            if (graph_data[0] == null) {
+                graph_data.shift();
             }
-        }
 
-        //if user just signed up or is inactive, make null graph for categories they are signed up for
-        // TODO: HACK ONLY DOING THIS NOW FOR FAKE USER
-        // with real user, need to get categories from messages.categories and make null arrays for each category
-        if (graph_data.length == 0) {
-            dict['Mood'] = [null, null, null, null, null, null, null];
-        }
-
-        // converting dict into array of objects to pass into highcharts
-        var data = [];
-        var counter = 0;
-        for (var h in dict) {
-            data[counter++] = {
-                name: h,
-                data: dict[h]
-            };
-        }
-
-        // using highcharts code to create graph
-        $(function () {
-            var h = new Highcharts.Chart({
-                chart: {
-                    renderTo: 'line-graph',
-                    type: 'line'
-                },
-                title: {
-                    text: 'Week of Ratings',
-                    x: -20 //center
-                },
-                xAxis: {
-                    categories: last_seven_days
-                },
-                yAxis: {
-                    title: {
-                        text: 'Ratings'
-                    },
-                    max: 10,
-                    min: 0,
-                    tickInterval: 1,
-                    plotLines: [
-                        {
-                            value: 0,
-                            width: 1,
-                            color: '#808080'
-                        }
-                    ]
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle',
-                    borderWidth: 0
-                },
-                plotOptions: {
-                    series: {
-                        connectNulls: true
-                    }
-                },
-                series: data
+            // sorting graph_data by date in ascending order
+            graph_data = graph_data.sort(function(a,b) {
+                return a[0] - b[0];
             });
-        });
-    }, 'json').fail(function () {
+
+            // getting last 7 days for the x-axis
+            var d = new Date();
+            d.setDate(d.getDate() - 6);
+            var last_seven_days = [];
+            for (var k = 0; k < 7; k++) {
+                last_seven_days[k] = (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
+                d.setDate(d.getDate() + 1);
+            }
+
+            // setting up the dictionary to then easily convert to data for the graph
+            var dict = {};
+            for (var l = 0; l < graph_data.length; l++) {
+                if (dict[graph_data[l][2]] == null) {
+                    dict[graph_data[l][2]] = [null, null, null, null, null, null, null];
+                } else {
+                    dict[graph_data[l][2]][graph_data[l][0]] = parseInt(graph_data[l][1]);
+                }
+            }
+
+            //if user just signed up or is inactive, make null graph for categories they are signed up for
+            if (graph_data.length == 0) {
+                for (var x = 0; x < messages.categories.length; x++) {
+                    var cat_id = parseInt(messages.categories[x]);
+                    for (var a = 0; a < messages.prefixes.length; a++) {
+                        if (messages.prefixes[a].id === cat_id) {
+                            dict[messages.prefixes[a].name] = [null, null, null, null, null, null, null];
+                        }
+                    }
+                }
+            }
+
+            // converting dict into array of objects to pass into highcharts
+            var data = [];
+            var counter = 0;
+            for (var h in dict) {
+                data[counter++] = {
+                    name: h,
+                    data: dict[h]
+                };
+            }
+
+            // using highcharts code to create graph
             $(function () {
                 var h = new Highcharts.Chart({
                     chart: {
@@ -258,7 +225,7 @@ $(document).ready(function () {
                         x: -20 //center
                     },
                     xAxis: {
-                        categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+                        categories: last_seven_days
                     },
                     yAxis: {
                         title: {
@@ -281,22 +248,188 @@ $(document).ready(function () {
                         verticalAlign: 'middle',
                         borderWidth: 0
                     },
-                    series: [
-                        {
-                            name: 'Mood',
-                            data: [null, null, null, null, null, null, null]
+                    plotOptions: {
+                        series: {
+                            connectNulls: true
                         }
-                    ]
+                    },
+                    series: data
                 });
             });
-        });
+        }, 'json').fail(function () {
+                $(function () {
+                    var h = new Highcharts.Chart({
+                        chart: {
+                            renderTo: 'line-graph',
+                            type: 'line'
+                        },
+                        title: {
+                            text: 'Week of Ratings',
+                            x: -20 //center
+                        },
+                        xAxis: {
+                            categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'An unknown error occurred when fetching your data :('
+                            },
+                            max: 10,
+                            min: 0,
+                            tickInterval: 1,
+                            plotLines: [
+                                {
+                                    value: 0,
+                                    width: 1,
+                                    color: '#808080'
+                                }
+                            ]
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            borderWidth: 0
+                        },
+                        series: [
+                            {
+                                name: 'Mood',
+                                data: [null, null, null, null, null, null, null]
+                            }
+                        ]
+                    });
+                });
+            });
+    }
+
+    if ($('#category-table').length != 0) {
+        $.get('/all_messages',function (messages) {
+            console.log(messages);
+            // create dictionary {category, average ratings (array[7]) to easily convert to how highcharts wants the data to be
+            // convert the dates in data_graph to be indices for the last_seven_days
+            //      (data_graph.date - 7th_day_ago) / 1000 / 60 / 60/ 24
+            // use index to go into ratings array in dictionary
+
+            // first create [[[index into ratings array in dict, rating, category], ...], ....]
+            //      basically an entry for each user
+
+            var graph_data = [];
+            for (var m = 0; m < messages.users; m++) {
+                graph_data[m] = [];
+                for (var i = 0; i < messages.processed_messages.length; i++) {
+                    // only checking for messages the user responded with and not twilio's response
+                    //      and that the message is from that user
+                    if (messages.processed_messages[i].data != null && messages.users[m].id === messages.processed_messages[i].user_id) {
+                        graph_data[m][i] = [];
+                        d = new Date();
+                        d.setDate(d.getDate() - 6);
+                        graph_data[m][i][0] = Math.floor((new Date(messages.processed_messages[i].date_processed) - d) / 1000 / 60 / 60/ 24);
+                        graph_data[m][i][1] = messages.processed_messages[i].data;
+                        // need to parse prefix from text and then find the corresponding Category it belongs to
+                        var prefix = messages.processed_messages[i].text.split(messages.processed_messages[i].data)[0];
+                        for (var j = 0; j < messages.prefixes.length; j++) {
+                            if (messages.prefixes[j].prefix == prefix) {
+                                graph_data[m][i][2] = messages.prefixes[j].name;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
 
 
-    $.get('/all_messages',function (messages) {
-        console.log(messages);
-    }, 'json').fail(function() {
-            // fail case
-        });
+            // sorting graph_data by date in ascending order for each user
+            for (var user in graph_data) {
+                console.log(user);
+                user = user.sort(function(a,b) {
+                    return a[0] - b[0];
+                });
+            }
+
+
+            // getting last 7 days for the x-axis
+            var d = new Date();
+            d.setDate(d.getDate() - 6);
+            var last_seven_days = [];
+            for (var k = 0; k < 7; k++) {
+                last_seven_days[k] = (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
+                d.setDate(d.getDate() + 1);
+            }
+
+            // setting up the dictionary to then easily convert to data for the graph
+            var dict = {};
+            for (var l = 0; l < graph_data.length; l++) {
+                if (dict[graph_data[l][2]] == null) {
+                    dict[graph_data[l][2]] = [null, null, null, null, null, null, null];
+                } else {
+                    dict[graph_data[l][2]][graph_data[l][0]] = parseInt(graph_data[l][1]);
+                }
+            }
+
+            //if user just signed up or is inactive, make null graph for categories they are signed up for
+            // TODO: HACK ONLY DOING THIS NOW FOR FAKE USER
+            // with real user, need to get categories from messages.categories and make null arrays for each category
+            if (graph_data.length == 0) {
+                dict['Mood'] = [null, null, null, null, null, null, null];
+            }
+
+            // converting dict into array of objects to pass into highcharts
+            var data = [];
+            var counter = 0;
+            for (var h in dict) {
+                data[counter++] = {
+                    name: h,
+                    data: dict[h]
+                };
+            }
+
+            // using highcharts code to create graph
+            $(function () {
+                var h = new Highcharts.Chart({
+                    chart: {
+                        renderTo: 'line-graph',
+                        type: 'line'
+                    },
+                    title: {
+                        text: 'Week of Ratings',
+                        x: -20 //center
+                    },
+                    xAxis: {
+                        categories: last_seven_days
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Ratings'
+                        },
+                        max: 10,
+                        min: 0,
+                        tickInterval: 1,
+                        plotLines: [
+                            {
+                                value: 0,
+                                width: 1,
+                                color: '#808080'
+                            }
+                        ]
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
+                    },
+                    plotOptions: {
+                        series: {
+                            connectNulls: true
+                        }
+                    },
+                    series: data
+                });
+            });
+        }, 'json').fail(function() {
+                // fail case
+            });
+    }
 
 
     drawAdminPieChartIfAdmin();

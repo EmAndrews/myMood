@@ -63,11 +63,9 @@ class UserController < ApplicationController
   ## -- Routed to by: "GET user_messages"
   def get_user_messages
     @processed_messages = ProcessedMessages.where(:user_id => User.find_by_phone_number(current_user.phone_number)).where('date_processed > ?', Date.today - 6)
-    @prefixes = Category.find(:all,:select => 'name, prefix')
+    @prefixes = Category.find(:all,:select => 'name, prefix, id')
     @categories = User.find_by_phone_number(current_user.phone_number).subscribed_categories
-    #messages_with_prefixes = [@processed_messages, @prefixes]
     respond_to do |format|
-      #format.json {render :json => messages_with_prefixes.to_json}
       format.json {
         render :json => {
             :processed_messages => @processed_messages,
