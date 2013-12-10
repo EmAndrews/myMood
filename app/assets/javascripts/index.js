@@ -219,9 +219,8 @@ $(document).ready(function () {
             for (var l = 0; l < graph_data.length; l++) {
                 if (dict[graph_data[l][2]] == null) {
                     dict[graph_data[l][2]] = [null, null, null, null, null, null, null];
-                } else {
-                    dict[graph_data[l][2]][graph_data[l][0]] = parseInt(graph_data[l][1]);
                 }
+                dict[graph_data[l][2]][graph_data[l][0]] = parseInt(graph_data[l][1]);
             }
 
             //if user just signed up or is inactive, make null graph for categories they are signed up for
