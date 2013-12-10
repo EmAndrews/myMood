@@ -346,21 +346,24 @@ $(document).ready(function () {
             // first create [[[index into ratings array in dict, rating, category], ...], ....]
             //      basically an entry for each user
 
+            messages.user_messages.sort(function (a, b) {
+                a = new Date(a.date_processed);
+                b = new Date(b.date_processed);
+                return a < b ? -1 : a > b ? 1 : 0;
+            });
 
             var graph_data = [];
             for (var m = 0; m < messages.users.length; m++) {
                 graph_data[m] = [];
-                for (var i = 0; i < messages.processed_messages.length; i++) {
-                    // only checking for messages the user responded with and not twilio's response
-                    //      and that the message is from that user
-                    if (messages.users[m].id === messages.processed_messages[i].user_id && messages.processed_messages[i].from_my_mood === 0) {
+                for (var i = 0; i < messages.user_messages.length; i++) {
+                    if (messages.users[m].id === messages.user_messages[i].user_id) {
                         graph_data[m][i] = [];
                         d = new Date();
                         d.setDate(d.getDate() - 6);
-                        graph_data[m][i][0] = Math.ceil((new Date(messages.processed_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
-                        graph_data[m][i][1] = messages.processed_messages[i].data;
+                        graph_data[m][i][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
+                        graph_data[m][i][1] = messages.user_messages[i].data;
                         // need to parse prefix from text and then find the corresponding Category it belongs to
-                        var prefix = messages.processed_messages[i].text.split(messages.processed_messages[i].data)[0];
+                        var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
                         for (var j = 0; j < messages.prefixes.length; j++) {
                             if (messages.prefixes[j].prefix == prefix) {
                                 graph_data[m][i][2] = messages.prefixes[j].name;
@@ -368,12 +371,6 @@ $(document).ready(function () {
                             }
                         }
                     }
-                }
-            }
-
-            for (var data_idx = 0; data_idx < graph_data.length; data_idx++) {
-                if (graph_data[data_idx][0] == null) {
-                    graph_data[data_idx].shift();
                 }
             }
 
