@@ -176,3 +176,25 @@ body {
     margin-top: 17px;
     margin-bottom: 15px;
 }
+
+#widget {
+    overflow-y: auto;
+}
+
+.chat-from-my-mood {
+    padding: 4px;
+    display: inline-block;
+    background-color: darkgrey;
+    margin-bottom: 0;
+    clear: right;
+    float: left;
+}
+
+.chat-user {
+    padding: 4px;
+    display: inline-block;
+    background-color: lightblue;
+    margin-bottom: 0;
+    clear: left;
+    float: right;
+}

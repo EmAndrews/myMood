@@ -134,6 +134,43 @@ $(document).ready(function () {
 
     if ($('#settings').length != 0) {
         $.get('/user_messages',function (messages) {
+            // CHAT HISTORY
+            console.log(messages.processed_messages);
+            // add to #widget
+            // sorting graph_data by date in ascending order
+            var chat_history = [];
+            $.extend(chat_history, messages.processed_messages);
+            chat_history.sort(function (a, b) {
+                a = new Date(a.date_processed);
+                b = new Date(b.date_processed);
+                return a < b ? -1 : a > b ? 1 : 0;
+            });
+
+            console.log(chat_history);
+
+            var text;
+            for (var chat = 0; chat < chat_history.length; chat++) {
+                if (chat_history[chat].from_my_mood === 0) {
+                    // give class chat-from-my-mood
+                    text = $('<p class="chat-user well">' +
+                        chat_history[chat].text +
+                        '</p> ')
+                } else {
+                    // give class chat-user
+                    text = $('<p class="chat-from-my-mood  well">' +
+                        chat_history[chat].text +
+                        '</p> ')
+                }
+                $('#widget').append(text);
+                $('#widget').append($('<p style="clear: both"></p>'));
+
+//                $('#widget').scrollTop = $('#widget').scrollHeight;
+            }
+//            $('#widget').scrollTop($('#widget')[0].scrollHeight);
+            $('#widget').animate({ scrollTop: $('#widget')[0].scrollHeight}, 1000);
+
+
+            // GRAPH
             //        console.log("data was successfully received from the ajax request");
             //        console.log(messages.processed_messages);
             //        console.log(messages.prefixes);
@@ -398,7 +435,7 @@ $(document).ready(function () {
                         } else {
                             if (dict[graph_data[u][l][2]][graph_data[u][l][0]] === null) {
                                 dict[graph_data[u][l][2]][graph_data[u][l][0]] = parseInt(graph_data[u][l][1]);
-                            } else if(keep_track_of_responses[graph_data[u][l][0]] > 1) {
+                            } else if (keep_track_of_responses[graph_data[u][l][0]] > 1) {
                                 // add multiple ratings together
                                 keep_track_of_responses[graph_data[u][l][0]]--;
                                 dict[graph_data[u][l][2]][graph_data[u][l][0]] += parseInt(graph_data[u][l][1]);
