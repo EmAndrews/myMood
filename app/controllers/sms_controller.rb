@@ -25,8 +25,8 @@ class SmsController < ApplicationController
 		data = regex.match(message)
 
 		unless data   #no match, can’t read it
-			Util.send_message(from, "We couldn't read that.  Please try again in the form: m5")
 			save_nonparseable_message(user, message)
+			Util.send_message(from, "We couldn't read that.  Please try again in the form: m5")
 			return
 		end
 		
@@ -43,27 +43,27 @@ class SmsController < ApplicationController
 		#Make sure the category exists
 		cat_id = Category.where(:prefix => category)
 		if cat_id.blank?
-			Util.send_message(from, "Prefix '"+ category +"' not recognized, please check your response and try again.")
 			save_nonparseable_message(user, message)
+			Util.send_message(from, "Prefix '"+ category +"' not recognized, please check your response and try again.")
 			return
 		end
 		
 		#make sure user is subscribed to this category
 		unless user.subscription[cat_id[0].id.to_s]
-			Util.send_message(from, "You are not signed up for category '" + category + "', please sign up online if you would like to subscribe.")
 			save_nonparseable_message(user, message)
+			Util.send_message(from, "You are not signed up for category '" + category + "', please sign up online if you would like to subscribe.")
 			return
 		end
 		
 		#make sure mood is in range
 		if (mood.to_i() > 10) or (mood.to_i() < 1)
-			Util.send_message(from, 'We can only accept ratings from 1-10.  Please try again.')
 			save_nonparseable_message(user, message)
+			Util.send_message(from, 'We can only accept ratings from 1-10.  Please try again.')
 			return
 		end
 		
-		Util.send_message(from, 'You entered ' + mood + ' for ' + cat_id[0].name + '. Thank you!')
 		save_message(user, message, mood)
+		Util.send_message(from, 'You entered ' + mood + ' for ' + cat_id[0].name + '. Thank you!')
 	end
 	
 	def save_nonparseable_message(user, message)
