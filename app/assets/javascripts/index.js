@@ -198,7 +198,7 @@ $(document).ready(function () {
                 // need to parse prefix from text and then find the corresponding Category it belongs to
                 var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
                 for (var j = 0; j < messages.prefixes.length; j++) {
-                    if (messages.prefixes[j].prefix == prefix) {
+                    if (messages.prefixes[j].prefix.toLowerCase() == prefix.toLowerCase()) {
                         graph_data[i][2] = messages.prefixes[j].name;
                         break;
                     }
