@@ -150,16 +150,24 @@ $(document).ready(function () {
 
             var text;
             for (var chat = 0; chat < chat_history.length; chat++) {
+                var d = new Date(chat_history[chat].date_processed);
+
                 if (chat_history[chat].from_my_mood === 0) {
                     // give class chat-from-my-mood
-                    text = $('<p class="chat-user well">' +
+                    text = $('<div class="chat-user well">' +
                         chat_history[chat].text +
-                        '</p> ')
+                        '<div class="time">' +
+                        d.toDateString() + ' ' + d.getHours() % 12 + ':' + d.getMinutes() +
+                        '</div>' +
+                        '</div> ')
                 } else {
                     // give class chat-user
-                    text = $('<p class="chat-from-my-mood  well">' +
+                    text = $('<div class="chat-from-my-mood  well">' +
                         chat_history[chat].text +
-                        '</p> ')
+                        '<div class="time">' +
+                        d.toDateString() + ' ' + d.getHours() % 12 + ':' + d.getMinutes() +
+                        '</div>' +
+                        '</div> ')
                 }
                 $('#widget').append(text);
                 $('#widget').append($('<p style="clear: both"></p>'));

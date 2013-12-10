@@ -198,3 +198,8 @@ body {
     clear: left;
     float: right;
 }
+
+.time {
+    font-style: italic;
+    font-size: 12px;
+}
