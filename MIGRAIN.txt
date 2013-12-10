@@ -1,3 +1,4 @@
+WARNING: This file is probably terribly out of date.
 
 This file is a mock up of what our new database design should be.
 ------------------------------------------------------------------
