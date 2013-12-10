@@ -352,30 +352,6 @@ $(document).ready(function () {
             });
 
             var graph_data = [];
-//            for (var m = 0; m < messages.users.length; m++) {
-//                graph_data[m] = [];
-//                for (var i = 0; i < messages.user_messages.length; i++) {
-//                    if (messages.users[m].id === messages.user_messages[i].user_id) {
-//                        graph_data[m][i] = [];
-//                        d = new Date();
-//                        d.setDate(d.getDate() - 6);
-//                        graph_data[m][i][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
-//                        graph_data[m][i][1] = messages.user_messages[i].data;
-//                        // need to parse prefix from text and then find the corresponding Category it belongs to
-//                        var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
-//                        for (var j = 0; j < messages.prefixes.length; j++) {
-//                            if (messages.prefixes[j].prefix == prefix) {
-//                                graph_data[m][i][2] = messages.prefixes[j].name;
-//                                break;
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-
-
-
-
             // graph_data[x] = for every user
             // graph_data[x][y] = for every message for that user
             // for each user
@@ -400,7 +376,7 @@ $(document).ready(function () {
                                 break;
                             }
                         }
-                        msg_idx++
+                        msg_idx++;
                     }
                 }
                 if (graph_data[usr_idx].length > 0) {
