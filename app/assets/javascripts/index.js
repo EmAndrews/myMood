@@ -135,7 +135,6 @@ $(document).ready(function () {
     if ($('#settings').length != 0) {
         $.get('/user_messages',function (messages) {
             // CHAT HISTORY
-            console.log(messages.processed_messages);
             // add to #widget
             // sorting graph_data by date in ascending order
             var chat_history = [];
@@ -145,8 +144,6 @@ $(document).ready(function () {
                 b = new Date(b.date_processed);
                 return a < b ? -1 : a > b ? 1 : 0;
             });
-
-            console.log(chat_history);
 
             var text;
             for (var chat = 0; chat < chat_history.length; chat++) {
@@ -179,44 +176,34 @@ $(document).ready(function () {
 
 
             // GRAPH
-            //        console.log("data was successfully received from the ajax request");
-            //        console.log(messages.processed_messages);
-            //        console.log(messages.prefixes);
             // create dictionary {category, ratings (array[7]) to easily convert to how highcharts wants the data to be
             // convert the dates in data_graph to be indices for the last_seven_days
             //      (data_graph.date - 7th_day_ago) / 1000 / 60 / 60/ 24
             // use index to go into ratings array in dictionary
 
             // first create [[index into ratings array in dict, rating, category], ...]
+            messages.user_messages.sort(function (a, b) {
+                a = new Date(a.date_processed);
+                b = new Date(b.date_processed);
+                return a < b ? -1 : a > b ? 1 : 0;
+            });
+
             var graph_data = [];
-            for (var i = 0; i < messages.processed_messages.length; i++) {
-                // only checking for messages the user responded with and not twilio's response
-                if (messages.processed_messages[i].data != null) {
-                    graph_data[i] = [];
-                    d = new Date();
-                    d.setDate(d.getDate() - 6);
-                    graph_data[i][0] = Math.ceil((new Date(messages.processed_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
-                    graph_data[i][1] = messages.processed_messages[i].data;
-                    // need to parse prefix from text and then find the corresponding Category it belongs to
-                    var prefix = messages.processed_messages[i].text.split(messages.processed_messages[i].data)[0];
-                    for (var j = 0; j < messages.prefixes.length; j++) {
-                        if (messages.prefixes[j].prefix == prefix) {
-                            graph_data[i][2] = messages.prefixes[j].name;
-                            break;
-                        }
+            for (var i = 0; i < messages.user_messages.length; i++) {
+                graph_data[i] = [];
+                d = new Date();
+                d.setDate(d.getDate() - 6);
+                graph_data[i][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
+                graph_data[i][1] = messages.user_messages[i].data;
+                // need to parse prefix from text and then find the corresponding Category it belongs to
+                var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
+                for (var j = 0; j < messages.prefixes.length; j++) {
+                    if (messages.prefixes[j].prefix == prefix) {
+                        graph_data[i][2] = messages.prefixes[j].name;
+                        break;
                     }
                 }
             }
-
-            // handling case where first message is from mymood
-            if (graph_data[0] == null) {
-                graph_data.shift();
-            }
-
-            // sorting graph_data by date in ascending order
-            graph_data = graph_data.sort(function (a, b) {
-                return a[0] - b[0];
-            });
 
             // getting last 7 days for the x-axis
             var d = new Date();

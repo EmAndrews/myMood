@@ -63,6 +63,7 @@ class UserController < ApplicationController
   ## -- Routed to by: "GET user_messages"
   def get_user_messages
     @processed_messages = ProcessedMessages.where(:user_id => User.find_by_phone_number(current_user.phone_number)).where('date_processed > ?', Date.today - 6)
+    @messages_from_user = ProcessedMessages.where(:user_id => User.find_by_phone_number(current_user.phone_number)).where('date_processed > ?', Date.today - 6).where(:from_my_mood => 0)
     @prefixes = Category.find(:all,:select => 'name, prefix, id')
     @categories = User.find_by_phone_number(current_user.phone_number).subscribed_categories
     respond_to do |format|
@@ -70,6 +71,7 @@ class UserController < ApplicationController
         render :json => {
             :processed_messages => @processed_messages,
             :prefixes => @prefixes,
+            :user_messages => @messages_from_user,
             :categories => @categories
         }
       }
