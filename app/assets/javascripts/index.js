@@ -198,7 +198,7 @@ $(document).ready(function () {
                 // need to parse prefix from text and then find the corresponding Category it belongs to
                 var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
                 for (var j = 0; j < messages.prefixes.length; j++) {
-                    if (messages.prefixes[j].prefix == prefix) {
+                    if (messages.prefixes[j].prefix.toLowerCase() == prefix.toLowerCase()) {
                         graph_data[i][2] = messages.prefixes[j].name;
                         break;
                     }
@@ -219,9 +219,8 @@ $(document).ready(function () {
             for (var l = 0; l < graph_data.length; l++) {
                 if (dict[graph_data[l][2]] == null) {
                     dict[graph_data[l][2]] = [null, null, null, null, null, null, null];
-                } else {
-                    dict[graph_data[l][2]][graph_data[l][0]] = parseInt(graph_data[l][1]);
                 }
+                dict[graph_data[l][2]][graph_data[l][0]] = parseInt(graph_data[l][1]);
             }
 
             //if user just signed up or is inactive, make null graph for categories they are signed up for
@@ -346,36 +345,73 @@ $(document).ready(function () {
             // first create [[[index into ratings array in dict, rating, category], ...], ....]
             //      basically an entry for each user
 
+            messages.user_messages.sort(function (a, b) {
+                a = new Date(a.date_processed);
+                b = new Date(b.date_processed);
+                return a < b ? -1 : a > b ? 1 : 0;
+            });
 
             var graph_data = [];
+//            for (var m = 0; m < messages.users.length; m++) {
+//                graph_data[m] = [];
+//                for (var i = 0; i < messages.user_messages.length; i++) {
+//                    if (messages.users[m].id === messages.user_messages[i].user_id) {
+//                        graph_data[m][i] = [];
+//                        d = new Date();
+//                        d.setDate(d.getDate() - 6);
+//                        graph_data[m][i][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
+//                        graph_data[m][i][1] = messages.user_messages[i].data;
+//                        // need to parse prefix from text and then find the corresponding Category it belongs to
+//                        var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
+//                        for (var j = 0; j < messages.prefixes.length; j++) {
+//                            if (messages.prefixes[j].prefix == prefix) {
+//                                graph_data[m][i][2] = messages.prefixes[j].name;
+//                                break;
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+
+
+
+
+            // graph_data[x] = for every user
+            // graph_data[x][y] = for every message for that user
+            // for each user
+            //      for every possible user message
+            //          if user id's the same
+            //              [ [ [date, rating, category], ... ], ...]
+            var usr_idx = 0;
+            var msg_idx = 0;
             for (var m = 0; m < messages.users.length; m++) {
-                graph_data[m] = [];
-                for (var i = 0; i < messages.processed_messages.length; i++) {
-                    // only checking for messages the user responded with and not twilio's response
-                    //      and that the message is from that user
-                    if (messages.users[m].id === messages.processed_messages[i].user_id && messages.processed_messages[i].from_my_mood === 0) {
-                        graph_data[m][i] = [];
+                graph_data[usr_idx] = [];
+                for (var i = 0; i < messages.user_messages.length; i++) {
+                    if (messages.users[m].id === messages.user_messages[i].user_id) {
+                        graph_data[usr_idx][msg_idx] = [];
                         d = new Date();
                         d.setDate(d.getDate() - 6);
-                        graph_data[m][i][0] = Math.ceil((new Date(messages.processed_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
-                        graph_data[m][i][1] = messages.processed_messages[i].data;
-                        // need to parse prefix from text and then find the corresponding Category it belongs to
-                        var prefix = messages.processed_messages[i].text.split(messages.processed_messages[i].data)[0];
+                        graph_data[usr_idx][msg_idx][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
+                        graph_data[usr_idx][msg_idx][1] = messages.user_messages[i].data;
+                        var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
                         for (var j = 0; j < messages.prefixes.length; j++) {
                             if (messages.prefixes[j].prefix == prefix) {
-                                graph_data[m][i][2] = messages.prefixes[j].name;
+                                graph_data[usr_idx][msg_idx][2] = messages.prefixes[j].name;
                                 break;
                             }
                         }
+                        msg_idx++
                     }
                 }
+                if (graph_data[usr_idx].length > 0) {
+                    usr_idx++;
+                }
+                msg_idx = 0;
             }
 
-            for (var data_idx = 0; data_idx < graph_data.length; data_idx++) {
-                if (graph_data[data_idx][0] == null) {
-                    graph_data[data_idx].shift();
-                }
-            }
+
+
+
 
             // sorting graph_data by date in ascending order for each user
             for (var user = 0; user < graph_data.length; user++) {

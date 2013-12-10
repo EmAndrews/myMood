@@ -116,12 +116,14 @@ class AdminController < ApplicationController
   def get_user_messages
     # need messages from every user from the last 7 days
     @processed_messages = ProcessedMessages.where('date_processed > ?', Date.today - 6)
+    @user_messages = ProcessedMessages.where('date_processed > ?', Date.today - 6).where(:from_my_mood => 0)
     @prefixes = Category.find(:all,:select => 'name, prefix')
     @users = User.where(is_admin: false)
     respond_to do |format|
       format.json {
         render :json => {
             :processed_messages => @processed_messages,
+            :user_messages => @user_messages,
             :prefixes => @prefixes,
             :users => @users
         }
