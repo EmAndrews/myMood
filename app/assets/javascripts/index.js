@@ -367,7 +367,11 @@ $(document).ready(function () {
                         graph_data[usr_idx][msg_idx] = [];
                         d = new Date();
                         d.setDate(d.getDate() - 6);
-                        graph_data[usr_idx][msg_idx][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
+                        if ((new Date(messages.user_messages[0].date_processed).getDate() == d.getDate())) {
+                            graph_data[usr_idx][msg_idx][0] = Math.floor((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
+                        } else {
+                            graph_data[usr_idx][msg_idx][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
+                        }
                         graph_data[usr_idx][msg_idx][1] = messages.user_messages[i].data;
                         var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
                         for (var j = 0; j < messages.prefixes.length; j++) {
@@ -384,10 +388,6 @@ $(document).ready(function () {
                 }
                 msg_idx = 0;
             }
-
-
-
-
 
             // sorting graph_data by date in ascending order for each user
             for (var user = 0; user < graph_data.length; user++) {
@@ -434,7 +434,7 @@ $(document).ready(function () {
             // create dictionary {category, average ratings (array[7]) to easily convert to how highcharts wants the data to be
             var dict = {};
             var keep_track_of_responses = number_of_responses;
-            for (var u = 0; u < messages.users.length; u++) {
+            for (var u = 0; u < graph_data.length; u++) {
                 for (var l = 0; l < graph_data[u].length; l++) {
                     if (graph_data[u][l] != undefined) {
                         if (dict[graph_data[u][l][2]] == null) {
@@ -455,7 +455,9 @@ $(document).ready(function () {
             // make sure writes average vs last rating
             for (var rating_for_day in dict) {
                 for (var z = 0; z < dict[rating_for_day].length; z++) {
-                    dict[rating_for_day][z] = dict[rating_for_day][z] / number_of_responses[z];
+                    if (number_of_responses[z] != 0) {
+                        dict[rating_for_day][z] = dict[rating_for_day][z] / number_of_responses[z];
+                    }
                 }
 
             }
