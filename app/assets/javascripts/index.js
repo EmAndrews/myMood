@@ -351,13 +351,13 @@ $(document).ready(function () {
                 return a < b ? -1 : a > b ? 1 : 0;
             });
 
-            var graph_data = [];
             // graph_data[x] = for every user
             // graph_data[x][y] = for every message for that user
             // for each user
             //      for every possible user message
             //          if user id's the same
             //              [ [ [date, rating, category], ... ], ...]
+            var graph_data = [];
             var usr_idx = 0;
             var msg_idx = 0;
             for (var m = 0; m < messages.users.length; m++) {
@@ -371,7 +371,7 @@ $(document).ready(function () {
                         graph_data[usr_idx][msg_idx][1] = messages.user_messages[i].data;
                         var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
                         for (var j = 0; j < messages.prefixes.length; j++) {
-                            if (messages.prefixes[j].prefix == prefix) {
+                            if (messages.prefixes[j].prefix.toLowerCase() == prefix.toLowerCase()) {
                                 graph_data[usr_idx][msg_idx][2] = messages.prefixes[j].name;
                                 break;
                             }
