@@ -194,12 +194,11 @@ $(document).ready(function () {
                 var d = new Date();
                 d.setDate(d.getDate() - 6);
                 var today = new Date();
-                if (new Date(messages.user_messages[messages.user_messages.length-1].date_processed).getDate() != today.getDate()) {
+                if (new Date(messages.user_messages[messages.user_messages.length-1].date_processed).getDate() == today.getDate()) {
                     graph_data[i][0] = Math.floor((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
                 } else {
                     graph_data[i][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
                 }
-                console.log(graph_data[i][0]);
                 graph_data[i][1] = messages.user_messages[i].data;
                 // need to parse prefix from text and then find the corresponding Category it belongs to
                 var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
