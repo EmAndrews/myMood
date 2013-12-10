@@ -193,12 +193,16 @@ $(document).ready(function () {
                 graph_data[i] = [];
                 var d = new Date();
                 d.setDate(d.getDate() - 6);
-                var today = new Date();
-                if (new Date(messages.user_messages[messages.user_messages.length-1].date_processed).getDate() == today.getDate()) {
-                    graph_data[i][0] = Math.floor((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
-                } else {
-                    graph_data[i][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
-                }
+                d.setHours(0);
+                d.setMinutes(0);
+                d.setSeconds(0);
+                d.setMilliseconds(0);
+                var msg_date = new Date(messages.user_messages[i].date_processed);
+                msg_date.setHours(0);
+                msg_date.setMinutes(0);
+                msg_date.setSeconds(0);
+                msg_date.setMilliseconds(0);
+                graph_data[i][0] = (msg_date - d) / 1000 / 60 / 60 / 24;
                 graph_data[i][1] = messages.user_messages[i].data;
                 // need to parse prefix from text and then find the corresponding Category it belongs to
                 var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
@@ -372,11 +376,16 @@ $(document).ready(function () {
                         graph_data[usr_idx][msg_idx] = [];
                         d = new Date();
                         d.setDate(d.getDate() - 6);
-                        if ((new Date(messages.user_messages[0].date_processed).getDate() == d.getDate())) {
-                            graph_data[usr_idx][msg_idx][0] = Math.floor((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
-                        } else {
-                            graph_data[usr_idx][msg_idx][0] = Math.ceil((new Date(messages.user_messages[i].date_processed) - d) / 1000 / 60 / 60 / 24);
-                        }
+                        d.setHours(0);
+                        d.setMinutes(0);
+                        d.setSeconds(0);
+                        d.setMilliseconds(0);
+                        var msg_date = new Date(messages.user_messages[i].date_processed);
+                        msg_date.setHours(0);
+                        msg_date.setMinutes(0);
+                        msg_date.setSeconds(0);
+                        msg_date.setMilliseconds(0);
+                        graph_data[usr_idx][msg_idx][0] = (msg_date - d) / 1000 / 60 / 60 / 24;
                         graph_data[usr_idx][msg_idx][1] = messages.user_messages[i].data;
                         var prefix = messages.user_messages[i].text.split(messages.user_messages[i].data)[0];
                         for (var j = 0; j < messages.prefixes.length; j++) {
