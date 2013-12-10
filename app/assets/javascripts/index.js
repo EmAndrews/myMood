@@ -432,7 +432,8 @@ $(document).ready(function () {
                     // to make sure we don't count multiple messages per day
                     var seen_users = [];
                     for (var entry = 0; entry < graph_data[user_idx].length; entry++) {
-                        if (graph_data[user_idx][entry] != null && graph_data[user_idx][entry][0] === day && seen_users.indexOf(user_idx) <= -1) {
+                        if (graph_data[user_idx][entry] != null && graph_data[user_idx][entry][0] === day && seen_users.indexOf(user_idx) <= -1
+                            && graph_data[user_idx][entry][1] != null && graph_data[user_idx][entry][2] != null) {
                             seen_users.push(user_idx);
                             number_of_responses[day] += 1;
                         }
@@ -447,10 +448,11 @@ $(document).ready(function () {
             // setting up the dictionary to then easily convert to data for the graph
             // create dictionary {category, average ratings (array[7]) to easily convert to how highcharts wants the data to be
             var dict = {};
-            var keep_track_of_responses = number_of_responses;
+            var keep_track_of_responses = [];
+            $.extend(keep_track_of_responses, number_of_responses);
             for (var u = 0; u < graph_data.length; u++) {
                 for (var l = 0; l < graph_data[u].length; l++) {
-                    if (graph_data[u][l] != undefined) {
+                    if (graph_data[u][l] != undefined && graph_data[u][l][2] != null ) {
                         if (dict[graph_data[u][l][2]] == null) {
                             dict[graph_data[u][l][2]] = [null, null, null, null, null, null, null];
                         } else {
@@ -469,7 +471,10 @@ $(document).ready(function () {
             // make sure writes average vs last rating
             for (var rating_for_day in dict) {
                 for (var z = 0; z < dict[rating_for_day].length; z++) {
-                    if (number_of_responses[z] != 0) {
+                    if (number_of_responses[z] != 0 && rating_for_day[z] != null) {
+                        dict[rating_for_day][z] = dict[rating_for_day][z] / number_of_responses[z];
+                    }
+                    if (dict[rating_for_day][z] > 10) {
                         dict[rating_for_day][z] = dict[rating_for_day][z] / number_of_responses[z];
                     }
                 }
