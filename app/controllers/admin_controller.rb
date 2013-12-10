@@ -103,14 +103,14 @@ class AdminController < ApplicationController
       new_admin.save!
       flash[:notice] = "#{name} has been given admin access"
     else
-      flash[:alert] = "Sorry, there is no user that matches that phone number"
+      flash[:alert] = 'Sorry, there is no user that matches that phone number'
     end
     redirect_to admin_path
   end
   
   def download
     csv_file = ProcessedMessages.gen_csv()
-    send_data csv_file, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=test.csv"
+    send_data csv_file, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => 'attachment; filename=message-data.csv'
   end
 
   def get_user_messages
